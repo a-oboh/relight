@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:relight/app/common/utils/text_styles.dart';
 import 'package:relight/app/features/auth/view/login_page.dart';
 
 class SplashPage extends ConsumerStatefulWidget {
@@ -25,7 +26,7 @@ class _SplashPageState extends ConsumerState {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: Center(
-        child: Text('Relight'),
+        child: Text('Relight', style: AppTextStyles.heading4,),
       ),
     );
   }
