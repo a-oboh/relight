@@ -25,7 +25,7 @@ class _CreateHighlightState extends ConsumerState<CreateHighlight> {
           barrierDismissible: false,
           builder: (_) => const LoadingDialog(),
         );
-      } else if (prev!.isLoadingSources &&
+      } else if (prev.isLoadingSources &&
           state.loadSourcesStatus is InitialBaseStatus) {
         context
           ..pop()

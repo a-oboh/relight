@@ -76,7 +76,7 @@ class RelightBottomNavBarItem extends ConsumerWidget {
           Text(
             title,
             style: TextStyle(color: color),
-          )
+          ),
         ],
       ),
     );

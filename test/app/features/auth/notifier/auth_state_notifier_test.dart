@@ -29,7 +29,7 @@ void main() {
   test('google sign in successful', () async {
     container = ProviderContainer(
       overrides: [
-        authStateNotifierProvider.overrideWith((ref) => authStateNotifier)
+        authStateNotifierProvider.overrideWith((ref) => authStateNotifier),
       ],
     );
     final collectionPath = CollectionTags.users.name;

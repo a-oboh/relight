@@ -6,9 +6,9 @@ part 'highlight_source.g.dart';
 @freezed
 class HighlightSource with _$HighlightSource {
   const factory HighlightSource({
-    String? id,
     required String name,
     required String author,
+    String? id,
     @Default('') String owner,
     DateTime? createdAt,
     DateTime? updatedAt,

@@ -50,7 +50,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                 await authNotifier.logout(context);
               },
               child: const Text('logout'),
-            )
+            ),
           ],
         ),
       ),

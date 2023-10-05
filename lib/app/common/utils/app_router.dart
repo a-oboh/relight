@@ -41,9 +41,7 @@ class RelightRouter {
 class AppRouteOberver extends NavigatorObserver {
   @override
   void didPop(Route<dynamic> route, Route<dynamic>? previousRoute) {
-    if (route.settings.name == RelightRouter.selectHighlightSource) {
-      
-    }
+    if (route.settings.name == RelightRouter.selectHighlightSource) {}
     print(route.settings.name);
   }
 }

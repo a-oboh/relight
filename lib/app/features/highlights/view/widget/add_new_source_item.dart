@@ -27,7 +27,7 @@ class AddNewSourceItem extends StatelessWidget {
           const Icon(
             Icons.chevron_right_rounded,
             color: Colors.white,
-          )
+          ),
         ],
       ),
     );

@@ -3,9 +3,9 @@ import 'package:relight/app/common/utils/utils.dart';
 
 class AppBasicButton extends StatelessWidget {
   const AppBasicButton({
-    super.key,
     required this.title,
     required this.onTap,
+    super.key,
     this.padding,
     this.colorValue = AppColors.purpleMain,
   });
