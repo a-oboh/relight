@@ -124,7 +124,10 @@ app.*.map.json
 !.idea/codeStyles/
 !.idea/dictionaries/
 !.idea/runConfigurations/
-.env
+
+# Firebase
 google-services.json
+GoogleService-info.plist
 firebase_app_id_file.json
-GoogleService-Info.plist
+
+.env
