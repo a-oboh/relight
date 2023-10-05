@@ -1,4 +1,4 @@
-package com.example.verygoodcore.relight
+package com.relight.app
 
 import io.flutter.embedding.android.FlutterActivity
 
