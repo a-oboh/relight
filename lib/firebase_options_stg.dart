@@ -2,7 +2,7 @@
 // ignore_for_file: lines_longer_than_80_chars, avoid_classes_with_only_static_members
 import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
 import 'package:flutter/foundation.dart'
-    show defaultTargetPlatform, kIsWeb, TargetPlatform;
+    show TargetPlatform, defaultTargetPlatform, kIsWeb;
 
 /// Default [FirebaseOptions] for use with your Firebase apps.
 ///
@@ -70,7 +70,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '437855968088',
     projectId: 'relight-staging',
     storageBucket: 'relight-staging.appspot.com',
-    iosClientId: '437855968088-sq47o8k4o7bbpld426pg6t1sc9peghg2.apps.googleusercontent.com',
+    iosClientId:
+        '437855968088-sq47o8k4o7bbpld426pg6t1sc9peghg2.apps.googleusercontent.com',
     iosBundleId: 'com.relight.app.stg',
   );
 }

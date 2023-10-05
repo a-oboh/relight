@@ -129,3 +129,4 @@ app.*.map.json
 google-services.json
 GoogleService-info.plist
 firebase_app_id_file.json
+.env

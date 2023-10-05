@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:relight/app/app.dart';
 import 'package:relight/bootstrap.dart';
 
-import 'firebase_options_stg.dart';
+import 'package:relight/firebase_options_stg.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  await bootstrap(() => const App());
+  await bootstrap(() => const RelightApp());
 }

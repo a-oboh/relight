@@ -32,7 +32,7 @@ void main() {
         authStateNotifierProvider.overrideWith((ref) => authStateNotifier)
       ],
     );
-    final collectionPath = DbTags.users.name;
+    final collectionPath = CollectionTags.users.name;
     await firestore
         .collection(collectionPath)
         .doc('EMAIL')

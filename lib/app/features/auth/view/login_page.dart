@@ -40,6 +40,17 @@ class _LoginPageState extends ConsumerState<LoginPage> {
               },
               child: const Text('Login w apple'),
             ),
+            FilledButton(
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.resolveWith(
+                  (states) => Colors.black,
+                ),
+              ),
+              onPressed: () async {
+                await authNotifier.logout(context);
+              },
+              child: const Text('logout'),
+            )
           ],
         ),
       ),

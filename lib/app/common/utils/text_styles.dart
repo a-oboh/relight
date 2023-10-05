@@ -138,10 +138,10 @@ class AppTextStyles {
 }
 
 const textTheme = TextTheme(
-  headlineMedium: TextStyle(fontSize: 32),
-  headlineSmall: TextStyle(fontSize: 24),
-  titleMedium: TextStyle(fontSize: 18),
-  titleSmall: TextStyle(fontSize: 16),
-  bodyLarge: TextStyle(fontSize: 15),
-  bodyMedium: TextStyle(fontSize: 13),
+  headlineMedium: TextStyle(fontSize: 32, color: Colors.white),
+  headlineSmall: TextStyle(fontSize: 24, color: Colors.white),
+  titleMedium: TextStyle(fontSize: 18, color: Colors.white),
+  titleSmall: TextStyle(fontSize: 16, color: Colors.white),
+  bodyLarge: TextStyle(fontSize: 15, color: Colors.white),
+  bodyMedium: TextStyle(fontSize: 13, color: Colors.white),
 );

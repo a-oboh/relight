@@ -40,23 +40,23 @@ mixin _$BaseStatus {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_InitalBaseStatus value) initial,
-    required TResult Function(_LoadingBaseStatus value) loading,
-    required TResult Function(_ErrorBaseStatus value) error,
+    required TResult Function(InitialBaseStatus value) initial,
+    required TResult Function(LoadingBaseStatus value) loading,
+    required TResult Function(ErrorBaseStatus value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_InitalBaseStatus value)? initial,
-    TResult? Function(_LoadingBaseStatus value)? loading,
-    TResult? Function(_ErrorBaseStatus value)? error,
+    TResult? Function(InitialBaseStatus value)? initial,
+    TResult? Function(LoadingBaseStatus value)? loading,
+    TResult? Function(ErrorBaseStatus value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_InitalBaseStatus value)? initial,
-    TResult Function(_LoadingBaseStatus value)? loading,
-    TResult Function(_ErrorBaseStatus value)? error,
+    TResult Function(InitialBaseStatus value)? initial,
+    TResult Function(LoadingBaseStatus value)? loading,
+    TResult Function(ErrorBaseStatus value)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -81,25 +81,25 @@ class _$BaseStatusCopyWithImpl<$Res, $Val extends BaseStatus>
 }
 
 /// @nodoc
-abstract class _$$_InitalBaseStatusCopyWith<$Res> {
-  factory _$$_InitalBaseStatusCopyWith(
-          _$_InitalBaseStatus value, $Res Function(_$_InitalBaseStatus) then) =
-      __$$_InitalBaseStatusCopyWithImpl<$Res>;
+abstract class _$$InitialBaseStatusCopyWith<$Res> {
+  factory _$$InitialBaseStatusCopyWith(
+          _$InitialBaseStatus value, $Res Function(_$InitialBaseStatus) then) =
+      __$$InitialBaseStatusCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitalBaseStatusCopyWithImpl<$Res>
-    extends _$BaseStatusCopyWithImpl<$Res, _$_InitalBaseStatus>
-    implements _$$_InitalBaseStatusCopyWith<$Res> {
-  __$$_InitalBaseStatusCopyWithImpl(
-      _$_InitalBaseStatus _value, $Res Function(_$_InitalBaseStatus) _then)
+class __$$InitialBaseStatusCopyWithImpl<$Res>
+    extends _$BaseStatusCopyWithImpl<$Res, _$InitialBaseStatus>
+    implements _$$InitialBaseStatusCopyWith<$Res> {
+  __$$InitialBaseStatusCopyWithImpl(
+      _$InitialBaseStatus _value, $Res Function(_$InitialBaseStatus) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_InitalBaseStatus implements _InitalBaseStatus {
-  const _$_InitalBaseStatus();
+class _$InitialBaseStatus implements InitialBaseStatus {
+  const _$InitialBaseStatus();
 
   @override
   String toString() {
@@ -109,7 +109,7 @@ class _$_InitalBaseStatus implements _InitalBaseStatus {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_InitalBaseStatus);
+        (other.runtimeType == runtimeType && other is _$InitialBaseStatus);
   }
 
   @override
@@ -152,9 +152,9 @@ class _$_InitalBaseStatus implements _InitalBaseStatus {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_InitalBaseStatus value) initial,
-    required TResult Function(_LoadingBaseStatus value) loading,
-    required TResult Function(_ErrorBaseStatus value) error,
+    required TResult Function(InitialBaseStatus value) initial,
+    required TResult Function(LoadingBaseStatus value) loading,
+    required TResult Function(ErrorBaseStatus value) error,
   }) {
     return initial(this);
   }
@@ -162,9 +162,9 @@ class _$_InitalBaseStatus implements _InitalBaseStatus {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_InitalBaseStatus value)? initial,
-    TResult? Function(_LoadingBaseStatus value)? loading,
-    TResult? Function(_ErrorBaseStatus value)? error,
+    TResult? Function(InitialBaseStatus value)? initial,
+    TResult? Function(LoadingBaseStatus value)? loading,
+    TResult? Function(ErrorBaseStatus value)? error,
   }) {
     return initial?.call(this);
   }
@@ -172,9 +172,9 @@ class _$_InitalBaseStatus implements _InitalBaseStatus {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_InitalBaseStatus value)? initial,
-    TResult Function(_LoadingBaseStatus value)? loading,
-    TResult Function(_ErrorBaseStatus value)? error,
+    TResult Function(InitialBaseStatus value)? initial,
+    TResult Function(LoadingBaseStatus value)? loading,
+    TResult Function(ErrorBaseStatus value)? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -184,30 +184,30 @@ class _$_InitalBaseStatus implements _InitalBaseStatus {
   }
 }
 
-abstract class _InitalBaseStatus implements BaseStatus {
-  const factory _InitalBaseStatus() = _$_InitalBaseStatus;
+abstract class InitialBaseStatus implements BaseStatus {
+  const factory InitialBaseStatus() = _$InitialBaseStatus;
 }
 
 /// @nodoc
-abstract class _$$_LoadingBaseStatusCopyWith<$Res> {
-  factory _$$_LoadingBaseStatusCopyWith(_$_LoadingBaseStatus value,
-          $Res Function(_$_LoadingBaseStatus) then) =
-      __$$_LoadingBaseStatusCopyWithImpl<$Res>;
+abstract class _$$LoadingBaseStatusCopyWith<$Res> {
+  factory _$$LoadingBaseStatusCopyWith(
+          _$LoadingBaseStatus value, $Res Function(_$LoadingBaseStatus) then) =
+      __$$LoadingBaseStatusCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_LoadingBaseStatusCopyWithImpl<$Res>
-    extends _$BaseStatusCopyWithImpl<$Res, _$_LoadingBaseStatus>
-    implements _$$_LoadingBaseStatusCopyWith<$Res> {
-  __$$_LoadingBaseStatusCopyWithImpl(
-      _$_LoadingBaseStatus _value, $Res Function(_$_LoadingBaseStatus) _then)
+class __$$LoadingBaseStatusCopyWithImpl<$Res>
+    extends _$BaseStatusCopyWithImpl<$Res, _$LoadingBaseStatus>
+    implements _$$LoadingBaseStatusCopyWith<$Res> {
+  __$$LoadingBaseStatusCopyWithImpl(
+      _$LoadingBaseStatus _value, $Res Function(_$LoadingBaseStatus) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_LoadingBaseStatus implements _LoadingBaseStatus {
-  const _$_LoadingBaseStatus();
+class _$LoadingBaseStatus implements LoadingBaseStatus {
+  const _$LoadingBaseStatus();
 
   @override
   String toString() {
@@ -217,7 +217,7 @@ class _$_LoadingBaseStatus implements _LoadingBaseStatus {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_LoadingBaseStatus);
+        (other.runtimeType == runtimeType && other is _$LoadingBaseStatus);
   }
 
   @override
@@ -260,9 +260,9 @@ class _$_LoadingBaseStatus implements _LoadingBaseStatus {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_InitalBaseStatus value) initial,
-    required TResult Function(_LoadingBaseStatus value) loading,
-    required TResult Function(_ErrorBaseStatus value) error,
+    required TResult Function(InitialBaseStatus value) initial,
+    required TResult Function(LoadingBaseStatus value) loading,
+    required TResult Function(ErrorBaseStatus value) error,
   }) {
     return loading(this);
   }
@@ -270,9 +270,9 @@ class _$_LoadingBaseStatus implements _LoadingBaseStatus {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_InitalBaseStatus value)? initial,
-    TResult? Function(_LoadingBaseStatus value)? loading,
-    TResult? Function(_ErrorBaseStatus value)? error,
+    TResult? Function(InitialBaseStatus value)? initial,
+    TResult? Function(LoadingBaseStatus value)? loading,
+    TResult? Function(ErrorBaseStatus value)? error,
   }) {
     return loading?.call(this);
   }
@@ -280,9 +280,9 @@ class _$_LoadingBaseStatus implements _LoadingBaseStatus {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_InitalBaseStatus value)? initial,
-    TResult Function(_LoadingBaseStatus value)? loading,
-    TResult Function(_ErrorBaseStatus value)? error,
+    TResult Function(InitialBaseStatus value)? initial,
+    TResult Function(LoadingBaseStatus value)? loading,
+    TResult Function(ErrorBaseStatus value)? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -292,25 +292,25 @@ class _$_LoadingBaseStatus implements _LoadingBaseStatus {
   }
 }
 
-abstract class _LoadingBaseStatus implements BaseStatus {
-  const factory _LoadingBaseStatus() = _$_LoadingBaseStatus;
+abstract class LoadingBaseStatus implements BaseStatus {
+  const factory LoadingBaseStatus() = _$LoadingBaseStatus;
 }
 
 /// @nodoc
-abstract class _$$_ErrorBaseStatusCopyWith<$Res> {
-  factory _$$_ErrorBaseStatusCopyWith(
-          _$_ErrorBaseStatus value, $Res Function(_$_ErrorBaseStatus) then) =
-      __$$_ErrorBaseStatusCopyWithImpl<$Res>;
+abstract class _$$ErrorBaseStatusCopyWith<$Res> {
+  factory _$$ErrorBaseStatusCopyWith(
+          _$ErrorBaseStatus value, $Res Function(_$ErrorBaseStatus) then) =
+      __$$ErrorBaseStatusCopyWithImpl<$Res>;
   @useResult
   $Res call({String? errorText});
 }
 
 /// @nodoc
-class __$$_ErrorBaseStatusCopyWithImpl<$Res>
-    extends _$BaseStatusCopyWithImpl<$Res, _$_ErrorBaseStatus>
-    implements _$$_ErrorBaseStatusCopyWith<$Res> {
-  __$$_ErrorBaseStatusCopyWithImpl(
-      _$_ErrorBaseStatus _value, $Res Function(_$_ErrorBaseStatus) _then)
+class __$$ErrorBaseStatusCopyWithImpl<$Res>
+    extends _$BaseStatusCopyWithImpl<$Res, _$ErrorBaseStatus>
+    implements _$$ErrorBaseStatusCopyWith<$Res> {
+  __$$ErrorBaseStatusCopyWithImpl(
+      _$ErrorBaseStatus _value, $Res Function(_$ErrorBaseStatus) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -318,7 +318,7 @@ class __$$_ErrorBaseStatusCopyWithImpl<$Res>
   $Res call({
     Object? errorText = freezed,
   }) {
-    return _then(_$_ErrorBaseStatus(
+    return _then(_$ErrorBaseStatus(
       errorText: freezed == errorText
           ? _value.errorText
           : errorText // ignore: cast_nullable_to_non_nullable
@@ -329,8 +329,8 @@ class __$$_ErrorBaseStatusCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ErrorBaseStatus implements _ErrorBaseStatus {
-  const _$_ErrorBaseStatus({this.errorText});
+class _$ErrorBaseStatus implements ErrorBaseStatus {
+  const _$ErrorBaseStatus({this.errorText});
 
   @override
   final String? errorText;
@@ -344,7 +344,7 @@ class _$_ErrorBaseStatus implements _ErrorBaseStatus {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ErrorBaseStatus &&
+            other is _$ErrorBaseStatus &&
             (identical(other.errorText, errorText) ||
                 other.errorText == errorText));
   }
@@ -355,8 +355,8 @@ class _$_ErrorBaseStatus implements _ErrorBaseStatus {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ErrorBaseStatusCopyWith<_$_ErrorBaseStatus> get copyWith =>
-      __$$_ErrorBaseStatusCopyWithImpl<_$_ErrorBaseStatus>(this, _$identity);
+  _$$ErrorBaseStatusCopyWith<_$ErrorBaseStatus> get copyWith =>
+      __$$ErrorBaseStatusCopyWithImpl<_$ErrorBaseStatus>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -395,9 +395,9 @@ class _$_ErrorBaseStatus implements _ErrorBaseStatus {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_InitalBaseStatus value) initial,
-    required TResult Function(_LoadingBaseStatus value) loading,
-    required TResult Function(_ErrorBaseStatus value) error,
+    required TResult Function(InitialBaseStatus value) initial,
+    required TResult Function(LoadingBaseStatus value) loading,
+    required TResult Function(ErrorBaseStatus value) error,
   }) {
     return error(this);
   }
@@ -405,9 +405,9 @@ class _$_ErrorBaseStatus implements _ErrorBaseStatus {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_InitalBaseStatus value)? initial,
-    TResult? Function(_LoadingBaseStatus value)? loading,
-    TResult? Function(_ErrorBaseStatus value)? error,
+    TResult? Function(InitialBaseStatus value)? initial,
+    TResult? Function(LoadingBaseStatus value)? loading,
+    TResult? Function(ErrorBaseStatus value)? error,
   }) {
     return error?.call(this);
   }
@@ -415,9 +415,9 @@ class _$_ErrorBaseStatus implements _ErrorBaseStatus {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_InitalBaseStatus value)? initial,
-    TResult Function(_LoadingBaseStatus value)? loading,
-    TResult Function(_ErrorBaseStatus value)? error,
+    TResult Function(InitialBaseStatus value)? initial,
+    TResult Function(LoadingBaseStatus value)? loading,
+    TResult Function(ErrorBaseStatus value)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -427,12 +427,11 @@ class _$_ErrorBaseStatus implements _ErrorBaseStatus {
   }
 }
 
-abstract class _ErrorBaseStatus implements BaseStatus {
-  const factory _ErrorBaseStatus({final String? errorText}) =
-      _$_ErrorBaseStatus;
+abstract class ErrorBaseStatus implements BaseStatus {
+  const factory ErrorBaseStatus({final String? errorText}) = _$ErrorBaseStatus;
 
   String? get errorText;
   @JsonKey(ignore: true)
-  _$$_ErrorBaseStatusCopyWith<_$_ErrorBaseStatus> get copyWith =>
+  _$$ErrorBaseStatusCopyWith<_$ErrorBaseStatus> get copyWith =>
       throw _privateConstructorUsedError;
 }

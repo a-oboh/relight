@@ -26,23 +26,28 @@ class FirebaseAuthRepository {
   final GoogleAuthProviderWrapper _googleAuthProviderWrapper;
   final FirebaseAuth _firebaseAuth;
 
-  Future<UserCredential> loginWithGoogle() async {
-    final googleUser = await _googleSignIn.signIn();
-    final googleAuth = await googleUser?.authentication;
+  Future<UserCredential?> loginWithGoogle() async {
+    try {
+      final googleUser = await _googleSignIn.signIn();
+      final googleAuth = await googleUser?.authentication;
 
-    // Create a new credential
-    final providerCredential =
-        _googleAuthProviderWrapper.credential(googleAuth);
+      // Create a new credential
+      final providerCredential =
+          _googleAuthProviderWrapper.credential(googleAuth);
 
-    // Once signed in, return the UserCredential
+      // Once signed in, return the UserCredential
 
-    final userCredential =
-        await _firebaseAuth.signInWithCredential(providerCredential);
+      final userCredential =
+          await _firebaseAuth.signInWithCredential(providerCredential);
 
-    return userCredential;
+      return userCredential;
+    } catch (e) {
+      print(e);
+    }
+    return null;
   }
 
-  Future<void> logout() async{
+  Future<void> logout() async {
     await _firebaseAuth.signOut();
   }
 }

@@ -1,7 +1,11 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
+import 'package:logging/logging.dart';
+import 'package:relight/app/common/utils/app_router.dart';
 import 'package:relight/app/common/utils/text_styles.dart';
-import 'package:relight/app/features/auth/view/login_page.dart';
+import 'package:relight/app/features/auth/providers/auth_provider.dart';
 
 class SplashPage extends ConsumerStatefulWidget {
   const SplashPage({super.key});
@@ -14,10 +18,9 @@ class _SplashPageState extends ConsumerState {
   @override
   void initState() {
     Future.delayed(const Duration(seconds: 3), () {
-      Navigator.push(
-        context,
-        MaterialPageRoute<Widget>(builder: (_) => const LoginPage()),
-      );
+      final user = ref.watch(currentUserStream).value;
+      Logger('splash').info(user);
+      _listenToUser();
     });
     super.initState();
   }
@@ -26,8 +29,21 @@ class _SplashPageState extends ConsumerState {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: Center(
-        child: Text('Relight', style: AppTextStyles.heading4,),
+        child: Text(
+          'Relight',
+          style: AppTextStyles.heading4,
+        ),
       ),
     );
+  }
+
+  Future<void> _listenToUser() async {
+    FirebaseAuth.instance.authStateChanges().listen((user) {
+      if (user == null) {
+        context.pushReplacement(RelightRouter.loginRoute);
+      } else {
+        context.pushReplacement(RelightRouter.homeRoute);
+      }
+    });
   }
 }
