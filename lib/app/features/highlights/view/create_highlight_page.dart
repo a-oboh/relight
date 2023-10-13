@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:relight/app/common/common.dart';
 import 'package:relight/app/features/features.dart';
+import 'package:relight/app/features/home/notifiers/home_state_notifier.dart';
 
 class CreateHighlight extends ConsumerStatefulWidget {
   const CreateHighlight({super.key});
@@ -19,14 +20,17 @@ class _CreateHighlightState extends ConsumerState<CreateHighlight> {
     final highlightState = ref.watch(highlightStateProvider);
 
     ref.listen(highlightStateProvider, (prev, state) {
-      if (!prev!.isLoadingSources && state.isLoadingSources) {
+      state.loadedSourcesStatus.whenOrNull(
+        initial: () {},
+        loading: () {},
+      );
+      if (prev!.isLoadingSources == false && state.isLoadingSources) {
         showDialog(
           context: context,
-          barrierDismissible: false,
           builder: (_) => const LoadingDialog(),
         );
-      } else if (prev.isLoadingSources &&
-          state.loadSourcesStatus is InitialBaseStatus) {
+      } else if (prev.isLoadingSources && state.isLoadingSources) {
+        ref.read(homeStateProvider.notifier).loadHighlights();
         context
           ..pop()
           ..push(
@@ -60,7 +64,7 @@ class NewHighlightForm extends ConsumerWidget {
   final PageController pageController;
 
   @override
-  Widget build(BuildContext ctx, WidgetRef ref) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final highlightState = ref.watch(highlightStateProvider);
     return Form(
       child: Column(
@@ -69,7 +73,7 @@ class NewHighlightForm extends ConsumerWidget {
             alignment: Alignment.centerLeft,
             child: IconButton(
               onPressed: () {
-                ctx.pop();
+                context.pop();
               },
               icon: const Icon(
                 Icons.chevron_left,
@@ -77,6 +81,7 @@ class NewHighlightForm extends ConsumerWidget {
               ),
             ),
           ),
+          //TODO(albert): add more meta for books like page number
           Padding(
             padding: const EdgeInsets.fromLTRB(8, 16, 8, 0),
             child: TextFormField(
@@ -102,17 +107,10 @@ class NewHighlightForm extends ConsumerWidget {
             onTap: () async {
               ref.read(highlightStateProvider.notifier).changeState(
                     highlightState.copyWith(
-                      loadSourcesStatus: const BaseStatus.loading(),
+                      loadedSourcesStatus: const BaseStatus.loading(),
                     ),
                   );
-              await ref
-                  .read(highlightStateProvider.notifier)
-                  .loadBookSources()
-                  .then(
-                (value) {
-                  print(ref.read(highlightStateProvider).loadedSources);
-                },
-              );
+              await ref.read(highlightStateProvider.notifier).loadBookSources();
             },
           ),
         ],

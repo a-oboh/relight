@@ -18,10 +18,9 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$HighlightState {
   BaseStatus get status => throw _privateConstructorUsedError;
   BaseStatus get createHighlightStatus => throw _privateConstructorUsedError;
-  BaseStatus get loadSourcesStatus => throw _privateConstructorUsedError;
+  BaseStatus get loadedSourcesStatus => throw _privateConstructorUsedError;
   List<Book> get bookResponse => throw _privateConstructorUsedError;
-  List<HighlightSource>? get loadedSources =>
-      throw _privateConstructorUsedError;
+  List<HighlightSource> get loadedSources => throw _privateConstructorUsedError;
   Book? get selectedBook => throw _privateConstructorUsedError;
   String? get highlightContent => throw _privateConstructorUsedError;
 
@@ -39,15 +38,15 @@ abstract class $HighlightStateCopyWith<$Res> {
   $Res call(
       {BaseStatus status,
       BaseStatus createHighlightStatus,
-      BaseStatus loadSourcesStatus,
+      BaseStatus loadedSourcesStatus,
       List<Book> bookResponse,
-      List<HighlightSource>? loadedSources,
+      List<HighlightSource> loadedSources,
       Book? selectedBook,
       String? highlightContent});
 
   $BaseStatusCopyWith<$Res> get status;
   $BaseStatusCopyWith<$Res> get createHighlightStatus;
-  $BaseStatusCopyWith<$Res> get loadSourcesStatus;
+  $BaseStatusCopyWith<$Res> get loadedSourcesStatus;
   $BookCopyWith<$Res>? get selectedBook;
 }
 
@@ -66,9 +65,9 @@ class _$HighlightStateCopyWithImpl<$Res, $Val extends HighlightState>
   $Res call({
     Object? status = null,
     Object? createHighlightStatus = null,
-    Object? loadSourcesStatus = null,
+    Object? loadedSourcesStatus = null,
     Object? bookResponse = null,
-    Object? loadedSources = freezed,
+    Object? loadedSources = null,
     Object? selectedBook = freezed,
     Object? highlightContent = freezed,
   }) {
@@ -81,18 +80,18 @@ class _$HighlightStateCopyWithImpl<$Res, $Val extends HighlightState>
           ? _value.createHighlightStatus
           : createHighlightStatus // ignore: cast_nullable_to_non_nullable
               as BaseStatus,
-      loadSourcesStatus: null == loadSourcesStatus
-          ? _value.loadSourcesStatus
-          : loadSourcesStatus // ignore: cast_nullable_to_non_nullable
+      loadedSourcesStatus: null == loadedSourcesStatus
+          ? _value.loadedSourcesStatus
+          : loadedSourcesStatus // ignore: cast_nullable_to_non_nullable
               as BaseStatus,
       bookResponse: null == bookResponse
           ? _value.bookResponse
           : bookResponse // ignore: cast_nullable_to_non_nullable
               as List<Book>,
-      loadedSources: freezed == loadedSources
+      loadedSources: null == loadedSources
           ? _value.loadedSources
           : loadedSources // ignore: cast_nullable_to_non_nullable
-              as List<HighlightSource>?,
+              as List<HighlightSource>,
       selectedBook: freezed == selectedBook
           ? _value.selectedBook
           : selectedBook // ignore: cast_nullable_to_non_nullable
@@ -122,9 +121,9 @@ class _$HighlightStateCopyWithImpl<$Res, $Val extends HighlightState>
 
   @override
   @pragma('vm:prefer-inline')
-  $BaseStatusCopyWith<$Res> get loadSourcesStatus {
-    return $BaseStatusCopyWith<$Res>(_value.loadSourcesStatus, (value) {
-      return _then(_value.copyWith(loadSourcesStatus: value) as $Val);
+  $BaseStatusCopyWith<$Res> get loadedSourcesStatus {
+    return $BaseStatusCopyWith<$Res>(_value.loadedSourcesStatus, (value) {
+      return _then(_value.copyWith(loadedSourcesStatus: value) as $Val);
     });
   }
 
@@ -152,9 +151,9 @@ abstract class _$$_HighlightStateCopyWith<$Res>
   $Res call(
       {BaseStatus status,
       BaseStatus createHighlightStatus,
-      BaseStatus loadSourcesStatus,
+      BaseStatus loadedSourcesStatus,
       List<Book> bookResponse,
-      List<HighlightSource>? loadedSources,
+      List<HighlightSource> loadedSources,
       Book? selectedBook,
       String? highlightContent});
 
@@ -163,7 +162,7 @@ abstract class _$$_HighlightStateCopyWith<$Res>
   @override
   $BaseStatusCopyWith<$Res> get createHighlightStatus;
   @override
-  $BaseStatusCopyWith<$Res> get loadSourcesStatus;
+  $BaseStatusCopyWith<$Res> get loadedSourcesStatus;
   @override
   $BookCopyWith<$Res>? get selectedBook;
 }
@@ -181,9 +180,9 @@ class __$$_HighlightStateCopyWithImpl<$Res>
   $Res call({
     Object? status = null,
     Object? createHighlightStatus = null,
-    Object? loadSourcesStatus = null,
+    Object? loadedSourcesStatus = null,
     Object? bookResponse = null,
-    Object? loadedSources = freezed,
+    Object? loadedSources = null,
     Object? selectedBook = freezed,
     Object? highlightContent = freezed,
   }) {
@@ -196,18 +195,18 @@ class __$$_HighlightStateCopyWithImpl<$Res>
           ? _value.createHighlightStatus
           : createHighlightStatus // ignore: cast_nullable_to_non_nullable
               as BaseStatus,
-      loadSourcesStatus: null == loadSourcesStatus
-          ? _value.loadSourcesStatus
-          : loadSourcesStatus // ignore: cast_nullable_to_non_nullable
+      loadedSourcesStatus: null == loadedSourcesStatus
+          ? _value.loadedSourcesStatus
+          : loadedSourcesStatus // ignore: cast_nullable_to_non_nullable
               as BaseStatus,
       bookResponse: null == bookResponse
           ? _value._bookResponse
           : bookResponse // ignore: cast_nullable_to_non_nullable
               as List<Book>,
-      loadedSources: freezed == loadedSources
+      loadedSources: null == loadedSources
           ? _value._loadedSources
           : loadedSources // ignore: cast_nullable_to_non_nullable
-              as List<HighlightSource>?,
+              as List<HighlightSource>,
       selectedBook: freezed == selectedBook
           ? _value.selectedBook
           : selectedBook // ignore: cast_nullable_to_non_nullable
@@ -226,9 +225,9 @@ class _$_HighlightState implements _HighlightState {
   const _$_HighlightState(
       {this.status = const BaseStatus.initial(),
       this.createHighlightStatus = const BaseStatus.initial(),
-      this.loadSourcesStatus = const BaseStatus.initial(),
+      this.loadedSourcesStatus = const BaseStatus.initial(),
       final List<Book> bookResponse = const <Book>[],
-      final List<HighlightSource>? loadedSources,
+      final List<HighlightSource> loadedSources = const <HighlightSource>[],
       this.selectedBook,
       this.highlightContent})
       : _bookResponse = bookResponse,
@@ -242,7 +241,7 @@ class _$_HighlightState implements _HighlightState {
   final BaseStatus createHighlightStatus;
   @override
   @JsonKey()
-  final BaseStatus loadSourcesStatus;
+  final BaseStatus loadedSourcesStatus;
   final List<Book> _bookResponse;
   @override
   @JsonKey()
@@ -252,14 +251,13 @@ class _$_HighlightState implements _HighlightState {
     return EqualUnmodifiableListView(_bookResponse);
   }
 
-  final List<HighlightSource>? _loadedSources;
+  final List<HighlightSource> _loadedSources;
   @override
-  List<HighlightSource>? get loadedSources {
-    final value = _loadedSources;
-    if (value == null) return null;
+  @JsonKey()
+  List<HighlightSource> get loadedSources {
     if (_loadedSources is EqualUnmodifiableListView) return _loadedSources;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
+    return EqualUnmodifiableListView(_loadedSources);
   }
 
   @override
@@ -269,7 +267,7 @@ class _$_HighlightState implements _HighlightState {
 
   @override
   String toString() {
-    return 'HighlightState(status: $status, createHighlightStatus: $createHighlightStatus, loadSourcesStatus: $loadSourcesStatus, bookResponse: $bookResponse, loadedSources: $loadedSources, selectedBook: $selectedBook, highlightContent: $highlightContent)';
+    return 'HighlightState(status: $status, createHighlightStatus: $createHighlightStatus, loadedSourcesStatus: $loadedSourcesStatus, bookResponse: $bookResponse, loadedSources: $loadedSources, selectedBook: $selectedBook, highlightContent: $highlightContent)';
   }
 
   @override
@@ -280,8 +278,8 @@ class _$_HighlightState implements _HighlightState {
             (identical(other.status, status) || other.status == status) &&
             (identical(other.createHighlightStatus, createHighlightStatus) ||
                 other.createHighlightStatus == createHighlightStatus) &&
-            (identical(other.loadSourcesStatus, loadSourcesStatus) ||
-                other.loadSourcesStatus == loadSourcesStatus) &&
+            (identical(other.loadedSourcesStatus, loadedSourcesStatus) ||
+                other.loadedSourcesStatus == loadedSourcesStatus) &&
             const DeepCollectionEquality()
                 .equals(other._bookResponse, _bookResponse) &&
             const DeepCollectionEquality()
@@ -297,7 +295,7 @@ class _$_HighlightState implements _HighlightState {
       runtimeType,
       status,
       createHighlightStatus,
-      loadSourcesStatus,
+      loadedSourcesStatus,
       const DeepCollectionEquality().hash(_bookResponse),
       const DeepCollectionEquality().hash(_loadedSources),
       selectedBook,
@@ -314,9 +312,9 @@ abstract class _HighlightState implements HighlightState {
   const factory _HighlightState(
       {final BaseStatus status,
       final BaseStatus createHighlightStatus,
-      final BaseStatus loadSourcesStatus,
+      final BaseStatus loadedSourcesStatus,
       final List<Book> bookResponse,
-      final List<HighlightSource>? loadedSources,
+      final List<HighlightSource> loadedSources,
       final Book? selectedBook,
       final String? highlightContent}) = _$_HighlightState;
 
@@ -325,11 +323,11 @@ abstract class _HighlightState implements HighlightState {
   @override
   BaseStatus get createHighlightStatus;
   @override
-  BaseStatus get loadSourcesStatus;
+  BaseStatus get loadedSourcesStatus;
   @override
   List<Book> get bookResponse;
   @override
-  List<HighlightSource>? get loadedSources;
+  List<HighlightSource> get loadedSources;
   @override
   Book? get selectedBook;
   @override

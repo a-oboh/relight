@@ -9,9 +9,9 @@ class HighlightState with _$HighlightState {
   const factory HighlightState({
     @Default(BaseStatus.initial()) BaseStatus status,
     @Default(BaseStatus.initial()) BaseStatus createHighlightStatus,
-    @Default(BaseStatus.initial()) BaseStatus loadSourcesStatus,
+    @Default(BaseStatus.initial()) BaseStatus loadedSourcesStatus,
     @Default(<Book>[]) List<Book> bookResponse,
-    List<HighlightSource>? loadedSources,
+    @Default(<HighlightSource>[]) List<HighlightSource> loadedSources,
     Book? selectedBook,
     String? highlightContent,
   }) = _HighlightState;
@@ -20,5 +20,5 @@ class HighlightState with _$HighlightState {
 extension HighlightStateEx on HighlightState {
   bool get isLoading => status is LoadingBaseStatus;
   bool get isCreatingHighlight => createHighlightStatus is LoadingBaseStatus;
-  bool get isLoadingSources => loadSourcesStatus is LoadingBaseStatus;
+  bool get isLoadingSources => loadedSourcesStatus is LoadingBaseStatus;
 }
