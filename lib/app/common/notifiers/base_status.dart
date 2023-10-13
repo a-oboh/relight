@@ -10,3 +10,7 @@ class BaseStatus with _$BaseStatus {
 
   const factory BaseStatus.error({String? errorText}) = ErrorBaseStatus;
 }
+
+extension StatusX on BaseStatus {
+  bool get isLoading => this is LoadingBaseStatus;
+}

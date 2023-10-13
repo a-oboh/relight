@@ -23,6 +23,8 @@ mixin _$Highlight {
   String get content => throw _privateConstructorUsedError;
   String get sourceId => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
+  String get owner => throw _privateConstructorUsedError;
+  String? get id => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +37,12 @@ abstract class $HighlightCopyWith<$Res> {
   factory $HighlightCopyWith(Highlight value, $Res Function(Highlight) then) =
       _$HighlightCopyWithImpl<$Res, Highlight>;
   @useResult
-  $Res call({String content, String sourceId, DateTime createdAt});
+  $Res call(
+      {String content,
+      String sourceId,
+      DateTime createdAt,
+      String owner,
+      String? id});
 }
 
 /// @nodoc
@@ -54,6 +61,8 @@ class _$HighlightCopyWithImpl<$Res, $Val extends Highlight>
     Object? content = null,
     Object? sourceId = null,
     Object? createdAt = null,
+    Object? owner = null,
+    Object? id = freezed,
   }) {
     return _then(_value.copyWith(
       content: null == content
@@ -68,6 +77,14 @@ class _$HighlightCopyWithImpl<$Res, $Val extends Highlight>
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      owner: null == owner
+          ? _value.owner
+          : owner // ignore: cast_nullable_to_non_nullable
+              as String,
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -79,7 +96,12 @@ abstract class _$$_HighlightCopyWith<$Res> implements $HighlightCopyWith<$Res> {
       __$$_HighlightCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String content, String sourceId, DateTime createdAt});
+  $Res call(
+      {String content,
+      String sourceId,
+      DateTime createdAt,
+      String owner,
+      String? id});
 }
 
 /// @nodoc
@@ -96,6 +118,8 @@ class __$$_HighlightCopyWithImpl<$Res>
     Object? content = null,
     Object? sourceId = null,
     Object? createdAt = null,
+    Object? owner = null,
+    Object? id = freezed,
   }) {
     return _then(_$_Highlight(
       content: null == content
@@ -110,6 +134,14 @@ class __$$_HighlightCopyWithImpl<$Res>
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      owner: null == owner
+          ? _value.owner
+          : owner // ignore: cast_nullable_to_non_nullable
+              as String,
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -118,7 +150,11 @@ class __$$_HighlightCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Highlight implements _Highlight {
   const _$_Highlight(
-      {required this.content, required this.sourceId, required this.createdAt});
+      {required this.content,
+      required this.sourceId,
+      required this.createdAt,
+      required this.owner,
+      this.id});
 
   factory _$_Highlight.fromJson(Map<String, dynamic> json) =>
       _$$_HighlightFromJson(json);
@@ -129,10 +165,14 @@ class _$_Highlight implements _Highlight {
   final String sourceId;
   @override
   final DateTime createdAt;
+  @override
+  final String owner;
+  @override
+  final String? id;
 
   @override
   String toString() {
-    return 'Highlight(content: $content, sourceId: $sourceId, createdAt: $createdAt)';
+    return 'Highlight(content: $content, sourceId: $sourceId, createdAt: $createdAt, owner: $owner, id: $id)';
   }
 
   @override
@@ -144,12 +184,15 @@ class _$_Highlight implements _Highlight {
             (identical(other.sourceId, sourceId) ||
                 other.sourceId == sourceId) &&
             (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt));
+                other.createdAt == createdAt) &&
+            (identical(other.owner, owner) || other.owner == owner) &&
+            (identical(other.id, id) || other.id == id));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, content, sourceId, createdAt);
+  int get hashCode =>
+      Object.hash(runtimeType, content, sourceId, createdAt, owner, id);
 
   @JsonKey(ignore: true)
   @override
@@ -169,7 +212,9 @@ abstract class _Highlight implements Highlight {
   const factory _Highlight(
       {required final String content,
       required final String sourceId,
-      required final DateTime createdAt}) = _$_Highlight;
+      required final DateTime createdAt,
+      required final String owner,
+      final String? id}) = _$_Highlight;
 
   factory _Highlight.fromJson(Map<String, dynamic> json) =
       _$_Highlight.fromJson;
@@ -180,6 +225,10 @@ abstract class _Highlight implements Highlight {
   String get sourceId;
   @override
   DateTime get createdAt;
+  @override
+  String get owner;
+  @override
+  String? get id;
   @override
   @JsonKey(ignore: true)
   _$$_HighlightCopyWith<_$_Highlight> get copyWith =>

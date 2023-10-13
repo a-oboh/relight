@@ -31,12 +31,14 @@ class SourceItemWidget extends ConsumerWidget {
             child: const Icon(IconlyBold.image),
           ),
           const SizedBox(width: 12),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(source.name),
-              Text(source.author),
-            ],
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(source.name),
+                Text(source.author),
+              ],
+            ),
           ),
           const Spacer(),
           const Icon(

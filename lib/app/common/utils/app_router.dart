@@ -26,6 +26,13 @@ class RelightRouter {
         path: createHighlightSource,
         builder: (_, __) => const CreateBookSourcePage(),
       ),
+      GoRoute(
+        path: editHighlight,
+        builder: (_, state) {
+          final arg = state.extra! as Highlight;
+          return EditHighlight(highlight: arg);
+        },
+      ),
     ],
     observers: [AppRouteOberver()],
   );
@@ -35,6 +42,7 @@ class RelightRouter {
   static const homeRoute = '/dashboard';
   static const createHighlight = '/highlight/create_highlight';
   static const selectHighlightSource = '/highlight/select_highlight_source';
+  static const editHighlight = '/highlight/edit';
   static const createHighlightSource = '/highlight/source/new';
 }
 

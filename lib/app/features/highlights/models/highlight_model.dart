@@ -9,6 +9,8 @@ class Highlight with _$Highlight {
     required String content,
     required String sourceId,
     required DateTime createdAt,
+    required String owner,
+    String? id,
   }) = _Highlight;
 
   factory Highlight.fromJson(Map<String, dynamic> json) =>

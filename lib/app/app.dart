@@ -41,6 +41,8 @@ class RelightApp extends ConsumerWidget {
         iconTheme: const IconThemeData(
           color: Colors.white,
         ),
+        popupMenuTheme:
+            const PopupMenuThemeData(color: AppColors.secondaryGrey),
       ),
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
