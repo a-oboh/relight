@@ -2,10 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:relight/app/common/common.dart';
 import 'package:relight/app/features/features.dart';
-import 'package:relight/app/features/home/notifiers/home_state.dart';
 
 final homeStateProvider =
-    StateNotifierProvider.autoDispose<HomeStateNotifier, HomeState>((ref) {
+    StateNotifierProvider<HomeStateNotifier, HomeState>((ref) {
   return HomeStateNotifier(
     highlightRepository: ref.read(highlightRepoProvider),
     highlightSourcesRepository: ref.read(highlightSourcesRepo),

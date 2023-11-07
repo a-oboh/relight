@@ -25,11 +25,11 @@ class _SplashPageState extends ConsumerState {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: Center(
         child: Text(
           'Relight',
-          style: AppTextStyles.heading4,
+          style: AppTextStyles.mediumBold(),
         ),
       ),
     );

@@ -8,7 +8,7 @@ class RelightRouter {
     routes: [
       GoRoute(path: initialRoute, builder: (_, __) => const SplashPage()),
       GoRoute(path: loginRoute, builder: (_, __) => const LoginPage()),
-      GoRoute(path: homeRoute, builder: (_, __) => DashboardPage()),
+      GoRoute(path: homeRoute, builder: (_, __) => const DashboardPage()),
       GoRoute(
         path: createHighlight,
         builder: (_, __) => const CreateHighlight(),
@@ -25,6 +25,10 @@ class RelightRouter {
       GoRoute(
         path: createHighlightSource,
         builder: (_, __) => const CreateBookSourcePage(),
+      ),
+      GoRoute(
+        path: reminderSettings,
+        builder: (_, __) => const ReminderSettingsPage(),
       ),
       GoRoute(
         path: editHighlight,
@@ -44,6 +48,7 @@ class RelightRouter {
   static const selectHighlightSource = '/highlight/select_highlight_source';
   static const editHighlight = '/highlight/edit';
   static const createHighlightSource = '/highlight/source/new';
+  static const reminderSettings = '/profile/reminder_settings';
 }
 
 class AppRouteOberver extends NavigatorObserver {

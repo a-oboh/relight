@@ -2,22 +2,39 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:relight/app/common/common.dart';
-import 'package:relight/app/features/home/notifiers/navbar_state_notifier.dart';
-import 'package:relight/app/features/home/view/home_page.dart';
-import 'package:relight/app/features/home/view/widgets/bottom_nav_bar.dart';
+import 'package:relight/app/features/features.dart';
 
-class DashboardPage extends ConsumerWidget {
-  DashboardPage({super.key});
+class DashboardPage extends ConsumerStatefulWidget {
+  const DashboardPage({super.key});
 
+  @override
+  ConsumerState<DashboardPage> createState() => _DashboardPageState();
+}
+
+class _DashboardPageState extends ConsumerState<DashboardPage> {
+  //TODO(albert): move to view model
   final _pages = [
     const HomePage(),
     const Placeholder(),
-    const Placeholder(),
-    const Placeholder(),
+    const ProfilePage(),
   ];
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      ref.read(homeStateProvider.notifier).loadHighlights();
+    });
+  }
+
+  @override
+  void dispose() {
+    ref.invalidate(homeStateProvider);
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final selectedIndex = ref.watch(navBarNotifProvider).selectedIndex;
     return Scaffold(
       backgroundColor: AppColors.primaryGrey,

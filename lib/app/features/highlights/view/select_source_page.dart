@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:relight/app/common/common.dart';
 import 'package:relight/app/features/features.dart';
-import 'package:relight/app/features/home/notifiers/home_state_notifier.dart';
 
 class SelectSourcePage extends ConsumerStatefulWidget {
   const SelectSourcePage({required this.savedSources, super.key});

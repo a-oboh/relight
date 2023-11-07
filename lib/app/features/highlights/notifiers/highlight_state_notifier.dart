@@ -151,5 +151,5 @@ class HighlightStateNotifier extends StateNotifier<HighlightState> {
 
   void _setError(String error) {
     state = state.copyWith(status: BaseStatus.error(errorText: error));
-  } 
+  }
 }

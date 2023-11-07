@@ -13,13 +13,13 @@ class HomePage extends ConsumerStatefulWidget {
 }
 
 class _HomePageState extends ConsumerState<HomePage> {
-  @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      ref.read(homeStateProvider.notifier).loadHighlights();
-    });
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+  //     ref.read(homeStateProvider.notifier).loadHighlights();
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
