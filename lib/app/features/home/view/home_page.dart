@@ -40,7 +40,7 @@ class _HomePageState extends ConsumerState<HomePage> {
             builder: (context) => const LoadingDialog(),
           );
         },
-        error: (errorText) {
+        error: (errorText, _) {
           if (previous!.deleteHighlightStatus.isLoading) {
             context.pop();
           }

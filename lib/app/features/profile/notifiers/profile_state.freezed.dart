@@ -16,7 +16,11 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ProfileState {
-  dynamic get selectedFrequency => throw _privateConstructorUsedError;
+  FrequencyValueEnum get selectedFrequency =>
+      throw _privateConstructorUsedError;
+  BaseStatus get status => throw _privateConstructorUsedError;
+  BaseStatus get reminderPageStatus => throw _privateConstructorUsedError;
+  RelightUser? get user => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ProfileStateCopyWith<ProfileState> get copyWith =>
@@ -29,7 +33,15 @@ abstract class $ProfileStateCopyWith<$Res> {
           ProfileState value, $Res Function(ProfileState) then) =
       _$ProfileStateCopyWithImpl<$Res, ProfileState>;
   @useResult
-  $Res call({dynamic selectedFrequency});
+  $Res call(
+      {FrequencyValueEnum selectedFrequency,
+      BaseStatus status,
+      BaseStatus reminderPageStatus,
+      RelightUser? user});
+
+  $BaseStatusCopyWith<$Res> get status;
+  $BaseStatusCopyWith<$Res> get reminderPageStatus;
+  $RelightUserCopyWith<$Res>? get user;
 }
 
 /// @nodoc
@@ -45,14 +57,57 @@ class _$ProfileStateCopyWithImpl<$Res, $Val extends ProfileState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? selectedFrequency = freezed,
+    Object? selectedFrequency = null,
+    Object? status = null,
+    Object? reminderPageStatus = null,
+    Object? user = freezed,
   }) {
     return _then(_value.copyWith(
-      selectedFrequency: freezed == selectedFrequency
+      selectedFrequency: null == selectedFrequency
           ? _value.selectedFrequency
           : selectedFrequency // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as FrequencyValueEnum,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as BaseStatus,
+      reminderPageStatus: null == reminderPageStatus
+          ? _value.reminderPageStatus
+          : reminderPageStatus // ignore: cast_nullable_to_non_nullable
+              as BaseStatus,
+      user: freezed == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as RelightUser?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $BaseStatusCopyWith<$Res> get status {
+    return $BaseStatusCopyWith<$Res>(_value.status, (value) {
+      return _then(_value.copyWith(status: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $BaseStatusCopyWith<$Res> get reminderPageStatus {
+    return $BaseStatusCopyWith<$Res>(_value.reminderPageStatus, (value) {
+      return _then(_value.copyWith(reminderPageStatus: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $RelightUserCopyWith<$Res>? get user {
+    if (_value.user == null) {
+      return null;
+    }
+
+    return $RelightUserCopyWith<$Res>(_value.user!, (value) {
+      return _then(_value.copyWith(user: value) as $Val);
+    });
   }
 }
 
@@ -64,7 +119,18 @@ abstract class _$$_ProfileStateCopyWith<$Res>
       __$$_ProfileStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({dynamic selectedFrequency});
+  $Res call(
+      {FrequencyValueEnum selectedFrequency,
+      BaseStatus status,
+      BaseStatus reminderPageStatus,
+      RelightUser? user});
+
+  @override
+  $BaseStatusCopyWith<$Res> get status;
+  @override
+  $BaseStatusCopyWith<$Res> get reminderPageStatus;
+  @override
+  $RelightUserCopyWith<$Res>? get user;
 }
 
 /// @nodoc
@@ -78,12 +144,28 @@ class __$$_ProfileStateCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? selectedFrequency = freezed,
+    Object? selectedFrequency = null,
+    Object? status = null,
+    Object? reminderPageStatus = null,
+    Object? user = freezed,
   }) {
     return _then(_$_ProfileState(
-      selectedFrequency: freezed == selectedFrequency
-          ? _value.selectedFrequency!
-          : selectedFrequency,
+      selectedFrequency: null == selectedFrequency
+          ? _value.selectedFrequency
+          : selectedFrequency // ignore: cast_nullable_to_non_nullable
+              as FrequencyValueEnum,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as BaseStatus,
+      reminderPageStatus: null == reminderPageStatus
+          ? _value.reminderPageStatus
+          : reminderPageStatus // ignore: cast_nullable_to_non_nullable
+              as BaseStatus,
+      user: freezed == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as RelightUser?,
     ));
   }
 }
@@ -91,15 +173,27 @@ class __$$_ProfileStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_ProfileState implements _ProfileState {
-  const _$_ProfileState({this.selectedFrequency = FrequencyValueEnum.daily});
+  const _$_ProfileState(
+      {this.selectedFrequency = FrequencyValueEnum.daily,
+      this.status = const BaseStatus.initial(),
+      this.reminderPageStatus = const BaseStatus.initial(),
+      this.user});
 
   @override
   @JsonKey()
-  final dynamic selectedFrequency;
+  final FrequencyValueEnum selectedFrequency;
+  @override
+  @JsonKey()
+  final BaseStatus status;
+  @override
+  @JsonKey()
+  final BaseStatus reminderPageStatus;
+  @override
+  final RelightUser? user;
 
   @override
   String toString() {
-    return 'ProfileState(selectedFrequency: $selectedFrequency)';
+    return 'ProfileState(selectedFrequency: $selectedFrequency, status: $status, reminderPageStatus: $reminderPageStatus, user: $user)';
   }
 
   @override
@@ -107,13 +201,17 @@ class _$_ProfileState implements _ProfileState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ProfileState &&
-            const DeepCollectionEquality()
-                .equals(other.selectedFrequency, selectedFrequency));
+            (identical(other.selectedFrequency, selectedFrequency) ||
+                other.selectedFrequency == selectedFrequency) &&
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.reminderPageStatus, reminderPageStatus) ||
+                other.reminderPageStatus == reminderPageStatus) &&
+            (identical(other.user, user) || other.user == user));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(selectedFrequency));
+      runtimeType, selectedFrequency, status, reminderPageStatus, user);
 
   @JsonKey(ignore: true)
   @override
@@ -123,11 +221,20 @@ class _$_ProfileState implements _ProfileState {
 }
 
 abstract class _ProfileState implements ProfileState {
-  const factory _ProfileState({final dynamic selectedFrequency}) =
-      _$_ProfileState;
+  const factory _ProfileState(
+      {final FrequencyValueEnum selectedFrequency,
+      final BaseStatus status,
+      final BaseStatus reminderPageStatus,
+      final RelightUser? user}) = _$_ProfileState;
 
   @override
-  dynamic get selectedFrequency;
+  FrequencyValueEnum get selectedFrequency;
+  @override
+  BaseStatus get status;
+  @override
+  BaseStatus get reminderPageStatus;
+  @override
+  RelightUser? get user;
   @override
   @JsonKey(ignore: true)
   _$$_ProfileStateCopyWith<_$_ProfileState> get copyWith =>

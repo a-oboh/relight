@@ -5,6 +5,7 @@ part 'profile.g.dart';
 
 @freezed
 class Profile with _$Profile {
+  @JsonSerializable()
   const factory Profile({
     @JsonEnum() required FrequencyValueEnum alertFrequency,
   }) = _Profile;

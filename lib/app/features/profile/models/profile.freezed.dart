@@ -92,6 +92,7 @@ class __$$_ProfileCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 @JsonSerializable()
 class _$_Profile implements _Profile {
   const _$_Profile({@JsonEnum() required this.alertFrequency});

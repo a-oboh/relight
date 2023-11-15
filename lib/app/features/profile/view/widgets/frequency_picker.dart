@@ -86,13 +86,3 @@ class FrequencyPickerItem extends ConsumerWidget {
     );
   }
 }
-
-enum FrequencyValueEnum {
-  daily('Daily'),
-  weekly('Weekly'),
-  monthly('Monthly');
-
-  const FrequencyValueEnum(this.value);
-
-  final String value;
-}

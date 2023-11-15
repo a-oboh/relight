@@ -8,7 +8,11 @@ class RelightRouter {
     routes: [
       GoRoute(path: initialRoute, builder: (_, __) => const SplashPage()),
       GoRoute(path: loginRoute, builder: (_, __) => const LoginPage()),
-      GoRoute(path: homeRoute, builder: (_, __) => const DashboardPage()),
+      GoRoute(
+        path: homeRoute,
+        name: homeRoute,
+        builder: (_, __) => const DashboardPage(),
+      ),
       GoRoute(
         path: createHighlight,
         builder: (_, __) => const CreateHighlight(),
@@ -27,8 +31,14 @@ class RelightRouter {
         builder: (_, __) => const CreateBookSourcePage(),
       ),
       GoRoute(
+        name: reminderSettings,
         path: reminderSettings,
-        builder: (_, __) => const ReminderSettingsPage(),
+        builder: (_, state) {
+          final arg = state.extra as RelightUser?;
+          return ReminderSettingsPage(
+            user: arg,
+          );
+        },
       ),
       GoRoute(
         path: editHighlight,

@@ -38,7 +38,7 @@ class _EditHighlightState extends ConsumerState<EditHighlight> {
             );
           }
         },
-        error: (errorText) {
+        error: (errorText, _) {
           if (previous?.status.isLoading ?? false) {
             context.pop();
           }

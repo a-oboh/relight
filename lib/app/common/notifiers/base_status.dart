@@ -8,7 +8,7 @@ class BaseStatus with _$BaseStatus {
 
   const factory BaseStatus.loading() = LoadingBaseStatus;
 
-  const factory BaseStatus.error({String? errorText}) = ErrorBaseStatus;
+  const factory BaseStatus.error({String? errorText, Exception? exception}) = ErrorBaseStatus;
 }
 
 extension StatusX on BaseStatus {

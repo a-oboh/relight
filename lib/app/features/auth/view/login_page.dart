@@ -56,4 +56,10 @@ class _LoginPageState extends ConsumerState<LoginPage> {
       ),
     );
   }
+
+  @override
+  void dispose() {
+    ref.invalidate(authStateNotifierProvider);
+    super.dispose();
+  }
 }

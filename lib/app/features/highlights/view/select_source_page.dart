@@ -57,7 +57,7 @@ class _SelectSourcePageState extends ConsumerState<SelectSourcePage> {
             );
           }
         },
-        error: (errorText) {
+        error: (errorText, _) {
           if (previous?.isCreatingHighlight ?? false) {
             context.pop();
           }

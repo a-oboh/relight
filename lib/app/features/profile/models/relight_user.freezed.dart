@@ -22,6 +22,7 @@ RelightUser _$RelightUserFromJson(Map<String, dynamic> json) {
 mixin _$RelightUser {
   String get email => throw _privateConstructorUsedError;
   String get displayName => throw _privateConstructorUsedError;
+  @JsonKey(name: 'profile', fromJson: profileFromJson, toJson: profileToJson)
   Profile? get profile => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -36,7 +37,12 @@ abstract class $RelightUserCopyWith<$Res> {
           RelightUser value, $Res Function(RelightUser) then) =
       _$RelightUserCopyWithImpl<$Res, RelightUser>;
   @useResult
-  $Res call({String email, String displayName, Profile? profile});
+  $Res call(
+      {String email,
+      String displayName,
+      @JsonKey(
+          name: 'profile', fromJson: profileFromJson, toJson: profileToJson)
+      Profile? profile});
 
   $ProfileCopyWith<$Res>? get profile;
 }
@@ -95,7 +101,12 @@ abstract class _$$_RelightUserCopyWith<$Res>
       __$$_RelightUserCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String email, String displayName, Profile? profile});
+  $Res call(
+      {String email,
+      String displayName,
+      @JsonKey(
+          name: 'profile', fromJson: profileFromJson, toJson: profileToJson)
+      Profile? profile});
 
   @override
   $ProfileCopyWith<$Res>? get profile;
@@ -134,10 +145,15 @@ class __$$_RelightUserCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 @JsonSerializable()
 class _$_RelightUser implements _RelightUser {
-  const _$_RelightUser(
-      {required this.email, required this.displayName, this.profile});
+  _$_RelightUser(
+      {required this.email,
+      required this.displayName,
+      @JsonKey(
+          name: 'profile', fromJson: profileFromJson, toJson: profileToJson)
+      this.profile});
 
   factory _$_RelightUser.fromJson(Map<String, dynamic> json) =>
       _$$_RelightUserFromJson(json);
@@ -147,6 +163,7 @@ class _$_RelightUser implements _RelightUser {
   @override
   final String displayName;
   @override
+  @JsonKey(name: 'profile', fromJson: profileFromJson, toJson: profileToJson)
   final Profile? profile;
 
   @override
@@ -184,9 +201,11 @@ class _$_RelightUser implements _RelightUser {
 }
 
 abstract class _RelightUser implements RelightUser {
-  const factory _RelightUser(
+  factory _RelightUser(
       {required final String email,
       required final String displayName,
+      @JsonKey(
+          name: 'profile', fromJson: profileFromJson, toJson: profileToJson)
       final Profile? profile}) = _$_RelightUser;
 
   factory _RelightUser.fromJson(Map<String, dynamic> json) =
@@ -197,6 +216,7 @@ abstract class _RelightUser implements RelightUser {
   @override
   String get displayName;
   @override
+  @JsonKey(name: 'profile', fromJson: profileFromJson, toJson: profileToJson)
   Profile? get profile;
   @override
   @JsonKey(ignore: true)

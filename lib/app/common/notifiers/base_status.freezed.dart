@@ -20,21 +20,21 @@ mixin _$BaseStatus {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(String? errorText) error,
+    required TResult Function(String? errorText, Exception? exception) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(String? errorText)? error,
+    TResult? Function(String? errorText, Exception? exception)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(String? errorText)? error,
+    TResult Function(String? errorText, Exception? exception)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -120,7 +120,7 @@ class _$InitialBaseStatus implements InitialBaseStatus {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(String? errorText) error,
+    required TResult Function(String? errorText, Exception? exception) error,
   }) {
     return initial();
   }
@@ -130,7 +130,7 @@ class _$InitialBaseStatus implements InitialBaseStatus {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(String? errorText)? error,
+    TResult? Function(String? errorText, Exception? exception)? error,
   }) {
     return initial?.call();
   }
@@ -140,7 +140,7 @@ class _$InitialBaseStatus implements InitialBaseStatus {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(String? errorText)? error,
+    TResult Function(String? errorText, Exception? exception)? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -228,7 +228,7 @@ class _$LoadingBaseStatus implements LoadingBaseStatus {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(String? errorText) error,
+    required TResult Function(String? errorText, Exception? exception) error,
   }) {
     return loading();
   }
@@ -238,7 +238,7 @@ class _$LoadingBaseStatus implements LoadingBaseStatus {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(String? errorText)? error,
+    TResult? Function(String? errorText, Exception? exception)? error,
   }) {
     return loading?.call();
   }
@@ -248,7 +248,7 @@ class _$LoadingBaseStatus implements LoadingBaseStatus {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(String? errorText)? error,
+    TResult Function(String? errorText, Exception? exception)? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -302,7 +302,7 @@ abstract class _$$ErrorBaseStatusCopyWith<$Res> {
           _$ErrorBaseStatus value, $Res Function(_$ErrorBaseStatus) then) =
       __$$ErrorBaseStatusCopyWithImpl<$Res>;
   @useResult
-  $Res call({String? errorText});
+  $Res call({String? errorText, Exception? exception});
 }
 
 /// @nodoc
@@ -317,12 +317,17 @@ class __$$ErrorBaseStatusCopyWithImpl<$Res>
   @override
   $Res call({
     Object? errorText = freezed,
+    Object? exception = freezed,
   }) {
     return _then(_$ErrorBaseStatus(
       errorText: freezed == errorText
           ? _value.errorText
           : errorText // ignore: cast_nullable_to_non_nullable
               as String?,
+      exception: freezed == exception
+          ? _value.exception
+          : exception // ignore: cast_nullable_to_non_nullable
+              as Exception?,
     ));
   }
 }
@@ -330,14 +335,16 @@ class __$$ErrorBaseStatusCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ErrorBaseStatus implements ErrorBaseStatus {
-  const _$ErrorBaseStatus({this.errorText});
+  const _$ErrorBaseStatus({this.errorText, this.exception});
 
   @override
   final String? errorText;
+  @override
+  final Exception? exception;
 
   @override
   String toString() {
-    return 'BaseStatus.error(errorText: $errorText)';
+    return 'BaseStatus.error(errorText: $errorText, exception: $exception)';
   }
 
   @override
@@ -346,11 +353,13 @@ class _$ErrorBaseStatus implements ErrorBaseStatus {
         (other.runtimeType == runtimeType &&
             other is _$ErrorBaseStatus &&
             (identical(other.errorText, errorText) ||
-                other.errorText == errorText));
+                other.errorText == errorText) &&
+            (identical(other.exception, exception) ||
+                other.exception == exception));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, errorText);
+  int get hashCode => Object.hash(runtimeType, errorText, exception);
 
   @JsonKey(ignore: true)
   @override
@@ -363,9 +372,9 @@ class _$ErrorBaseStatus implements ErrorBaseStatus {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(String? errorText) error,
+    required TResult Function(String? errorText, Exception? exception) error,
   }) {
-    return error(errorText);
+    return error(errorText, exception);
   }
 
   @override
@@ -373,9 +382,9 @@ class _$ErrorBaseStatus implements ErrorBaseStatus {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(String? errorText)? error,
+    TResult? Function(String? errorText, Exception? exception)? error,
   }) {
-    return error?.call(errorText);
+    return error?.call(errorText, exception);
   }
 
   @override
@@ -383,11 +392,11 @@ class _$ErrorBaseStatus implements ErrorBaseStatus {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(String? errorText)? error,
+    TResult Function(String? errorText, Exception? exception)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
-      return error(errorText);
+      return error(errorText, exception);
     }
     return orElse();
   }
@@ -428,9 +437,12 @@ class _$ErrorBaseStatus implements ErrorBaseStatus {
 }
 
 abstract class ErrorBaseStatus implements BaseStatus {
-  const factory ErrorBaseStatus({final String? errorText}) = _$ErrorBaseStatus;
+  const factory ErrorBaseStatus(
+      {final String? errorText,
+      final Exception? exception}) = _$ErrorBaseStatus;
 
   String? get errorText;
+  Exception? get exception;
   @JsonKey(ignore: true)
   _$$ErrorBaseStatusCopyWith<_$ErrorBaseStatus> get copyWith =>
       throw _privateConstructorUsedError;
