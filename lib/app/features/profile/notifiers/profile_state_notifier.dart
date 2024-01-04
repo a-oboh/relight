@@ -22,7 +22,7 @@ class ProfileStateNotifier extends StateNotifier<ProfileState> {
     state = state.copyWith(selectedFrequency: value);
   }
 
-  updateReminderSettings({required String email}) async {
+  Future<void> updateReminderSettings({required String email}) async {
     try {
       state = state.copyWith(reminderPageStatus: BaseStatus.loading());
 
