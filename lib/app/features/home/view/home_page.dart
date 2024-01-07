@@ -68,34 +68,43 @@ class _HomePageState extends ConsumerState<HomePage> {
     });
 
     return SafeArea(
-      child: Scaffold(
-        body: !homeState.status.isLoading
-            ? CustomScrollView(
-                slivers: [
-                  SliverPadding(
-                    padding: const EdgeInsets.fromLTRB(8, 16, 8, 0),
-                    sliver: SliverList.separated(
-                      itemCount: homeState.highlights.length,
-                      separatorBuilder: (context, index) =>
-                          const SizedBox(height: 8),
-                      itemBuilder: (_, index) {
-                        final item = homeState.highlights[index];
+        child: Scaffold(
+      body: homeState.status.map(initial: (_) {
+        if (homeState.highlights.isEmpty) {
+          return Center(
+            child: Text("You have no highlights, why not add some?"),
+          );
+        }
+        return CustomScrollView(
+          slivers: [
+            SliverPadding(
+              padding: const EdgeInsets.fromLTRB(8, 16, 8, 0),
+              sliver: SliverList.separated(
+                itemCount: homeState.highlights.length,
+                separatorBuilder: (context, index) => const SizedBox(height: 8),
+                itemBuilder: (_, index) {
+                  final item = homeState.highlights[index];
 
-                        return HighlightCardItem(
-                          itemCount: index,
-                          highlight: item,
-                        );
-                      },
-                    ),
-                  ),
-                ],
-              )
-            : const Center(
-                child: CircularProgressIndicator(
-                  color: AppColors.purpleMain,
-                ),
+                  return HighlightCardItem(
+                    itemCount: index,
+                    highlight: item,
+                  );
+                },
               ),
-      ),
-    );
+            ),
+          ],
+        );
+      }, loading: (_) {
+        return const Center(
+          child: CircularProgressIndicator(
+            color: AppColors.purpleMain,
+          ),
+        );
+      }, error: (state) {
+        return Center(
+          child: Text(state.errorText ?? "We couldn't load your highlights 😔"),
+        );
+      }),
+    ));
   }
 }

@@ -39,6 +39,7 @@ class HighlightStateNotifier extends StateNotifier<HighlightState> {
 
   Future<void> createHighlight({
     required String content,
+    required String plainContent,
     required String sourceId,
   }) async {
     try {
@@ -46,6 +47,7 @@ class HighlightStateNotifier extends StateNotifier<HighlightState> {
 
       await _highlightsRepo.createHighlight(
         highlight: Highlight(
+          plainContent: plainContent,
           content: content.trim(),
           sourceId: sourceId,
           createdAt: DateTime.now(),
@@ -145,7 +147,7 @@ class HighlightStateNotifier extends StateNotifier<HighlightState> {
     return state = newState;
   }
 
-  void onHighlightValueChanged(String value) {
+  void setHighlightValue(String value) {
     state = state.copyWith(highlightContent: value);
   }
 

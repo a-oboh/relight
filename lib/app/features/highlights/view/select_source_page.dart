@@ -5,9 +5,9 @@ import 'package:relight/app/common/common.dart';
 import 'package:relight/app/features/features.dart';
 
 class SelectSourcePage extends ConsumerStatefulWidget {
-  const SelectSourcePage({required this.savedSources, super.key});
+  const SelectSourcePage({required this.args, super.key});
 
-  final List<HighlightSource> savedSources;
+  final SelectSourceArgs args;
 
   @override
   ConsumerState<SelectSourcePage> createState() => _SelectSourcePageState();
@@ -134,6 +134,9 @@ class _SelectSourcePageState extends ConsumerState<SelectSourcePage> {
 
                       return SourceItemWidget(
                         source: highlightNotif.loadedSources[i],
+                        highlightContent: widget.args.highlightContent,
+                        highlightPlainContent:
+                            widget.args.highlightPlainContent,
                       );
                     },
                     separatorBuilder: (_, i) =>
@@ -148,4 +151,16 @@ class _SelectSourcePageState extends ConsumerState<SelectSourcePage> {
       ),
     );
   }
+}
+
+class SelectSourceArgs {
+  SelectSourceArgs({
+    required this.savedSources,
+    required this.highlightContent,
+    required this.highlightPlainContent,
+  });
+
+  final List<HighlightSource> savedSources;
+  final String highlightContent;
+  final String highlightPlainContent;
 }

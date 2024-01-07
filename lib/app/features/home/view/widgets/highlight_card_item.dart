@@ -74,7 +74,7 @@ class HighlightCardItem extends ConsumerWidget {
               ),
             ),
             Text(
-              highlight.content,
+              highlight.plainContent,
               style: const TextStyle(
                 fontSize: 24,
                 color: Colors.white,

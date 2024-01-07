@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_quill/flutter_quill.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
+import 'package:quill_html_converter/quill_html_converter.dart';
 import 'package:relight/app/common/common.dart';
 import 'package:relight/app/features/features.dart';
 
@@ -13,6 +16,7 @@ class CreateHighlight extends ConsumerStatefulWidget {
 
 class _CreateHighlightState extends ConsumerState<CreateHighlight> {
   final PageController _pageController = PageController();
+  final quillController = QuillController.basic();
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +38,11 @@ class _CreateHighlightState extends ConsumerState<CreateHighlight> {
           ..pop()
           ..push(
             RelightRouter.selectHighlightSource,
-            extra: state.loadedSources,
+            extra: SelectSourceArgs(
+              savedSources: state.loadedSources,
+              highlightContent: quillController.document.toDelta().toHtml(),
+              highlightPlainContent: quillController.document.toPlainText(),
+            ),
           );
       }
     });
@@ -47,9 +55,83 @@ class _CreateHighlightState extends ConsumerState<CreateHighlight> {
         },
         child: Scaffold(
           backgroundColor: AppColors.dark,
-          body: NewHighlightForm(pageController: _pageController),
+          body: HighlightRichEditor(
+            quillController: quillController,
+          ),
         ),
       ),
+    );
+  }
+}
+
+class HighlightRichEditor extends ConsumerStatefulWidget {
+  const HighlightRichEditor({super.key, required this.quillController});
+
+  final QuillController quillController;
+
+  @override
+  ConsumerState<HighlightRichEditor> createState() =>
+      _HighlightRichEditorState();
+}
+
+class _HighlightRichEditorState extends ConsumerState<HighlightRichEditor> {
+  // final quillController = QuillController.basic();
+
+  // @override
+  // void dispose() {
+  //   quillController.dispose();
+  //   super.dispose();
+  // }
+
+  @override
+  Widget build(BuildContext context) {
+    final highlightState = ref.watch(highlightStateProvider);
+
+    return Column(
+      children: [
+        QuillToolbar.simple(
+          configurations: QuillSimpleToolbarConfigurations(
+            controller: widget.quillController,
+            showCenterAlignment: false,
+            showSubscript: false,
+            showSuperscript: false,
+            showInlineCode: false,
+            showStrikeThrough: false,
+            showFontFamily: false,
+            showCodeBlock: false,
+            showIndent: false,
+            showBackgroundColorButton: false,
+          ),
+        ),
+        const Gap(16),
+        Expanded(
+          child: DecoratedBox(
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.grey),
+            ),
+            child: QuillEditor.basic(
+              configurations:
+                  QuillEditorConfigurations(controller: widget.quillController),
+            ),
+          ),
+        ),
+        const Spacer(),
+        AppBasicButton(
+          title: 'Next',
+          onTap: () async {
+            ref.read(highlightStateProvider.notifier).setHighlightValue(
+                  widget.quillController.document.toDelta().toHtml(),
+                );
+
+            ref.read(highlightStateProvider.notifier).changeState(
+                  highlightState.copyWith(
+                    loadedSourcesStatus: const BaseStatus.loading(),
+                  ),
+                );
+            await ref.read(highlightStateProvider.notifier).loadBookSources();
+          },
+        ),
+      ],
     );
   }
 }
@@ -89,9 +171,8 @@ class NewHighlightForm extends ConsumerWidget {
               decoration: const InputDecoration(
                 hintText: 'Enter highlight',
               ),
-              onChanged: ref
-                  .read(highlightStateProvider.notifier)
-                  .onHighlightValueChanged,
+              onChanged:
+                  ref.read(highlightStateProvider.notifier).setHighlightValue,
               validator: (value) {
                 if (value == null || value.isEmpty) {
                   return 'Please input your highlight';

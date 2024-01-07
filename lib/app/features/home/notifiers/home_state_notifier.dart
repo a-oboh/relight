@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:relight/app/common/common.dart';
 import 'package:relight/app/features/features.dart';
@@ -36,7 +37,7 @@ class HomeStateNotifier extends StateNotifier<HomeState> {
         highlights: highlights,
       );
     } catch (e) {
-      _setError('');
+      _setError("Sorry, we can't load your highlighrs right now 🤒");
     }
   }
 
@@ -71,6 +72,10 @@ class HomeStateNotifier extends StateNotifier<HomeState> {
       _setError('Could not edit highlight');
       return state;
     }
+  }
+
+  void getFcmToken() {
+    final token = FirebaseMessaging.instance.getToken();
   }
 
   void _setError(String error) {
