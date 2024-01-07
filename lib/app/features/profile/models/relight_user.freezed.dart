@@ -43,8 +43,6 @@ abstract class $RelightUserCopyWith<$Res> {
       @JsonKey(
           name: 'profile', fromJson: profileFromJson, toJson: profileToJson)
       Profile? profile});
-
-  $ProfileCopyWith<$Res>? get profile;
 }
 
 /// @nodoc
@@ -79,26 +77,14 @@ class _$RelightUserCopyWithImpl<$Res, $Val extends RelightUser>
               as Profile?,
     ) as $Val);
   }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $ProfileCopyWith<$Res>? get profile {
-    if (_value.profile == null) {
-      return null;
-    }
-
-    return $ProfileCopyWith<$Res>(_value.profile!, (value) {
-      return _then(_value.copyWith(profile: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
-abstract class _$$_RelightUserCopyWith<$Res>
+abstract class _$$RelightUserImplCopyWith<$Res>
     implements $RelightUserCopyWith<$Res> {
-  factory _$$_RelightUserCopyWith(
-          _$_RelightUser value, $Res Function(_$_RelightUser) then) =
-      __$$_RelightUserCopyWithImpl<$Res>;
+  factory _$$RelightUserImplCopyWith(
+          _$RelightUserImpl value, $Res Function(_$RelightUserImpl) then) =
+      __$$RelightUserImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -107,17 +93,14 @@ abstract class _$$_RelightUserCopyWith<$Res>
       @JsonKey(
           name: 'profile', fromJson: profileFromJson, toJson: profileToJson)
       Profile? profile});
-
-  @override
-  $ProfileCopyWith<$Res>? get profile;
 }
 
 /// @nodoc
-class __$$_RelightUserCopyWithImpl<$Res>
-    extends _$RelightUserCopyWithImpl<$Res, _$_RelightUser>
-    implements _$$_RelightUserCopyWith<$Res> {
-  __$$_RelightUserCopyWithImpl(
-      _$_RelightUser _value, $Res Function(_$_RelightUser) _then)
+class __$$RelightUserImplCopyWithImpl<$Res>
+    extends _$RelightUserCopyWithImpl<$Res, _$RelightUserImpl>
+    implements _$$RelightUserImplCopyWith<$Res> {
+  __$$RelightUserImplCopyWithImpl(
+      _$RelightUserImpl _value, $Res Function(_$RelightUserImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -127,7 +110,7 @@ class __$$_RelightUserCopyWithImpl<$Res>
     Object? displayName = null,
     Object? profile = freezed,
   }) {
-    return _then(_$_RelightUser(
+    return _then(_$RelightUserImpl(
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -147,16 +130,16 @@ class __$$_RelightUserCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable()
-class _$_RelightUser implements _RelightUser {
-  _$_RelightUser(
+class _$RelightUserImpl implements _RelightUser {
+  _$RelightUserImpl(
       {required this.email,
       required this.displayName,
       @JsonKey(
           name: 'profile', fromJson: profileFromJson, toJson: profileToJson)
       this.profile});
 
-  factory _$_RelightUser.fromJson(Map<String, dynamic> json) =>
-      _$$_RelightUserFromJson(json);
+  factory _$RelightUserImpl.fromJson(Map<String, dynamic> json) =>
+      _$$RelightUserImplFromJson(json);
 
   @override
   final String email;
@@ -172,10 +155,10 @@ class _$_RelightUser implements _RelightUser {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_RelightUser &&
+            other is _$RelightUserImpl &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.displayName, displayName) ||
                 other.displayName == displayName) &&
@@ -189,12 +172,12 @@ class _$_RelightUser implements _RelightUser {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_RelightUserCopyWith<_$_RelightUser> get copyWith =>
-      __$$_RelightUserCopyWithImpl<_$_RelightUser>(this, _$identity);
+  _$$RelightUserImplCopyWith<_$RelightUserImpl> get copyWith =>
+      __$$RelightUserImplCopyWithImpl<_$RelightUserImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_RelightUserToJson(
+    return _$$RelightUserImplToJson(
       this,
     );
   }
@@ -206,10 +189,10 @@ abstract class _RelightUser implements RelightUser {
       required final String displayName,
       @JsonKey(
           name: 'profile', fromJson: profileFromJson, toJson: profileToJson)
-      final Profile? profile}) = _$_RelightUser;
+      final Profile? profile}) = _$RelightUserImpl;
 
   factory _RelightUser.fromJson(Map<String, dynamic> json) =
-      _$_RelightUser.fromJson;
+      _$RelightUserImpl.fromJson;
 
   @override
   String get email;
@@ -220,6 +203,6 @@ abstract class _RelightUser implements RelightUser {
   Profile? get profile;
   @override
   @JsonKey(ignore: true)
-  _$$_RelightUserCopyWith<_$_RelightUser> get copyWith =>
+  _$$RelightUserImplCopyWith<_$RelightUserImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

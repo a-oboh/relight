@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'auth_state.dart';
+part of 'reminder_state.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,29 +15,29 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$AuthState {
+mixin _$ReminderState {
   BaseStatus get status => throw _privateConstructorUsedError;
-  UserCredential? get userCredential => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $AuthStateCopyWith<AuthState> get copyWith =>
+  $ReminderStateCopyWith<ReminderState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $AuthStateCopyWith<$Res> {
-  factory $AuthStateCopyWith(AuthState value, $Res Function(AuthState) then) =
-      _$AuthStateCopyWithImpl<$Res, AuthState>;
+abstract class $ReminderStateCopyWith<$Res> {
+  factory $ReminderStateCopyWith(
+          ReminderState value, $Res Function(ReminderState) then) =
+      _$ReminderStateCopyWithImpl<$Res, ReminderState>;
   @useResult
-  $Res call({BaseStatus status, UserCredential? userCredential});
+  $Res call({BaseStatus status});
 
   $BaseStatusCopyWith<$Res> get status;
 }
 
 /// @nodoc
-class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
-    implements $AuthStateCopyWith<$Res> {
-  _$AuthStateCopyWithImpl(this._value, this._then);
+class _$ReminderStateCopyWithImpl<$Res, $Val extends ReminderState>
+    implements $ReminderStateCopyWith<$Res> {
+  _$ReminderStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -48,17 +48,12 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
   @override
   $Res call({
     Object? status = null,
-    Object? userCredential = freezed,
   }) {
     return _then(_value.copyWith(
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as BaseStatus,
-      userCredential: freezed == userCredential
-          ? _value.userCredential
-          : userCredential // ignore: cast_nullable_to_non_nullable
-              as UserCredential?,
     ) as $Val);
   }
 
@@ -72,96 +67,80 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
 }
 
 /// @nodoc
-abstract class _$$AuthStateImplCopyWith<$Res>
-    implements $AuthStateCopyWith<$Res> {
-  factory _$$AuthStateImplCopyWith(
-          _$AuthStateImpl value, $Res Function(_$AuthStateImpl) then) =
-      __$$AuthStateImplCopyWithImpl<$Res>;
+abstract class _$$ReminderStateImplCopyWith<$Res>
+    implements $ReminderStateCopyWith<$Res> {
+  factory _$$ReminderStateImplCopyWith(
+          _$ReminderStateImpl value, $Res Function(_$ReminderStateImpl) then) =
+      __$$ReminderStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({BaseStatus status, UserCredential? userCredential});
+  $Res call({BaseStatus status});
 
   @override
   $BaseStatusCopyWith<$Res> get status;
 }
 
 /// @nodoc
-class __$$AuthStateImplCopyWithImpl<$Res>
-    extends _$AuthStateCopyWithImpl<$Res, _$AuthStateImpl>
-    implements _$$AuthStateImplCopyWith<$Res> {
-  __$$AuthStateImplCopyWithImpl(
-      _$AuthStateImpl _value, $Res Function(_$AuthStateImpl) _then)
+class __$$ReminderStateImplCopyWithImpl<$Res>
+    extends _$ReminderStateCopyWithImpl<$Res, _$ReminderStateImpl>
+    implements _$$ReminderStateImplCopyWith<$Res> {
+  __$$ReminderStateImplCopyWithImpl(
+      _$ReminderStateImpl _value, $Res Function(_$ReminderStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? status = null,
-    Object? userCredential = freezed,
   }) {
-    return _then(_$AuthStateImpl(
+    return _then(_$ReminderStateImpl(
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as BaseStatus,
-      userCredential: freezed == userCredential
-          ? _value.userCredential
-          : userCredential // ignore: cast_nullable_to_non_nullable
-              as UserCredential?,
     ));
   }
 }
 
 /// @nodoc
 
-class _$AuthStateImpl extends _AuthState {
-  _$AuthStateImpl(
-      {this.status = const BaseStatus.initial(), this.userCredential})
-      : super._();
+class _$ReminderStateImpl implements _ReminderState {
+  _$ReminderStateImpl({this.status = const BaseStatus.initial()});
 
   @override
   @JsonKey()
   final BaseStatus status;
-  @override
-  final UserCredential? userCredential;
 
   @override
   String toString() {
-    return 'AuthState(status: $status, userCredential: $userCredential)';
+    return 'ReminderState(status: $status)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AuthStateImpl &&
-            (identical(other.status, status) || other.status == status) &&
-            (identical(other.userCredential, userCredential) ||
-                other.userCredential == userCredential));
+            other is _$ReminderStateImpl &&
+            (identical(other.status, status) || other.status == status));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, status, userCredential);
+  int get hashCode => Object.hash(runtimeType, status);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$AuthStateImplCopyWith<_$AuthStateImpl> get copyWith =>
-      __$$AuthStateImplCopyWithImpl<_$AuthStateImpl>(this, _$identity);
+  _$$ReminderStateImplCopyWith<_$ReminderStateImpl> get copyWith =>
+      __$$ReminderStateImplCopyWithImpl<_$ReminderStateImpl>(this, _$identity);
 }
 
-abstract class _AuthState extends AuthState {
-  factory _AuthState(
-      {final BaseStatus status,
-      final UserCredential? userCredential}) = _$AuthStateImpl;
-  _AuthState._() : super._();
+abstract class _ReminderState implements ReminderState {
+  factory _ReminderState({final BaseStatus status}) = _$ReminderStateImpl;
 
   @override
   BaseStatus get status;
   @override
-  UserCredential? get userCredential;
-  @override
   @JsonKey(ignore: true)
-  _$$AuthStateImplCopyWith<_$AuthStateImpl> get copyWith =>
+  _$$ReminderStateImplCopyWith<_$ReminderStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

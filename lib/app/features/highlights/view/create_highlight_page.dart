@@ -87,51 +87,57 @@ class _HighlightRichEditorState extends ConsumerState<HighlightRichEditor> {
   Widget build(BuildContext context) {
     final highlightState = ref.watch(highlightStateProvider);
 
-    return Column(
-      children: [
-        QuillToolbar.simple(
-          configurations: QuillSimpleToolbarConfigurations(
-            controller: widget.quillController,
-            showCenterAlignment: false,
-            showSubscript: false,
-            showSuperscript: false,
-            showInlineCode: false,
-            showStrikeThrough: false,
-            showFontFamily: false,
-            showCodeBlock: false,
-            showIndent: false,
-            showBackgroundColorButton: false,
-          ),
-        ),
-        const Gap(16),
-        Expanded(
-          child: DecoratedBox(
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('New Highlight'),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 8),
+        child: Column(
+          children: [
+            QuillToolbar.simple(
+              configurations: QuillSimpleToolbarConfigurations(
+                controller: widget.quillController,
+                showCenterAlignment: false,
+                showSubscript: false,
+                showSuperscript: false,
+                showInlineCode: false,
+                showStrikeThrough: false,
+                showFontFamily: false,
+                showCodeBlock: false,
+                showIndent: false,
+                showBackgroundColorButton: false,
+              ),
             ),
-            child: QuillEditor.basic(
-              configurations:
-                  QuillEditorConfigurations(controller: widget.quillController),
+            const Gap(16),
+            Expanded(
+              child: DecoratedBox(
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.grey),
+                ),
+                child: QuillEditor.basic(
+                  configurations: QuillEditorConfigurations(
+                      controller: widget.quillController),
+                ),
+              ),
             ),
-          ),
+            const Spacer(),
+            AppBasicButton(
+              title: 'Next',
+              onTap: () async {
+                ref.read(highlightStateProvider.notifier).changeState(
+                      highlightState.copyWith(
+                        loadedSourcesStatus: const BaseStatus.loading(),
+                      ),
+                    );
+                await ref
+                    .read(highlightStateProvider.notifier)
+                    .loadBookSources();
+              },
+            ),
+          ],
         ),
-        const Spacer(),
-        AppBasicButton(
-          title: 'Next',
-          onTap: () async {
-            ref.read(highlightStateProvider.notifier).setHighlightValue(
-                  widget.quillController.document.toDelta().toHtml(),
-                );
-
-            ref.read(highlightStateProvider.notifier).changeState(
-                  highlightState.copyWith(
-                    loadedSourcesStatus: const BaseStatus.loading(),
-                  ),
-                );
-            await ref.read(highlightStateProvider.notifier).loadBookSources();
-          },
-        ),
-      ],
+      ),
     );
   }
 }

@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:relight/app/common/common.dart';
@@ -27,24 +25,18 @@ class UserRepository {
 
   Future<RelightUser?> getUser({required String email}) async {
     try {
-      final snap = await _db
-          .collection(CollectionTags.users.value)
-          .doc(email)
-          .withConverter(
-            fromFirestore: (snap, options) =>
-                RelightUser.fromJson(snap.data() ?? {}),
-            toFirestore: (value, options) => value.toJson(),
-          )
-          .get();
+      final snap =
+          await _db.collection(CollectionTags.users.value).doc(email).get();
 
-      return snap.data();
+      final user = RelightUser.fromJson(snap.data() ?? {});
+
+      return user;
     } catch (e) {
       rethrow;
     }
   }
 
   Future<void> updateUser(RelightUser user) async {
-    print(user.toJson());
     try {
       // TODO: convert to transaction
       final ref = _db.collection(CollectionTags.users.value).doc(user.email);

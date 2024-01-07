@@ -112,11 +112,11 @@ class _$ProfileStateCopyWithImpl<$Res, $Val extends ProfileState>
 }
 
 /// @nodoc
-abstract class _$$_ProfileStateCopyWith<$Res>
+abstract class _$$ProfileStateImplCopyWith<$Res>
     implements $ProfileStateCopyWith<$Res> {
-  factory _$$_ProfileStateCopyWith(
-          _$_ProfileState value, $Res Function(_$_ProfileState) then) =
-      __$$_ProfileStateCopyWithImpl<$Res>;
+  factory _$$ProfileStateImplCopyWith(
+          _$ProfileStateImpl value, $Res Function(_$ProfileStateImpl) then) =
+      __$$ProfileStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -134,11 +134,11 @@ abstract class _$$_ProfileStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ProfileStateCopyWithImpl<$Res>
-    extends _$ProfileStateCopyWithImpl<$Res, _$_ProfileState>
-    implements _$$_ProfileStateCopyWith<$Res> {
-  __$$_ProfileStateCopyWithImpl(
-      _$_ProfileState _value, $Res Function(_$_ProfileState) _then)
+class __$$ProfileStateImplCopyWithImpl<$Res>
+    extends _$ProfileStateCopyWithImpl<$Res, _$ProfileStateImpl>
+    implements _$$ProfileStateImplCopyWith<$Res> {
+  __$$ProfileStateImplCopyWithImpl(
+      _$ProfileStateImpl _value, $Res Function(_$ProfileStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -149,7 +149,7 @@ class __$$_ProfileStateCopyWithImpl<$Res>
     Object? reminderPageStatus = null,
     Object? user = freezed,
   }) {
-    return _then(_$_ProfileState(
+    return _then(_$ProfileStateImpl(
       selectedFrequency: null == selectedFrequency
           ? _value.selectedFrequency
           : selectedFrequency // ignore: cast_nullable_to_non_nullable
@@ -172,8 +172,8 @@ class __$$_ProfileStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ProfileState implements _ProfileState {
-  const _$_ProfileState(
+class _$ProfileStateImpl implements _ProfileState {
+  const _$ProfileStateImpl(
       {this.selectedFrequency = FrequencyValueEnum.daily,
       this.status = const BaseStatus.initial(),
       this.reminderPageStatus = const BaseStatus.initial(),
@@ -197,10 +197,10 @@ class _$_ProfileState implements _ProfileState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ProfileState &&
+            other is _$ProfileStateImpl &&
             (identical(other.selectedFrequency, selectedFrequency) ||
                 other.selectedFrequency == selectedFrequency) &&
             (identical(other.status, status) || other.status == status) &&
@@ -216,8 +216,8 @@ class _$_ProfileState implements _ProfileState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ProfileStateCopyWith<_$_ProfileState> get copyWith =>
-      __$$_ProfileStateCopyWithImpl<_$_ProfileState>(this, _$identity);
+  _$$ProfileStateImplCopyWith<_$ProfileStateImpl> get copyWith =>
+      __$$ProfileStateImplCopyWithImpl<_$ProfileStateImpl>(this, _$identity);
 }
 
 abstract class _ProfileState implements ProfileState {
@@ -225,7 +225,7 @@ abstract class _ProfileState implements ProfileState {
       {final FrequencyValueEnum selectedFrequency,
       final BaseStatus status,
       final BaseStatus reminderPageStatus,
-      final RelightUser? user}) = _$_ProfileState;
+      final RelightUser? user}) = _$ProfileStateImpl;
 
   @override
   FrequencyValueEnum get selectedFrequency;
@@ -237,6 +237,6 @@ abstract class _ProfileState implements ProfileState {
   RelightUser? get user;
   @override
   @JsonKey(ignore: true)
-  _$$_ProfileStateCopyWith<_$_ProfileState> get copyWith =>
+  _$$ProfileStateImplCopyWith<_$ProfileStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:relight/app/features/profile/models/profile.dart';
+import 'package:relight/app/features/profile/models/profile_data.dart';
 
 part 'relight_user.freezed.dart';
 part 'relight_user.g.dart';

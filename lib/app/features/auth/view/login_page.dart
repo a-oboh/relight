@@ -25,7 +25,11 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                 ),
               ),
               onPressed: () async {
-                await authNotifier.signInWithGoogle();
+                if (ref.watch(authStateNotifierProvider.notifier).mounted) {
+                  await ref
+                      .read(authStateNotifierProvider.notifier)
+                      .signInWithGoogle();
+                }
               },
               child: const Text('Login w google'),
             ),
@@ -35,9 +39,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                   (states) => Colors.black,
                 ),
               ),
-              onPressed: () async {
-                await authNotifier.appleSignIn();
-              },
+              onPressed: () async {},
               child: const Text('Login w apple'),
             ),
             FilledButton(
@@ -47,7 +49,9 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                 ),
               ),
               onPressed: () async {
-                await authNotifier.logout(context);
+                await ref
+                    .read(authStateNotifierProvider.notifier)
+                    .logout(context);
               },
               child: const Text('logout'),
             ),
@@ -57,9 +61,9 @@ class _LoginPageState extends ConsumerState<LoginPage> {
     );
   }
 
-  @override
-  void dispose() {
-    ref.invalidate(authStateNotifierProvider);
-    super.dispose();
-  }
+  // @override
+  // void dispose() {
+  //   ref.refresh(authStateNotifierProvider);
+  //   super.dispose();
+  // }
 }

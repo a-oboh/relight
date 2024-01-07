@@ -81,25 +81,25 @@ class _$BaseStatusCopyWithImpl<$Res, $Val extends BaseStatus>
 }
 
 /// @nodoc
-abstract class _$$InitialBaseStatusCopyWith<$Res> {
-  factory _$$InitialBaseStatusCopyWith(
-          _$InitialBaseStatus value, $Res Function(_$InitialBaseStatus) then) =
-      __$$InitialBaseStatusCopyWithImpl<$Res>;
+abstract class _$$InitialBaseStatusImplCopyWith<$Res> {
+  factory _$$InitialBaseStatusImplCopyWith(_$InitialBaseStatusImpl value,
+          $Res Function(_$InitialBaseStatusImpl) then) =
+      __$$InitialBaseStatusImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$InitialBaseStatusCopyWithImpl<$Res>
-    extends _$BaseStatusCopyWithImpl<$Res, _$InitialBaseStatus>
-    implements _$$InitialBaseStatusCopyWith<$Res> {
-  __$$InitialBaseStatusCopyWithImpl(
-      _$InitialBaseStatus _value, $Res Function(_$InitialBaseStatus) _then)
+class __$$InitialBaseStatusImplCopyWithImpl<$Res>
+    extends _$BaseStatusCopyWithImpl<$Res, _$InitialBaseStatusImpl>
+    implements _$$InitialBaseStatusImplCopyWith<$Res> {
+  __$$InitialBaseStatusImplCopyWithImpl(_$InitialBaseStatusImpl _value,
+      $Res Function(_$InitialBaseStatusImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$InitialBaseStatus implements InitialBaseStatus {
-  const _$InitialBaseStatus();
+class _$InitialBaseStatusImpl implements InitialBaseStatus {
+  const _$InitialBaseStatusImpl();
 
   @override
   String toString() {
@@ -107,9 +107,9 @@ class _$InitialBaseStatus implements InitialBaseStatus {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InitialBaseStatus);
+        (other.runtimeType == runtimeType && other is _$InitialBaseStatusImpl);
   }
 
   @override
@@ -185,29 +185,29 @@ class _$InitialBaseStatus implements InitialBaseStatus {
 }
 
 abstract class InitialBaseStatus implements BaseStatus {
-  const factory InitialBaseStatus() = _$InitialBaseStatus;
+  const factory InitialBaseStatus() = _$InitialBaseStatusImpl;
 }
 
 /// @nodoc
-abstract class _$$LoadingBaseStatusCopyWith<$Res> {
-  factory _$$LoadingBaseStatusCopyWith(
-          _$LoadingBaseStatus value, $Res Function(_$LoadingBaseStatus) then) =
-      __$$LoadingBaseStatusCopyWithImpl<$Res>;
+abstract class _$$LoadingBaseStatusImplCopyWith<$Res> {
+  factory _$$LoadingBaseStatusImplCopyWith(_$LoadingBaseStatusImpl value,
+          $Res Function(_$LoadingBaseStatusImpl) then) =
+      __$$LoadingBaseStatusImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$LoadingBaseStatusCopyWithImpl<$Res>
-    extends _$BaseStatusCopyWithImpl<$Res, _$LoadingBaseStatus>
-    implements _$$LoadingBaseStatusCopyWith<$Res> {
-  __$$LoadingBaseStatusCopyWithImpl(
-      _$LoadingBaseStatus _value, $Res Function(_$LoadingBaseStatus) _then)
+class __$$LoadingBaseStatusImplCopyWithImpl<$Res>
+    extends _$BaseStatusCopyWithImpl<$Res, _$LoadingBaseStatusImpl>
+    implements _$$LoadingBaseStatusImplCopyWith<$Res> {
+  __$$LoadingBaseStatusImplCopyWithImpl(_$LoadingBaseStatusImpl _value,
+      $Res Function(_$LoadingBaseStatusImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$LoadingBaseStatus implements LoadingBaseStatus {
-  const _$LoadingBaseStatus();
+class _$LoadingBaseStatusImpl implements LoadingBaseStatus {
+  const _$LoadingBaseStatusImpl();
 
   @override
   String toString() {
@@ -215,9 +215,9 @@ class _$LoadingBaseStatus implements LoadingBaseStatus {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LoadingBaseStatus);
+        (other.runtimeType == runtimeType && other is _$LoadingBaseStatusImpl);
   }
 
   @override
@@ -293,24 +293,24 @@ class _$LoadingBaseStatus implements LoadingBaseStatus {
 }
 
 abstract class LoadingBaseStatus implements BaseStatus {
-  const factory LoadingBaseStatus() = _$LoadingBaseStatus;
+  const factory LoadingBaseStatus() = _$LoadingBaseStatusImpl;
 }
 
 /// @nodoc
-abstract class _$$ErrorBaseStatusCopyWith<$Res> {
-  factory _$$ErrorBaseStatusCopyWith(
-          _$ErrorBaseStatus value, $Res Function(_$ErrorBaseStatus) then) =
-      __$$ErrorBaseStatusCopyWithImpl<$Res>;
+abstract class _$$ErrorBaseStatusImplCopyWith<$Res> {
+  factory _$$ErrorBaseStatusImplCopyWith(_$ErrorBaseStatusImpl value,
+          $Res Function(_$ErrorBaseStatusImpl) then) =
+      __$$ErrorBaseStatusImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String? errorText, Exception? exception});
 }
 
 /// @nodoc
-class __$$ErrorBaseStatusCopyWithImpl<$Res>
-    extends _$BaseStatusCopyWithImpl<$Res, _$ErrorBaseStatus>
-    implements _$$ErrorBaseStatusCopyWith<$Res> {
-  __$$ErrorBaseStatusCopyWithImpl(
-      _$ErrorBaseStatus _value, $Res Function(_$ErrorBaseStatus) _then)
+class __$$ErrorBaseStatusImplCopyWithImpl<$Res>
+    extends _$BaseStatusCopyWithImpl<$Res, _$ErrorBaseStatusImpl>
+    implements _$$ErrorBaseStatusImplCopyWith<$Res> {
+  __$$ErrorBaseStatusImplCopyWithImpl(
+      _$ErrorBaseStatusImpl _value, $Res Function(_$ErrorBaseStatusImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -319,7 +319,7 @@ class __$$ErrorBaseStatusCopyWithImpl<$Res>
     Object? errorText = freezed,
     Object? exception = freezed,
   }) {
-    return _then(_$ErrorBaseStatus(
+    return _then(_$ErrorBaseStatusImpl(
       errorText: freezed == errorText
           ? _value.errorText
           : errorText // ignore: cast_nullable_to_non_nullable
@@ -334,8 +334,8 @@ class __$$ErrorBaseStatusCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ErrorBaseStatus implements ErrorBaseStatus {
-  const _$ErrorBaseStatus({this.errorText, this.exception});
+class _$ErrorBaseStatusImpl implements ErrorBaseStatus {
+  const _$ErrorBaseStatusImpl({this.errorText, this.exception});
 
   @override
   final String? errorText;
@@ -348,10 +348,10 @@ class _$ErrorBaseStatus implements ErrorBaseStatus {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ErrorBaseStatus &&
+            other is _$ErrorBaseStatusImpl &&
             (identical(other.errorText, errorText) ||
                 other.errorText == errorText) &&
             (identical(other.exception, exception) ||
@@ -364,8 +364,9 @@ class _$ErrorBaseStatus implements ErrorBaseStatus {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ErrorBaseStatusCopyWith<_$ErrorBaseStatus> get copyWith =>
-      __$$ErrorBaseStatusCopyWithImpl<_$ErrorBaseStatus>(this, _$identity);
+  _$$ErrorBaseStatusImplCopyWith<_$ErrorBaseStatusImpl> get copyWith =>
+      __$$ErrorBaseStatusImplCopyWithImpl<_$ErrorBaseStatusImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -439,11 +440,11 @@ class _$ErrorBaseStatus implements ErrorBaseStatus {
 abstract class ErrorBaseStatus implements BaseStatus {
   const factory ErrorBaseStatus(
       {final String? errorText,
-      final Exception? exception}) = _$ErrorBaseStatus;
+      final Exception? exception}) = _$ErrorBaseStatusImpl;
 
   String? get errorText;
   Exception? get exception;
   @JsonKey(ignore: true)
-  _$$ErrorBaseStatusCopyWith<_$ErrorBaseStatus> get copyWith =>
+  _$$ErrorBaseStatusImplCopyWith<_$ErrorBaseStatusImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

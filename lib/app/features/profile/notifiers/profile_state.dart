@@ -1,7 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:relight/app/common/common.dart';
 import 'package:relight/app/features/features.dart';
-import 'package:relight/app/features/profile/view/widgets/frequency_picker.dart';
 
 part 'profile_state.freezed.dart';
 

@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -9,13 +10,14 @@ import 'package:relight/app/common/utils/db_tags.dart';
 import 'package:relight/app/features/features.dart';
 
 final authStateNotifierProvider =
-    StateNotifierProvider<AuthStateNotifier, AuthState>(
+    StateNotifierProvider.autoDispose<AuthStateNotifier, AuthState>(
   (ref) {
     return AuthStateNotifier(
       router: ref.watch(goRouterProvider),
       firestore: ref.watch(dbProvider),
       authRepository: ref.watch(firebaseAuthRepoProvider),
       userRepository: ref.read(userRepoProvider),
+      ref: ref,
     );
   },
 );
@@ -26,16 +28,19 @@ class AuthStateNotifier extends StateNotifier<AuthState> {
     required FirebaseFirestore firestore,
     required FirebaseAuthRepository authRepository,
     required UserRepository userRepository,
+    required Ref ref,
   })  : _router = router,
         _firestore = firestore,
         _authRepository = authRepository,
         _userRepository = userRepository,
+        _ref = ref,
         super(AuthState());
 
   final GoRouter _router;
   final FirebaseFirestore _firestore;
   final FirebaseAuthRepository _authRepository;
   final UserRepository _userRepository;
+  final Ref _ref;
 
   Future<void> signInWithGoogle() async {
     try {
@@ -49,10 +54,15 @@ class AuthStateNotifier extends StateNotifier<AuthState> {
 
         // create firestore collection
         if (newUser) {
+          final fcmId = await FirebaseMessaging.instance.getToken();
+
           await _userRepository.saveUser(
             RelightUser(
               email: email,
               displayName: userCredential?.user?.displayName ?? '',
+              profile: Profile(
+                fcmToken: fcmId,
+              ),
             ),
           );
         }
@@ -66,7 +76,8 @@ class AuthStateNotifier extends StateNotifier<AuthState> {
       } else {
         state = state.copyWith(
           status: const BaseStatus.error(
-              errorText: 'There was a problem with your google account'),
+            errorText: 'There was a problem with your google account',
+          ),
         );
       }
     } catch (e) {

@@ -6,14 +6,14 @@ part of 'relight_user.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_RelightUser _$$_RelightUserFromJson(Map<String, dynamic> json) =>
-    _$_RelightUser(
+_$RelightUserImpl _$$RelightUserImplFromJson(Map<String, dynamic> json) =>
+    _$RelightUserImpl(
       email: json['email'] as String,
       displayName: json['displayName'] as String,
       profile: profileFromJson(json['profile'] as Map<String, dynamic>?),
     );
 
-Map<String, dynamic> _$$_RelightUserToJson(_$_RelightUser instance) =>
+Map<String, dynamic> _$$RelightUserImplToJson(_$RelightUserImpl instance) =>
     <String, dynamic>{
       'email': instance.email,
       'displayName': instance.displayName,

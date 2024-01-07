@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:relight/app/common/common.dart';
 import 'package:relight/app/features/features.dart';
@@ -27,8 +28,6 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
     ref.listen(profileStateProvider, (prev, next) {
       final route = ModalRoute.of(context)?.settings.name;
       if (next.status.isLoading) {
-        // print(GoRouter.of(context).routeInformationProvider.value.uri.path);
-
         if (route == RelightRouter.homeRoute) {
           LoadingDialog.show(context: context);
         }
@@ -49,6 +48,13 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
             children: [
               Column(
                 children: [
+                  Center(
+                    child: Text(
+                      profileState.user?.email ?? '...',
+                      style: AppTextStyles.mediumBold(),
+                    ),
+                  ),
+                  Gap(36),
                   SettinngItem(
                     onTap: () {
                       context.push(

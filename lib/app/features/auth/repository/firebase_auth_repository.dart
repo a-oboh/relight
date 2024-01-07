@@ -42,9 +42,8 @@ class FirebaseAuthRepository {
 
       return userCredential;
     } catch (e) {
-      print(e);
+      rethrow;
     }
-    return null;
   }
 
   Future<void> logout() async {

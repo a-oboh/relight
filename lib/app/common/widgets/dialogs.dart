@@ -11,7 +11,7 @@ class LoadingDialog extends StatelessWidget {
     showDialog(
       context: context,
       barrierDismissible: dismissable,
-      builder: (context) => LoadingDialog(),
+      builder: (context) => const LoadingDialog(),
     );
   }
 

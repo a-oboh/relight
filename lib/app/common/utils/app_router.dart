@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:relight/app/common/common.dart';
@@ -20,9 +21,9 @@ class RelightRouter {
       GoRoute(
         path: selectHighlightSource,
         builder: (_, state) {
-          final arg = state.extra! as List<HighlightSource>;
+          final arg = state.extra! as SelectSourceArgs;
           return SelectSourcePage(
-            savedSources: arg,
+            args: arg,
           );
         },
       ),
@@ -65,6 +66,8 @@ class AppRouteOberver extends NavigatorObserver {
   @override
   void didPop(Route<dynamic> route, Route<dynamic>? previousRoute) {
     if (route.settings.name == RelightRouter.selectHighlightSource) {}
-    print(route.settings.name);
+    if (kDebugMode) {
+      print(route.settings.name);
+    }
   }
 }

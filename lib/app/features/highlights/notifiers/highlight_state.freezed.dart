@@ -141,11 +141,11 @@ class _$HighlightStateCopyWithImpl<$Res, $Val extends HighlightState>
 }
 
 /// @nodoc
-abstract class _$$_HighlightStateCopyWith<$Res>
+abstract class _$$HighlightStateImplCopyWith<$Res>
     implements $HighlightStateCopyWith<$Res> {
-  factory _$$_HighlightStateCopyWith(
-          _$_HighlightState value, $Res Function(_$_HighlightState) then) =
-      __$$_HighlightStateCopyWithImpl<$Res>;
+  factory _$$HighlightStateImplCopyWith(_$HighlightStateImpl value,
+          $Res Function(_$HighlightStateImpl) then) =
+      __$$HighlightStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -168,11 +168,11 @@ abstract class _$$_HighlightStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_HighlightStateCopyWithImpl<$Res>
-    extends _$HighlightStateCopyWithImpl<$Res, _$_HighlightState>
-    implements _$$_HighlightStateCopyWith<$Res> {
-  __$$_HighlightStateCopyWithImpl(
-      _$_HighlightState _value, $Res Function(_$_HighlightState) _then)
+class __$$HighlightStateImplCopyWithImpl<$Res>
+    extends _$HighlightStateCopyWithImpl<$Res, _$HighlightStateImpl>
+    implements _$$HighlightStateImplCopyWith<$Res> {
+  __$$HighlightStateImplCopyWithImpl(
+      _$HighlightStateImpl _value, $Res Function(_$HighlightStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -186,7 +186,7 @@ class __$$_HighlightStateCopyWithImpl<$Res>
     Object? selectedBook = freezed,
     Object? highlightContent = freezed,
   }) {
-    return _then(_$_HighlightState(
+    return _then(_$HighlightStateImpl(
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -221,8 +221,8 @@ class __$$_HighlightStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_HighlightState implements _HighlightState {
-  const _$_HighlightState(
+class _$HighlightStateImpl implements _HighlightState {
+  const _$HighlightStateImpl(
       {this.status = const BaseStatus.initial(),
       this.createHighlightStatus = const BaseStatus.initial(),
       this.loadedSourcesStatus = const BaseStatus.initial(),
@@ -271,10 +271,10 @@ class _$_HighlightState implements _HighlightState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_HighlightState &&
+            other is _$HighlightStateImpl &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.createHighlightStatus, createHighlightStatus) ||
                 other.createHighlightStatus == createHighlightStatus) &&
@@ -304,8 +304,9 @@ class _$_HighlightState implements _HighlightState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_HighlightStateCopyWith<_$_HighlightState> get copyWith =>
-      __$$_HighlightStateCopyWithImpl<_$_HighlightState>(this, _$identity);
+  _$$HighlightStateImplCopyWith<_$HighlightStateImpl> get copyWith =>
+      __$$HighlightStateImplCopyWithImpl<_$HighlightStateImpl>(
+          this, _$identity);
 }
 
 abstract class _HighlightState implements HighlightState {
@@ -316,7 +317,7 @@ abstract class _HighlightState implements HighlightState {
       final List<Book> bookResponse,
       final List<HighlightSource> loadedSources,
       final Book? selectedBook,
-      final String? highlightContent}) = _$_HighlightState;
+      final String? highlightContent}) = _$HighlightStateImpl;
 
   @override
   BaseStatus get status;
@@ -334,6 +335,6 @@ abstract class _HighlightState implements HighlightState {
   String? get highlightContent;
   @override
   @JsonKey(ignore: true)
-  _$$_HighlightStateCopyWith<_$_HighlightState> get copyWith =>
+  _$$HighlightStateImplCopyWith<_$HighlightStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

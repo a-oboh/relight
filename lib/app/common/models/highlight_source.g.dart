@@ -6,8 +6,9 @@ part of 'highlight_source.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_HighlightSource _$$_HighlightSourceFromJson(Map<String, dynamic> json) =>
-    _$_HighlightSource(
+_$HighlightSourceImpl _$$HighlightSourceImplFromJson(
+        Map<String, dynamic> json) =>
+    _$HighlightSourceImpl(
       name: json['name'] as String,
       author: json['author'] as String,
       id: json['id'] as String?,
@@ -20,7 +21,8 @@ _$_HighlightSource _$$_HighlightSourceFromJson(Map<String, dynamic> json) =>
           : DateTime.parse(json['updatedAt'] as String),
     );
 
-Map<String, dynamic> _$$_HighlightSourceToJson(_$_HighlightSource instance) =>
+Map<String, dynamic> _$$HighlightSourceImplToJson(
+        _$HighlightSourceImpl instance) =>
     <String, dynamic>{
       'name': instance.name,
       'author': instance.author,

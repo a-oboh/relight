@@ -98,11 +98,11 @@ class _$HighlightSourceCopyWithImpl<$Res, $Val extends HighlightSource>
 }
 
 /// @nodoc
-abstract class _$$_HighlightSourceCopyWith<$Res>
+abstract class _$$HighlightSourceImplCopyWith<$Res>
     implements $HighlightSourceCopyWith<$Res> {
-  factory _$$_HighlightSourceCopyWith(
-          _$_HighlightSource value, $Res Function(_$_HighlightSource) then) =
-      __$$_HighlightSourceCopyWithImpl<$Res>;
+  factory _$$HighlightSourceImplCopyWith(_$HighlightSourceImpl value,
+          $Res Function(_$HighlightSourceImpl) then) =
+      __$$HighlightSourceImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -115,11 +115,11 @@ abstract class _$$_HighlightSourceCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_HighlightSourceCopyWithImpl<$Res>
-    extends _$HighlightSourceCopyWithImpl<$Res, _$_HighlightSource>
-    implements _$$_HighlightSourceCopyWith<$Res> {
-  __$$_HighlightSourceCopyWithImpl(
-      _$_HighlightSource _value, $Res Function(_$_HighlightSource) _then)
+class __$$HighlightSourceImplCopyWithImpl<$Res>
+    extends _$HighlightSourceCopyWithImpl<$Res, _$HighlightSourceImpl>
+    implements _$$HighlightSourceImplCopyWith<$Res> {
+  __$$HighlightSourceImplCopyWithImpl(
+      _$HighlightSourceImpl _value, $Res Function(_$HighlightSourceImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -132,7 +132,7 @@ class __$$_HighlightSourceCopyWithImpl<$Res>
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
   }) {
-    return _then(_$_HighlightSource(
+    return _then(_$HighlightSourceImpl(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -163,8 +163,8 @@ class __$$_HighlightSourceCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_HighlightSource implements _HighlightSource {
-  const _$_HighlightSource(
+class _$HighlightSourceImpl implements _HighlightSource {
+  const _$HighlightSourceImpl(
       {required this.name,
       required this.author,
       this.id,
@@ -172,8 +172,8 @@ class _$_HighlightSource implements _HighlightSource {
       this.createdAt,
       this.updatedAt});
 
-  factory _$_HighlightSource.fromJson(Map<String, dynamic> json) =>
-      _$$_HighlightSourceFromJson(json);
+  factory _$HighlightSourceImpl.fromJson(Map<String, dynamic> json) =>
+      _$$HighlightSourceImplFromJson(json);
 
   @override
   final String name;
@@ -195,10 +195,10 @@ class _$_HighlightSource implements _HighlightSource {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_HighlightSource &&
+            other is _$HighlightSourceImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.author, author) || other.author == author) &&
             (identical(other.id, id) || other.id == id) &&
@@ -217,12 +217,13 @@ class _$_HighlightSource implements _HighlightSource {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_HighlightSourceCopyWith<_$_HighlightSource> get copyWith =>
-      __$$_HighlightSourceCopyWithImpl<_$_HighlightSource>(this, _$identity);
+  _$$HighlightSourceImplCopyWith<_$HighlightSourceImpl> get copyWith =>
+      __$$HighlightSourceImplCopyWithImpl<_$HighlightSourceImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_HighlightSourceToJson(
+    return _$$HighlightSourceImplToJson(
       this,
     );
   }
@@ -235,10 +236,10 @@ abstract class _HighlightSource implements HighlightSource {
       final String? id,
       final String owner,
       final DateTime? createdAt,
-      final DateTime? updatedAt}) = _$_HighlightSource;
+      final DateTime? updatedAt}) = _$HighlightSourceImpl;
 
   factory _HighlightSource.fromJson(Map<String, dynamic> json) =
-      _$_HighlightSource.fromJson;
+      _$HighlightSourceImpl.fromJson;
 
   @override
   String get name;
@@ -254,6 +255,6 @@ abstract class _HighlightSource implements HighlightSource {
   DateTime? get updatedAt;
   @override
   @JsonKey(ignore: true)
-  _$$_HighlightSourceCopyWith<_$_HighlightSource> get copyWith =>
+  _$$HighlightSourceImplCopyWith<_$HighlightSourceImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -38,23 +38,31 @@ class _ReminderSettingsPageState extends ConsumerState<ReminderSettingsPage> {
     final isDialog = ModalRoute.of(context)?.opaque;
 
     ref.listen(profileStateProvider, (prev, next) {
-      if (next.reminderPageStatus.isLoading &&
-          route == RelightRouter.reminderSettings) {
-        if (isDialog != true) {
-          LoadingDialog.show(context: context, dismissable: true);
-        }
-      }
-      // else if (prev!.reminderPageStatus.isLoading &&
-      //     !next.reminderPageStatus.isLoading &&
-      //     route == RelightRouter.reminderSettings) {
-      //   if (isDialog ?? false) {
-      //     context.pop();
-      //   }
-      // }
-      else if (next.reminderPageStatus is ErrorBaseStatus) {
-        ScaffoldMessenger.of(context)
-            .showSnackBar(SnackBar(content: Text('error')));
-      }
+      next.reminderPageStatus.map(
+        initial: (InitialBaseStatus value) {
+          if (prev!.reminderPageStatus.isLoading &&
+              route == RelightRouter.reminderSettings) {
+            if (isDialog ?? false) {
+              context.pop();
+            }
+          }
+        },
+        loading: (LoadingBaseStatus value) {
+          if (route == RelightRouter.reminderSettings) {
+            if (isDialog != true) {
+              LoadingDialog.show(context: context, dismissable: true);
+            }
+          }
+        },
+        error: (ErrorBaseStatus value) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content:
+                  Text(value.errorText ?? 'An error occured please try again'),
+            ),
+          );
+        },
+      );
     });
 
     return Scaffold(
@@ -101,6 +109,7 @@ class _ReminderSettingsPageState extends ConsumerState<ReminderSettingsPage> {
                 child: AppBasicButton(
                   title: 'Done',
                   onTap: () {
+                    // TODO(albert): validate that data is changed before calling
                     ref
                         .read(profileStateProvider.notifier)
                         .updateReminderSettings(
