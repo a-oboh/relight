@@ -1,11 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_timezone/flutter_timezone.dart';
 import 'package:logging/logging.dart';
 import 'package:relight/app/common/common.dart';
 import 'package:relight/app/features/Reminder/Reminder.dart';
 import 'package:relight/app/features/features.dart';
-import 'package:flutter_native_timezone/flutter_native_timezone.dart';
 
 final profileStateProvider =
     StateNotifierProvider<ProfileStateNotifier, ProfileState>(
@@ -47,7 +47,7 @@ class ProfileStateNotifier extends StateNotifier<ProfileState> {
       final user = await getUser(email: email);
       if (user != null) {
         final fcmToken = await _firebaseMessaging.getToken();
-        final timeZone = await FlutterNativeTimezone.getLocalTimezone();
+        final timeZone = await FlutterTimezone.getLocalTimezone();
 
         await _userRepository.updateUser(
           user.copyWith(
