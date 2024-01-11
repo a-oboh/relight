@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:relight/app/common/providers/app_providers.dart';
 import 'package:relight/app/common/utils/app_colors.dart';
@@ -15,10 +16,13 @@ class RelightApp extends ConsumerWidget {
     return MaterialApp.router(
       theme: ThemeData(
         primaryColor: AppColors.primaryGrey,
-        appBarTheme: const AppBarTheme(color: AppColors.primaryGrey),
+        appBarTheme: Theme.of(context)
+            .appBarTheme
+            .copyWith(systemOverlayStyle: SystemUiOverlayStyle.dark),
         colorScheme: ColorScheme.fromSwatch(
           accentColor: AppColors.purpleMain,
           cardColor: AppColors.secondaryGrey,
+          brightness: Brightness.dark,
         ),
         textTheme: textTheme,
         scaffoldBackgroundColor: AppColors.dark,
@@ -41,6 +45,8 @@ class RelightApp extends ConsumerWidget {
         iconTheme: const IconThemeData(
           color: Colors.white,
         ),
+        popupMenuTheme:
+            const PopupMenuThemeData(color: AppColors.secondaryGrey),
       ),
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,

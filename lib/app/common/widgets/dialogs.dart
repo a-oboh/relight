@@ -7,6 +7,14 @@ class LoadingDialog extends StatelessWidget {
     super.key,
   });
 
+  static void show({required BuildContext context, bool dismissable = false}) {
+    showDialog(
+      context: context,
+      barrierDismissible: dismissable,
+      builder: (context) => const LoadingDialog(),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return const SimpleDialog(

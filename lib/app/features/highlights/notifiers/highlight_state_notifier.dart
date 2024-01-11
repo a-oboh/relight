@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logging/logging.dart';
@@ -41,15 +39,20 @@ class HighlightStateNotifier extends StateNotifier<HighlightState> {
 
   Future<void> createHighlight({
     required String content,
+    required String plainContent,
     required String sourceId,
   }) async {
     try {
       state = state.copyWith(createHighlightStatus: const BaseStatus.loading());
 
       await _highlightsRepo.createHighlight(
-        content: content.trim(),
-        date: DateTime.now(),
-        sourceId: sourceId,
+        highlight: Highlight(
+          plainContent: plainContent,
+          content: content.trim(),
+          sourceId: sourceId,
+          createdAt: DateTime.now(),
+          owner: _user!.email!,
+        ),
       );
 
       state = state.copyWith(createHighlightStatus: const BaseStatus.initial());
@@ -70,19 +73,21 @@ class HighlightStateNotifier extends StateNotifier<HighlightState> {
 
       if (_user != null) {
         await _highlightSourcesRepo.createSource(
-          author: book.volumeInfo.authors.first,
-          name: book.volumeInfo.title,
-          owner: _user!.email!,
-          createdAt: DateTime.now(),
+          source: HighlightSource(
+            author: book.volumeInfo.authors.first,
+            name: book.volumeInfo.title,
+            owner: _user!.email!,
+            createdAt: DateTime.now(),
+          ),
         );
 
         state = state.copyWith(
           status: const BaseStatus.initial(),
           selectedBook: book,
         );
-      }
 
-      state = state.copyWith(status: const BaseStatus.initial());
+        await loadBookSources();
+      }
     } catch (e) {
       state = state.copyWith(
         status: const BaseStatus.error(
@@ -111,13 +116,11 @@ class HighlightStateNotifier extends StateNotifier<HighlightState> {
 
   Future<void> loadBookSources() async {
     try {
-      state = state.copyWith(loadSourcesStatus: const BaseStatus.loading());
+      state = state.copyWith(loadedSourcesStatus: const BaseStatus.loading());
 
       final db = ref.read(dbProvider);
 
-      final userRef =
-          db.collection(CollectionTags.users.name).doc(_user?.email);
-
+      // TODO(albert): move to repository
       final savedSources = await db
           .collection(CollectionTags.highlightSources.name)
           .where('owner', isEqualTo: _user?.email)
@@ -132,29 +135,23 @@ class HighlightStateNotifier extends StateNotifier<HighlightState> {
       }
 
       state = state.copyWith(
-        loadSourcesStatus: const BaseStatus.initial(),
+        loadedSourcesStatus: const BaseStatus.initial(),
         loadedSources: sources,
       );
     } catch (e) {
-      log('${e.toString()}');
-
-      state = state.copyWith(
-        status: const BaseStatus.error(
-          errorText: 'Could not load saved highlight sources',
-        ),
-      );
+      _setError('Could not load saved highlight sources');
     }
-
-    //find books for user in firebase.
-    //load books for user
-    //return list of books
   }
 
   HighlightState changeState(HighlightState newState) {
     return state = newState;
   }
 
-  void onHighlightValueChanged(String value) {
+  void setHighlightValue(String value) {
     state = state.copyWith(highlightContent: value);
+  }
+
+  void _setError(String error) {
+    state = state.copyWith(status: BaseStatus.error(errorText: error));
   }
 }

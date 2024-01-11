@@ -1,147 +1,119 @@
 import 'package:flutter/material.dart';
+import 'package:relight/app/common/common.dart';
 
 class AppTextStyles {
-  static const heading1 = TextStyle(
-    fontWeight: FontWeight.bold,
-    fontSize: 32,
-  );
+  // Example text styles
+  static TextStyle smallRegular({
+    Color color = AppColors.textGrey,
+    double letterSpacing = 0.5,
+  }) {
+    return TextStyle(
+      color: color,
+      fontSize: 14,
+      letterSpacing: letterSpacing,
+    );
+  }
 
-  static const heading2 = TextStyle(
-    fontWeight: FontWeight.bold,
-    fontSize: 24,
-  );
+  static TextStyle mediumRegular({
+    Color color = AppColors.textGrey,
+    double letterSpacing = 0.5,
+  }) {
+    return TextStyle(
+      color: color,
+      fontSize: 16,
+      letterSpacing: letterSpacing,
+    );
+  }
 
-  static const heading3 = TextStyle(
-    fontWeight: FontWeight.bold,
-    fontSize: 40,
-  );
+  static TextStyle largeRegular({
+    Color color = AppColors.textGrey,
+    double letterSpacing = 0.5,
+  }) {
+    return TextStyle(
+      color: color,
+      fontSize: 18,
+      letterSpacing: letterSpacing,
+    );
+  }
 
-  static const heading4 = TextStyle(
-    fontWeight: FontWeight.bold,
-    fontSize: 20,
-  );
+  static TextStyle smallSemiBold({
+    Color color = AppColors.textGrey,
+    double letterSpacing = 0.5,
+  }) {
+    return TextStyle(
+      color: color,
+      fontSize: 14,
+      letterSpacing: letterSpacing,
+      fontWeight: FontWeight.w600, // Semi-Bold
+    );
+  }
 
-  static const heading5 = TextStyle(
-    fontWeight: FontWeight.bold,
-    fontSize: 20,
-  );
+  static TextStyle mediumSemiBold({
+    Color color = AppColors.textGrey,
+    double letterSpacing = 0.5,
+  }) {
+    return TextStyle(
+      color: color,
+      fontSize: 16,
+      letterSpacing: letterSpacing,
+      fontWeight: FontWeight.w600, // Semi-Bold
+    );
+  }
 
-  static const body1 = TextStyle(
-    fontWeight: FontWeight.normal,
-    fontSize: 16,
-  );
+  static TextStyle largeSemiBold({
+    Color color = AppColors.textGrey,
+    double letterSpacing = 0.5,
+  }) {
+    return TextStyle(
+      color: color,
+      fontSize: 18,
+      letterSpacing: letterSpacing,
+      fontWeight: FontWeight.w600, // Semi-Bold
+    );
+  }
 
-  static const body1Medium = TextStyle(
-    fontWeight: FontWeight.w500,
-    fontSize: 16,
-  );
+  static TextStyle smallBold({
+    Color color = AppColors.textGrey,
+    double letterSpacing = 0.5,
+  }) {
+    return TextStyle(
+      color: color,
+      fontSize: 14,
+      letterSpacing: letterSpacing,
+      fontWeight: FontWeight.bold,
+    );
+  }
 
-  static const body1SemiBold = TextStyle(
-    fontWeight: FontWeight.w600,
-    fontSize: 16,
-  );
+  static TextStyle mediumBold({
+    Color color = AppColors.textGrey,
+    double letterSpacing = 0.5,
+  }) {
+    return TextStyle(
+      color: color,
+      fontSize: 16,
+      letterSpacing: letterSpacing,
+      fontWeight: FontWeight.bold,
+    );
+  }
 
-  static const body1Bold = TextStyle(
-    fontWeight: FontWeight.bold,
-    fontSize: 16,
-  );
-
-  static const body2 = TextStyle(
-    fontWeight: FontWeight.normal,
-    fontSize: 15,
-  );
-
-  static const body2SemiBold = TextStyle(
-    fontWeight: FontWeight.w600,
-    fontSize: 15,
-  );
-
-  static const body2Medium = TextStyle(
-    fontWeight: FontWeight.w500,
-    fontSize: 15,
-  );
-
-  static const body2Bold = TextStyle(
-    fontWeight: FontWeight.bold,
-    fontSize: 15,
-  );
-
-  static const label1 = TextStyle(
-    fontWeight: FontWeight.normal,
-    fontSize: 14,
-  );
-
-  static const label1SemiBold = TextStyle(
-    fontWeight: FontWeight.w600,
-    fontSize: 14,
-  );
-
-  static const label1Bold = TextStyle(
-    fontWeight: FontWeight.bold,
-    fontSize: 14,
-  );
-
-  static const label2 = TextStyle(
-    fontWeight: FontWeight.normal,
-    fontSize: 13,
-  );
-
-  static const label2Bold = TextStyle(
-    fontWeight: FontWeight.bold,
-    fontSize: 13,
-  );
-
-  static const label2Medium = TextStyle(
-    fontWeight: FontWeight.w500,
-    fontSize: 13,
-  );
-
-  static const label3 = TextStyle(
-    fontWeight: FontWeight.w400,
-    fontSize: 13,
-  );
-
-  static const label3SemiBold = TextStyle(
-    fontWeight: FontWeight.w600,
-    fontSize: 13,
-  );
-
-  static const label4SemiBold = TextStyle(
-    fontWeight: FontWeight.w600,
-    fontSize: 11,
-  );
-
-  static const label5 = TextStyle(
-    fontSize: 12,
-  );
-
-  static const label5Medium = TextStyle(
-    fontWeight: FontWeight.w500,
-    fontSize: 12,
-  );
-
-  static const label5Bold = TextStyle(
-    fontWeight: FontWeight.bold,
-    fontSize: 12,
-  );
-
-  static const link = TextStyle(
-    fontWeight: FontWeight.normal,
-    fontSize: 14,
-    decoration: TextDecoration.underline,
-  );
-
-  static const title1 = TextStyle(
-    fontSize: 18,
-    fontWeight: FontWeight.bold,
-  );
+  static TextStyle largeBold({
+    Color color = AppColors.textGrey,
+    double letterSpacing = 0.5,
+  }) {
+    return TextStyle(
+      color: color,
+      fontSize: 18,
+      letterSpacing: letterSpacing,
+      fontWeight: FontWeight.bold,
+    );
+  }
 }
 
 const textTheme = TextTheme(
-  headlineMedium: TextStyle(fontSize: 32, color: Colors.white),
-  headlineSmall: TextStyle(fontSize: 24, color: Colors.white),
-  titleMedium: TextStyle(fontSize: 18, color: Colors.white),
-  titleSmall: TextStyle(fontSize: 16, color: Colors.white),
-  bodyLarge: TextStyle(fontSize: 15, color: Colors.white),
-  bodyMedium: TextStyle(fontSize: 13, color: Colors.white),
+  headlineMedium: TextStyle(fontSize: 32, color: AppColors.textGrey),
+  headlineSmall: TextStyle(fontSize: 24, color: AppColors.textGrey),
+  titleMedium: TextStyle(fontSize: 18, color: AppColors.textGrey),
+  titleSmall: TextStyle(fontSize: 16, color: AppColors.textGrey),
+  bodyLarge: TextStyle(fontSize: 15, color: AppColors.textGrey),
+  bodyMedium: TextStyle(fontSize: 13, color: AppColors.textGrey),
 );

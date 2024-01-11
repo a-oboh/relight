@@ -110,7 +110,11 @@ class _CreateBookSourcePageState extends ConsumerState<CreateBookSourcePage> {
                         .createNewSource(
                           book: book,
                         )
-                        .then((value) => context.pop());
+                        .then(
+                          (value) => context.pop<List<HighlightSource>>(
+                            ref.read(highlightStateProvider).loadedSources,
+                          ),
+                        );
                   },
                 );
               },

@@ -57,22 +57,22 @@ class _$NavbarStateCopyWithImpl<$Res, $Val extends NavbarState>
 }
 
 /// @nodoc
-abstract class _$$_NavbarStateCopyWith<$Res>
+abstract class _$$NavbarStateImplCopyWith<$Res>
     implements $NavbarStateCopyWith<$Res> {
-  factory _$$_NavbarStateCopyWith(
-          _$_NavbarState value, $Res Function(_$_NavbarState) then) =
-      __$$_NavbarStateCopyWithImpl<$Res>;
+  factory _$$NavbarStateImplCopyWith(
+          _$NavbarStateImpl value, $Res Function(_$NavbarStateImpl) then) =
+      __$$NavbarStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int selectedIndex});
 }
 
 /// @nodoc
-class __$$_NavbarStateCopyWithImpl<$Res>
-    extends _$NavbarStateCopyWithImpl<$Res, _$_NavbarState>
-    implements _$$_NavbarStateCopyWith<$Res> {
-  __$$_NavbarStateCopyWithImpl(
-      _$_NavbarState _value, $Res Function(_$_NavbarState) _then)
+class __$$NavbarStateImplCopyWithImpl<$Res>
+    extends _$NavbarStateCopyWithImpl<$Res, _$NavbarStateImpl>
+    implements _$$NavbarStateImplCopyWith<$Res> {
+  __$$NavbarStateImplCopyWithImpl(
+      _$NavbarStateImpl _value, $Res Function(_$NavbarStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -80,7 +80,7 @@ class __$$_NavbarStateCopyWithImpl<$Res>
   $Res call({
     Object? selectedIndex = null,
   }) {
-    return _then(_$_NavbarState(
+    return _then(_$NavbarStateImpl(
       selectedIndex: null == selectedIndex
           ? _value.selectedIndex
           : selectedIndex // ignore: cast_nullable_to_non_nullable
@@ -91,8 +91,8 @@ class __$$_NavbarStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_NavbarState implements _NavbarState {
-  _$_NavbarState({this.selectedIndex = 0});
+class _$NavbarStateImpl implements _NavbarState {
+  _$NavbarStateImpl({this.selectedIndex = 0});
 
   @override
   @JsonKey()
@@ -104,10 +104,10 @@ class _$_NavbarState implements _NavbarState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_NavbarState &&
+            other is _$NavbarStateImpl &&
             (identical(other.selectedIndex, selectedIndex) ||
                 other.selectedIndex == selectedIndex));
   }
@@ -118,17 +118,17 @@ class _$_NavbarState implements _NavbarState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_NavbarStateCopyWith<_$_NavbarState> get copyWith =>
-      __$$_NavbarStateCopyWithImpl<_$_NavbarState>(this, _$identity);
+  _$$NavbarStateImplCopyWith<_$NavbarStateImpl> get copyWith =>
+      __$$NavbarStateImplCopyWithImpl<_$NavbarStateImpl>(this, _$identity);
 }
 
 abstract class _NavbarState implements NavbarState {
-  factory _NavbarState({final int selectedIndex}) = _$_NavbarState;
+  factory _NavbarState({final int selectedIndex}) = _$NavbarStateImpl;
 
   @override
   int get selectedIndex;
   @override
   @JsonKey(ignore: true)
-  _$$_NavbarStateCopyWith<_$_NavbarState> get copyWith =>
+  _$$NavbarStateImplCopyWith<_$NavbarStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

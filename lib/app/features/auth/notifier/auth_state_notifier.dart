@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -6,16 +7,17 @@ import 'package:relight/app/common/notifiers/base_status.dart';
 import 'package:relight/app/common/providers/app_providers.dart';
 import 'package:relight/app/common/utils/app_router.dart';
 import 'package:relight/app/common/utils/db_tags.dart';
-import 'package:relight/app/features/auth/notifier/auth_state.dart';
-import 'package:relight/app/features/auth/repository/firebase_auth_repository.dart';
+import 'package:relight/app/features/features.dart';
 
 final authStateNotifierProvider =
-    StateNotifierProvider<AuthStateNotifier, AuthState>(
+    StateNotifierProvider.autoDispose<AuthStateNotifier, AuthState>(
   (ref) {
     return AuthStateNotifier(
       router: ref.watch(goRouterProvider),
       firestore: ref.watch(dbProvider),
       authRepository: ref.watch(firebaseAuthRepoProvider),
+      userRepository: ref.read(userRepoProvider),
+      ref: ref,
     );
   },
 );
@@ -25,14 +27,20 @@ class AuthStateNotifier extends StateNotifier<AuthState> {
     required GoRouter router,
     required FirebaseFirestore firestore,
     required FirebaseAuthRepository authRepository,
+    required UserRepository userRepository,
+    required Ref ref,
   })  : _router = router,
         _firestore = firestore,
         _authRepository = authRepository,
+        _userRepository = userRepository,
+        _ref = ref,
         super(AuthState());
 
   final GoRouter _router;
   final FirebaseFirestore _firestore;
   final FirebaseAuthRepository _authRepository;
+  final UserRepository _userRepository;
+  final Ref _ref;
 
   Future<void> signInWithGoogle() async {
     try {
@@ -41,22 +49,37 @@ class AuthStateNotifier extends StateNotifier<AuthState> {
 
       final email = userCredential?.user?.email;
 
-      final newUser = await _isNewUser(email ?? '');
+      if (email != null) {
+        final newUser = await _isNewUser(email);
 
-      // create firestore collection
-      if (newUser) {
-        await _firestore.collection(CollectionTags.users.name).doc(email).set({
-          'email': email,
-          'firstName': userCredential?.user?.displayName,
-        });
+        // create firestore collection
+        if (newUser) {
+          final fcmId = await FirebaseMessaging.instance.getToken();
+
+          await _userRepository.saveUser(
+            RelightUser(
+              email: email,
+              displayName: userCredential?.user?.displayName ?? '',
+              profile: Profile(
+                fcmToken: fcmId,
+              ),
+            ),
+          );
+        }
+
+        state = state.copyWith(
+          userCredential: userCredential,
+          status: const BaseStatus.initial(),
+        );
+
+        await _router.pushReplacement(RelightRouter.homeRoute);
+      } else {
+        state = state.copyWith(
+          status: const BaseStatus.error(
+            errorText: 'There was a problem with your google account',
+          ),
+        );
       }
-
-      state = state.copyWith(
-        userCredential: userCredential,
-        status: const BaseStatus.initial(),
-      );
-
-      await _router.pushReplacement(RelightRouter.homeRoute);
     } catch (e) {
       state = state.copyWith(
         status: const BaseStatus.error(errorText: 'Error logging in'),

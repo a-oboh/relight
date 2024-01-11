@@ -21,8 +21,11 @@ Highlight _$HighlightFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Highlight {
   String get content => throw _privateConstructorUsedError;
+  String get plainContent => throw _privateConstructorUsedError;
   String get sourceId => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
+  String get owner => throw _privateConstructorUsedError;
+  String? get id => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +38,13 @@ abstract class $HighlightCopyWith<$Res> {
   factory $HighlightCopyWith(Highlight value, $Res Function(Highlight) then) =
       _$HighlightCopyWithImpl<$Res, Highlight>;
   @useResult
-  $Res call({String content, String sourceId, DateTime createdAt});
+  $Res call(
+      {String content,
+      String plainContent,
+      String sourceId,
+      DateTime createdAt,
+      String owner,
+      String? id});
 }
 
 /// @nodoc
@@ -52,14 +61,21 @@ class _$HighlightCopyWithImpl<$Res, $Val extends Highlight>
   @override
   $Res call({
     Object? content = null,
+    Object? plainContent = null,
     Object? sourceId = null,
     Object? createdAt = null,
+    Object? owner = null,
+    Object? id = freezed,
   }) {
     return _then(_value.copyWith(
       content: null == content
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
               as String,
+      plainContent: null == plainContent
+          ? _value.plainContent
+          : plainContent // ignore: cast_nullable_to_non_nullable
+              as String,
       sourceId: null == sourceId
           ? _value.sourceId
           : sourceId // ignore: cast_nullable_to_non_nullable
@@ -68,39 +84,61 @@ class _$HighlightCopyWithImpl<$Res, $Val extends Highlight>
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      owner: null == owner
+          ? _value.owner
+          : owner // ignore: cast_nullable_to_non_nullable
+              as String,
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_HighlightCopyWith<$Res> implements $HighlightCopyWith<$Res> {
-  factory _$$_HighlightCopyWith(
-          _$_Highlight value, $Res Function(_$_Highlight) then) =
-      __$$_HighlightCopyWithImpl<$Res>;
+abstract class _$$HighlightImplCopyWith<$Res>
+    implements $HighlightCopyWith<$Res> {
+  factory _$$HighlightImplCopyWith(
+          _$HighlightImpl value, $Res Function(_$HighlightImpl) then) =
+      __$$HighlightImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String content, String sourceId, DateTime createdAt});
+  $Res call(
+      {String content,
+      String plainContent,
+      String sourceId,
+      DateTime createdAt,
+      String owner,
+      String? id});
 }
 
 /// @nodoc
-class __$$_HighlightCopyWithImpl<$Res>
-    extends _$HighlightCopyWithImpl<$Res, _$_Highlight>
-    implements _$$_HighlightCopyWith<$Res> {
-  __$$_HighlightCopyWithImpl(
-      _$_Highlight _value, $Res Function(_$_Highlight) _then)
+class __$$HighlightImplCopyWithImpl<$Res>
+    extends _$HighlightCopyWithImpl<$Res, _$HighlightImpl>
+    implements _$$HighlightImplCopyWith<$Res> {
+  __$$HighlightImplCopyWithImpl(
+      _$HighlightImpl _value, $Res Function(_$HighlightImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? content = null,
+    Object? plainContent = null,
     Object? sourceId = null,
     Object? createdAt = null,
+    Object? owner = null,
+    Object? id = freezed,
   }) {
-    return _then(_$_Highlight(
+    return _then(_$HighlightImpl(
       content: null == content
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
+              as String,
+      plainContent: null == plainContent
+          ? _value.plainContent
+          : plainContent // ignore: cast_nullable_to_non_nullable
               as String,
       sourceId: null == sourceId
           ? _value.sourceId
@@ -110,56 +148,80 @@ class __$$_HighlightCopyWithImpl<$Res>
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      owner: null == owner
+          ? _value.owner
+          : owner // ignore: cast_nullable_to_non_nullable
+              as String,
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$_Highlight implements _Highlight {
-  const _$_Highlight(
-      {required this.content, required this.sourceId, required this.createdAt});
+class _$HighlightImpl implements _Highlight {
+  const _$HighlightImpl(
+      {required this.content,
+      required this.plainContent,
+      required this.sourceId,
+      required this.createdAt,
+      required this.owner,
+      this.id});
 
-  factory _$_Highlight.fromJson(Map<String, dynamic> json) =>
-      _$$_HighlightFromJson(json);
+  factory _$HighlightImpl.fromJson(Map<String, dynamic> json) =>
+      _$$HighlightImplFromJson(json);
 
   @override
   final String content;
   @override
+  final String plainContent;
+  @override
   final String sourceId;
   @override
   final DateTime createdAt;
+  @override
+  final String owner;
+  @override
+  final String? id;
 
   @override
   String toString() {
-    return 'Highlight(content: $content, sourceId: $sourceId, createdAt: $createdAt)';
+    return 'Highlight(content: $content, plainContent: $plainContent, sourceId: $sourceId, createdAt: $createdAt, owner: $owner, id: $id)';
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Highlight &&
+            other is _$HighlightImpl &&
             (identical(other.content, content) || other.content == content) &&
+            (identical(other.plainContent, plainContent) ||
+                other.plainContent == plainContent) &&
             (identical(other.sourceId, sourceId) ||
                 other.sourceId == sourceId) &&
             (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt));
+                other.createdAt == createdAt) &&
+            (identical(other.owner, owner) || other.owner == owner) &&
+            (identical(other.id, id) || other.id == id));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, content, sourceId, createdAt);
+  int get hashCode => Object.hash(
+      runtimeType, content, plainContent, sourceId, createdAt, owner, id);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_HighlightCopyWith<_$_Highlight> get copyWith =>
-      __$$_HighlightCopyWithImpl<_$_Highlight>(this, _$identity);
+  _$$HighlightImplCopyWith<_$HighlightImpl> get copyWith =>
+      __$$HighlightImplCopyWithImpl<_$HighlightImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_HighlightToJson(
+    return _$$HighlightImplToJson(
       this,
     );
   }
@@ -168,20 +230,29 @@ class _$_Highlight implements _Highlight {
 abstract class _Highlight implements Highlight {
   const factory _Highlight(
       {required final String content,
+      required final String plainContent,
       required final String sourceId,
-      required final DateTime createdAt}) = _$_Highlight;
+      required final DateTime createdAt,
+      required final String owner,
+      final String? id}) = _$HighlightImpl;
 
   factory _Highlight.fromJson(Map<String, dynamic> json) =
-      _$_Highlight.fromJson;
+      _$HighlightImpl.fromJson;
 
   @override
   String get content;
+  @override
+  String get plainContent;
   @override
   String get sourceId;
   @override
   DateTime get createdAt;
   @override
+  String get owner;
+  @override
+  String? get id;
+  @override
   @JsonKey(ignore: true)
-  _$$_HighlightCopyWith<_$_Highlight> get copyWith =>
+  _$$HighlightImplCopyWith<_$HighlightImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

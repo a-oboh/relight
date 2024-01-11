@@ -1,10 +1,12 @@
+import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:relight/app/common/providers/app_providers.dart';
 import 'package:relight/app/features/books/models/book.dart';
 
-final bookSourceRepo =
-    Provider<BookSourceRepository>(BookSourceRepositoryImpl.new);
+final bookSourceRepo = Provider<BookSourceRepository>((ref) {
+  return BookSourceRepositoryImpl(dio: ref.read(dioProvider));
+});
 
 abstract class BookSourceRepository {
   Future<Books?> findBook({required String name}) async {
@@ -13,16 +15,14 @@ abstract class BookSourceRepository {
 }
 
 class BookSourceRepositoryImpl implements BookSourceRepository {
-  BookSourceRepositoryImpl(this.ref);
+  BookSourceRepositoryImpl({required this.dio});
 
-  final Ref ref;
+  final Dio dio;
   final googleApiKey = dotenv.env['GOOGLE_API_KEY'];
 
   @override
   Future<Books?> findBook({required String name}) async {
     try {
-      final dio = ref.watch(dioProvider);
-
       final res = await dio.get(
         'https://www.googleapis.com/books/v1/volumes?q=$name&key=$googleApiKey',
       );

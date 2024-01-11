@@ -66,18 +66,21 @@ class _$BooksCopyWithImpl<$Res, $Val extends Books>
 }
 
 /// @nodoc
-abstract class _$$_BooksCopyWith<$Res> implements $BooksCopyWith<$Res> {
-  factory _$$_BooksCopyWith(_$_Books value, $Res Function(_$_Books) then) =
-      __$$_BooksCopyWithImpl<$Res>;
+abstract class _$$BooksImplCopyWith<$Res> implements $BooksCopyWith<$Res> {
+  factory _$$BooksImplCopyWith(
+          _$BooksImpl value, $Res Function(_$BooksImpl) then) =
+      __$$BooksImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String kind, List<Book> items});
 }
 
 /// @nodoc
-class __$$_BooksCopyWithImpl<$Res> extends _$BooksCopyWithImpl<$Res, _$_Books>
-    implements _$$_BooksCopyWith<$Res> {
-  __$$_BooksCopyWithImpl(_$_Books _value, $Res Function(_$_Books) _then)
+class __$$BooksImplCopyWithImpl<$Res>
+    extends _$BooksCopyWithImpl<$Res, _$BooksImpl>
+    implements _$$BooksImplCopyWith<$Res> {
+  __$$BooksImplCopyWithImpl(
+      _$BooksImpl _value, $Res Function(_$BooksImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -86,7 +89,7 @@ class __$$_BooksCopyWithImpl<$Res> extends _$BooksCopyWithImpl<$Res, _$_Books>
     Object? kind = null,
     Object? items = null,
   }) {
-    return _then(_$_Books(
+    return _then(_$BooksImpl(
       kind: null == kind
           ? _value.kind
           : kind // ignore: cast_nullable_to_non_nullable
@@ -101,12 +104,13 @@ class __$$_BooksCopyWithImpl<$Res> extends _$BooksCopyWithImpl<$Res, _$_Books>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Books implements _Books {
-  const _$_Books({required this.kind, final List<Book> items = const <Book>[]})
+class _$BooksImpl implements _Books {
+  const _$BooksImpl(
+      {required this.kind, final List<Book> items = const <Book>[]})
       : _items = items;
 
-  factory _$_Books.fromJson(Map<String, dynamic> json) =>
-      _$$_BooksFromJson(json);
+  factory _$BooksImpl.fromJson(Map<String, dynamic> json) =>
+      _$$BooksImplFromJson(json);
 
   @override
   final String kind;
@@ -125,10 +129,10 @@ class _$_Books implements _Books {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Books &&
+            other is _$BooksImpl &&
             (identical(other.kind, kind) || other.kind == kind) &&
             const DeepCollectionEquality().equals(other._items, _items));
   }
@@ -141,12 +145,12 @@ class _$_Books implements _Books {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_BooksCopyWith<_$_Books> get copyWith =>
-      __$$_BooksCopyWithImpl<_$_Books>(this, _$identity);
+  _$$BooksImplCopyWith<_$BooksImpl> get copyWith =>
+      __$$BooksImplCopyWithImpl<_$BooksImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_BooksToJson(
+    return _$$BooksImplToJson(
       this,
     );
   }
@@ -154,9 +158,9 @@ class _$_Books implements _Books {
 
 abstract class _Books implements Books {
   const factory _Books({required final String kind, final List<Book> items}) =
-      _$_Books;
+      _$BooksImpl;
 
-  factory _Books.fromJson(Map<String, dynamic> json) = _$_Books.fromJson;
+  factory _Books.fromJson(Map<String, dynamic> json) = _$BooksImpl.fromJson;
 
   @override
   String get kind;
@@ -164,7 +168,7 @@ abstract class _Books implements Books {
   List<Book> get items;
   @override
   @JsonKey(ignore: true)
-  _$$_BooksCopyWith<_$_Books> get copyWith =>
+  _$$BooksImplCopyWith<_$BooksImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -253,9 +257,10 @@ class _$BookCopyWithImpl<$Res, $Val extends Book>
 }
 
 /// @nodoc
-abstract class _$$_BookCopyWith<$Res> implements $BookCopyWith<$Res> {
-  factory _$$_BookCopyWith(_$_Book value, $Res Function(_$_Book) then) =
-      __$$_BookCopyWithImpl<$Res>;
+abstract class _$$BookImplCopyWith<$Res> implements $BookCopyWith<$Res> {
+  factory _$$BookImplCopyWith(
+          _$BookImpl value, $Res Function(_$BookImpl) then) =
+      __$$BookImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -270,9 +275,10 @@ abstract class _$$_BookCopyWith<$Res> implements $BookCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_BookCopyWithImpl<$Res> extends _$BookCopyWithImpl<$Res, _$_Book>
-    implements _$$_BookCopyWith<$Res> {
-  __$$_BookCopyWithImpl(_$_Book _value, $Res Function(_$_Book) _then)
+class __$$BookImplCopyWithImpl<$Res>
+    extends _$BookCopyWithImpl<$Res, _$BookImpl>
+    implements _$$BookImplCopyWith<$Res> {
+  __$$BookImplCopyWithImpl(_$BookImpl _value, $Res Function(_$BookImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -284,7 +290,7 @@ class __$$_BookCopyWithImpl<$Res> extends _$BookCopyWithImpl<$Res, _$_Book>
     Object? selfLink = null,
     Object? volumeInfo = null,
   }) {
-    return _then(_$_Book(
+    return _then(_$BookImpl(
       kind: null == kind
           ? _value.kind
           : kind // ignore: cast_nullable_to_non_nullable
@@ -311,15 +317,16 @@ class __$$_BookCopyWithImpl<$Res> extends _$BookCopyWithImpl<$Res, _$_Book>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Book implements _Book {
-  const _$_Book(
+class _$BookImpl implements _Book {
+  const _$BookImpl(
       {required this.kind,
       required this.id,
       required this.etag,
       required this.selfLink,
       required this.volumeInfo});
 
-  factory _$_Book.fromJson(Map<String, dynamic> json) => _$$_BookFromJson(json);
+  factory _$BookImpl.fromJson(Map<String, dynamic> json) =>
+      _$$BookImplFromJson(json);
 
   @override
   final String kind;
@@ -338,10 +345,10 @@ class _$_Book implements _Book {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Book &&
+            other is _$BookImpl &&
             (identical(other.kind, kind) || other.kind == kind) &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.etag, etag) || other.etag == etag) &&
@@ -359,12 +366,12 @@ class _$_Book implements _Book {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_BookCopyWith<_$_Book> get copyWith =>
-      __$$_BookCopyWithImpl<_$_Book>(this, _$identity);
+  _$$BookImplCopyWith<_$BookImpl> get copyWith =>
+      __$$BookImplCopyWithImpl<_$BookImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_BookToJson(
+    return _$$BookImplToJson(
       this,
     );
   }
@@ -376,9 +383,9 @@ abstract class _Book implements Book {
       required final String id,
       required final String etag,
       required final String selfLink,
-      required final VolumeInfo volumeInfo}) = _$_Book;
+      required final VolumeInfo volumeInfo}) = _$BookImpl;
 
-  factory _Book.fromJson(Map<String, dynamic> json) = _$_Book.fromJson;
+  factory _Book.fromJson(Map<String, dynamic> json) = _$BookImpl.fromJson;
 
   @override
   String get kind;
@@ -392,7 +399,8 @@ abstract class _Book implements Book {
   VolumeInfo get volumeInfo;
   @override
   @JsonKey(ignore: true)
-  _$$_BookCopyWith<_$_Book> get copyWith => throw _privateConstructorUsedError;
+  _$$BookImplCopyWith<_$BookImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 VolumeInfo _$VolumeInfoFromJson(Map<String, dynamic> json) {
@@ -449,22 +457,22 @@ class _$VolumeInfoCopyWithImpl<$Res, $Val extends VolumeInfo>
 }
 
 /// @nodoc
-abstract class _$$_VolumeInfoCopyWith<$Res>
+abstract class _$$VolumeInfoImplCopyWith<$Res>
     implements $VolumeInfoCopyWith<$Res> {
-  factory _$$_VolumeInfoCopyWith(
-          _$_VolumeInfo value, $Res Function(_$_VolumeInfo) then) =
-      __$$_VolumeInfoCopyWithImpl<$Res>;
+  factory _$$VolumeInfoImplCopyWith(
+          _$VolumeInfoImpl value, $Res Function(_$VolumeInfoImpl) then) =
+      __$$VolumeInfoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String title, List<String> authors});
 }
 
 /// @nodoc
-class __$$_VolumeInfoCopyWithImpl<$Res>
-    extends _$VolumeInfoCopyWithImpl<$Res, _$_VolumeInfo>
-    implements _$$_VolumeInfoCopyWith<$Res> {
-  __$$_VolumeInfoCopyWithImpl(
-      _$_VolumeInfo _value, $Res Function(_$_VolumeInfo) _then)
+class __$$VolumeInfoImplCopyWithImpl<$Res>
+    extends _$VolumeInfoCopyWithImpl<$Res, _$VolumeInfoImpl>
+    implements _$$VolumeInfoImplCopyWith<$Res> {
+  __$$VolumeInfoImplCopyWithImpl(
+      _$VolumeInfoImpl _value, $Res Function(_$VolumeInfoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -473,7 +481,7 @@ class __$$_VolumeInfoCopyWithImpl<$Res>
     Object? title = null,
     Object? authors = null,
   }) {
-    return _then(_$_VolumeInfo(
+    return _then(_$VolumeInfoImpl(
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -488,13 +496,13 @@ class __$$_VolumeInfoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_VolumeInfo implements _VolumeInfo {
-  const _$_VolumeInfo(
+class _$VolumeInfoImpl implements _VolumeInfo {
+  const _$VolumeInfoImpl(
       {required this.title, required final List<String> authors})
       : _authors = authors;
 
-  factory _$_VolumeInfo.fromJson(Map<String, dynamic> json) =>
-      _$$_VolumeInfoFromJson(json);
+  factory _$VolumeInfoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$VolumeInfoImplFromJson(json);
 
   @override
   final String title;
@@ -512,10 +520,10 @@ class _$_VolumeInfo implements _VolumeInfo {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_VolumeInfo &&
+            other is _$VolumeInfoImpl &&
             (identical(other.title, title) || other.title == title) &&
             const DeepCollectionEquality().equals(other._authors, _authors));
   }
@@ -528,12 +536,12 @@ class _$_VolumeInfo implements _VolumeInfo {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_VolumeInfoCopyWith<_$_VolumeInfo> get copyWith =>
-      __$$_VolumeInfoCopyWithImpl<_$_VolumeInfo>(this, _$identity);
+  _$$VolumeInfoImplCopyWith<_$VolumeInfoImpl> get copyWith =>
+      __$$VolumeInfoImplCopyWithImpl<_$VolumeInfoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_VolumeInfoToJson(
+    return _$$VolumeInfoImplToJson(
       this,
     );
   }
@@ -542,10 +550,10 @@ class _$_VolumeInfo implements _VolumeInfo {
 abstract class _VolumeInfo implements VolumeInfo {
   const factory _VolumeInfo(
       {required final String title,
-      required final List<String> authors}) = _$_VolumeInfo;
+      required final List<String> authors}) = _$VolumeInfoImpl;
 
   factory _VolumeInfo.fromJson(Map<String, dynamic> json) =
-      _$_VolumeInfo.fromJson;
+      _$VolumeInfoImpl.fromJson;
 
   @override
   String get title;
@@ -553,6 +561,6 @@ abstract class _VolumeInfo implements VolumeInfo {
   List<String> get authors;
   @override
   @JsonKey(ignore: true)
-  _$$_VolumeInfoCopyWith<_$_VolumeInfo> get copyWith =>
+  _$$VolumeInfoImplCopyWith<_$VolumeInfoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
