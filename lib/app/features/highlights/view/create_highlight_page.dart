@@ -65,7 +65,7 @@ class _CreateHighlightState extends ConsumerState<CreateHighlight> {
 }
 
 class HighlightRichEditor extends ConsumerStatefulWidget {
-  const HighlightRichEditor({super.key, required this.quillController});
+  const HighlightRichEditor({required this.quillController, super.key});
 
   final QuillController quillController;
 
@@ -89,7 +89,7 @@ class _HighlightRichEditorState extends ConsumerState<HighlightRichEditor> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('New Highlight'),
+        title: const Text('New Highlight'),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -117,7 +117,8 @@ class _HighlightRichEditorState extends ConsumerState<HighlightRichEditor> {
                 ),
                 child: QuillEditor.basic(
                   configurations: QuillEditorConfigurations(
-                      controller: widget.quillController),
+                    controller: widget.quillController,
+                  ),
                 ),
               ),
             ),
@@ -125,14 +126,16 @@ class _HighlightRichEditorState extends ConsumerState<HighlightRichEditor> {
             AppBasicButton(
               title: 'Next',
               onTap: () async {
-                ref.read(highlightStateProvider.notifier).changeState(
-                      highlightState.copyWith(
-                        loadedSourcesStatus: const BaseStatus.loading(),
-                      ),
-                    );
-                await ref
-                    .read(highlightStateProvider.notifier)
-                    .loadBookSources();
+                if (widget.quillController.document.toPlainText().length > 3) {
+                  ref.read(highlightStateProvider.notifier).changeState(
+                        highlightState.copyWith(
+                          loadedSourcesStatus: const BaseStatus.loading(),
+                        ),
+                      );
+                  await ref
+                      .read(highlightStateProvider.notifier)
+                      .loadBookSources();
+                } else {}
               },
             ),
           ],

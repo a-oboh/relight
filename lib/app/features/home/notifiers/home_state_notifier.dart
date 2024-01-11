@@ -37,7 +37,7 @@ class HomeStateNotifier extends StateNotifier<HomeState> {
         highlights: highlights,
       );
     } catch (e) {
-      _setError("Sorry, we can't load your highlighrs right now 🤒");
+      _setError("Sorry, we can't load your highlights right now 🤒");
     }
   }
 

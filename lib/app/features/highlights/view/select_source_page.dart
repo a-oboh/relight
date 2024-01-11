@@ -71,9 +71,11 @@ class _SelectSourcePageState extends ConsumerState<SelectSourcePage> {
                   Text(errorText ?? ''),
                   const SizedBox(height: 12),
                   AppBasicButton(
-                    title: 'Done',
+                    title: 'Retry',
                     onTap: () {
-                      context.pop();
+                      //TODO: Implement retry logic
+                      
+                      // context.pop();
                     },
                   ),
                 ],
