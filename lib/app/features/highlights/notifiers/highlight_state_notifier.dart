@@ -1,8 +1,10 @@
+import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logging/logging.dart';
 import 'package:relight/app/common/common.dart';
 import 'package:relight/app/features/features.dart';
+import 'package:relight/app/features/highlights/repository/url_metadata_repository.dart';
 
 final highlightStateProvider =
     StateNotifierProvider.autoDispose<HighlightStateNotifier, HighlightState>(
@@ -12,6 +14,7 @@ final highlightStateProvider =
       highlightSourcesRepo: ref.read(highlightSourcesRepo),
       bookSourceRepository: ref.read(bookSourceRepo),
       user: ref.read(userProvider).value,
+      urlMetadataRepository: ref.read(urlMetadataRepository),
       ref: ref,
     );
   },
@@ -22,17 +25,20 @@ class HighlightStateNotifier extends StateNotifier<HighlightState> {
     required HighlightsRepository highlightsRepo,
     required HighlightSourcesRepository highlightSourcesRepo,
     required BookSourceRepository bookSourceRepository,
+    required UrlMetadataRepository urlMetadataRepository,
     required this.ref,
     User? user,
   })  : _highlightsRepo = highlightsRepo,
         _highlightSourcesRepo = highlightSourcesRepo,
         _bookSourceRepo = bookSourceRepository,
+        _urlMetadataRepository = urlMetadataRepository,
         _user = user,
         super(const HighlightState());
 
   final HighlightsRepository _highlightsRepo;
   final HighlightSourcesRepository _highlightSourcesRepo;
   final BookSourceRepository _bookSourceRepo;
+  final UrlMetadataRepository _urlMetadataRepository;
   final User? _user;
   final logger = Logger('highlight_notifier');
   final Ref ref;
@@ -153,5 +159,13 @@ class HighlightStateNotifier extends StateNotifier<HighlightState> {
 
   void _setError(String error) {
     state = state.copyWith(status: BaseStatus.error(errorText: error));
+  }
+
+  Future<void> getUrlMetadata(String url) async {
+    try {
+      final metaData = await _urlMetadataRepository.extractMetaData(url);
+    } catch (e) {
+      _setError('An error occured parsing url'.hardCoded);
+    }
   }
 }
