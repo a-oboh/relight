@@ -6,15 +6,15 @@ part of 'url_metadata_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$UrlMetadataModelImpl _$$UrlMetadataModelImplFromJson(
-        Map<String, dynamic> json) =>
+_$UrlMetadataModelImpl _$$UrlMetadataModelImplFromJson(Map json) =>
     _$UrlMetadataModelImpl(
       title: json['title'] as String,
       description: json['description'] as String,
-      imageUrls:
-          (json['imageUrls'] as List<dynamic>).map((e) => e as String).toList(),
+      images:
+          (json['images'] as List<dynamic>).map((e) => e as String).toList(),
       duration: json['duration'] as int,
       domain: json['domain'] as String,
+      favicon: json['favicon'] as String,
       url: json['url'] as String,
     );
 
@@ -23,8 +23,9 @@ Map<String, dynamic> _$$UrlMetadataModelImplToJson(
     <String, dynamic>{
       'title': instance.title,
       'description': instance.description,
-      'imageUrls': instance.imageUrls,
+      'images': instance.images,
       'duration': instance.duration,
       'domain': instance.domain,
+      'favicon': instance.favicon,
       'url': instance.url,
     };

@@ -28,10 +28,11 @@ class AppTextStyles {
   static TextStyle largeRegular({
     Color color = AppColors.textGrey,
     double letterSpacing = 0.5,
+    double fontSize = 18,
   }) {
     return TextStyle(
       color: color,
-      fontSize: 18,
+      fontSize: fontSize,
       letterSpacing: letterSpacing,
     );
   }
@@ -63,10 +64,11 @@ class AppTextStyles {
   static TextStyle largeSemiBold({
     Color color = AppColors.textGrey,
     double letterSpacing = 0.5,
+    double fontSize = 18,
   }) {
     return TextStyle(
       color: color,
-      fontSize: 18,
+      fontSize: fontSize,
       letterSpacing: letterSpacing,
       fontWeight: FontWeight.w600, // Semi-Bold
     );
@@ -99,10 +101,11 @@ class AppTextStyles {
   static TextStyle largeBold({
     Color color = AppColors.textGrey,
     double letterSpacing = 0.5,
+    double fontSize = 18,
   }) {
     return TextStyle(
       color: color,
-      fontSize: 18,
+      fontSize: fontSize,
       letterSpacing: letterSpacing,
       fontWeight: FontWeight.bold,
     );

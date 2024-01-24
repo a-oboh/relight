@@ -6,8 +6,7 @@ part of 'schedule_reminder_request.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-ScheduleReminderRequest _$ScheduleReminderRequestFromJson(
-        Map<String, dynamic> json) =>
+ScheduleReminderRequest _$ScheduleReminderRequestFromJson(Map json) =>
     ScheduleReminderRequest(
       timeZone: json['timeZone'] as String,
       deviceToken: json['deviceToken'] as String,

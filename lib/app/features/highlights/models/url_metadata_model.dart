@@ -8,9 +8,10 @@ class UrlMetadataModel with _$UrlMetadataModel {
   const factory UrlMetadataModel({
     required String title,
     required String description,
-    required List<String> imageUrls,
+    required List<String> images,
     required int duration,
     required String domain,
+    required String favicon,
     required String url,
   }) = _UrlMetadataModel;
 

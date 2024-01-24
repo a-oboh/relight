@@ -18,6 +18,85 @@ class HighlightCardItem extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    return highlight.urlMetadata != null
+        ? HighlightUrlItem(data: highlight)
+        : Card(
+            color: AppColors.secondaryGrey,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8),
+                    child: Row(
+                      children: [
+                        Text(
+                          highlight.sourceId,
+                          style: const TextStyle(
+                            color: AppColors.lightGrey,
+                            fontSize: 12,
+                          ),
+                        ),
+                        const Spacer(),
+                        Align(
+                          alignment: Alignment.topRight,
+                          child: InkWell(
+                            onTap: () => showMenu(
+                              context: context,
+                              position:
+                                  const RelativeRect.fromLTRB(150, 5, 50, 5),
+                              items: [
+                                PopupMenuItem(
+                                  child: const Text('Edit'),
+                                  onTap: () {
+                                    context.push(
+                                      RelightRouter.editHighlight,
+                                      extra: highlight,
+                                    );
+                                  },
+                                ),
+                                PopupMenuItem(
+                                  child: const Text('Delete'),
+                                  onTap: () {
+                                    ref
+                                        .read(homeStateProvider.notifier)
+                                        .deleteHighlight(highlight.id!);
+                                  },
+                                ),
+                              ],
+                            ),
+                            child: const Icon(
+                              Icons.arrow_forward_ios_rounded,
+                              color: Colors.white,
+                              size: 18,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Text(
+                    highlight.plainContent,
+                    style: const TextStyle(
+                      fontSize: 24,
+                      color: Colors.white,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          );
+  }
+}
+
+class HighlightUrlItem extends ConsumerWidget {
+  const HighlightUrlItem({required this.data, super.key});
+
+  final Highlight data;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
     return Card(
       color: AppColors.secondaryGrey,
       child: Padding(
@@ -30,7 +109,7 @@ class HighlightCardItem extends ConsumerWidget {
               child: Row(
                 children: [
                   Text(
-                    highlight.sourceId,
+                    data.urlMetadata?.url ?? '',
                     style: const TextStyle(
                       color: AppColors.lightGrey,
                       fontSize: 12,
@@ -46,19 +125,14 @@ class HighlightCardItem extends ConsumerWidget {
                         items: [
                           PopupMenuItem(
                             child: const Text('Edit'),
-                            onTap: () {
-                              context.push(
-                                RelightRouter.editHighlight,
-                                extra: highlight,
-                              );
-                            },
+                            onTap: () {},
                           ),
                           PopupMenuItem(
                             child: const Text('Delete'),
                             onTap: () {
                               ref
                                   .read(homeStateProvider.notifier)
-                                  .deleteHighlight(highlight.id!);
+                                  .deleteHighlight(data.id!);
                             },
                           ),
                         ],
@@ -74,7 +148,7 @@ class HighlightCardItem extends ConsumerWidget {
               ),
             ),
             Text(
-              highlight.plainContent,
+              data.urlMetadata?.title ?? '',
               style: const TextStyle(
                 fontSize: 24,
                 color: Colors.white,

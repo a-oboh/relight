@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logging/logging.dart';
 import 'package:relight/app/common/common.dart';
 import 'package:relight/app/features/features.dart';
+import 'package:relight/app/features/highlights/models/url_metadata_model.dart';
 import 'package:relight/app/features/highlights/repository/url_metadata_repository.dart';
 
 final highlightStateProvider =
@@ -161,11 +162,45 @@ class HighlightStateNotifier extends StateNotifier<HighlightState> {
     state = state.copyWith(status: BaseStatus.error(errorText: error));
   }
 
-  Future<void> getUrlMetadata(String url) async {
+  Future<UrlMetadataModel?> getUrlMetadata(String url) async {
     try {
+      state = state.copyWith(status: LoadingBaseStatus());
       final metaData = await _urlMetadataRepository.extractMetaData(url);
+      state = state.copyWith(status: InitialBaseStatus());
+
+      return metaData;
     } catch (e) {
-      _setError('An error occured parsing url'.hardCoded);
+      _setError(
+          'An error occured, please check the url and try again'.hardCoded);
+      return null;
+    }
+  }
+
+  Future<void> createUrlHighlight({
+    required String sourceId,
+    required UrlMetadataModel urlMetadata,
+  }) async {
+    try {
+      state = state.copyWith(createHighlightStatus: const BaseStatus.loading());
+
+      await _highlightsRepo.createHighlight(
+        highlight: Highlight(
+          urlMetadata: urlMetadata,
+          plainContent: '',
+          content: '',
+          sourceId: sourceId,
+          createdAt: DateTime.now(),
+          owner: _user!.email!,
+        ),
+      );
+
+      state = state.copyWith(createHighlightStatus: const BaseStatus.initial());
+    } catch (e) {
+      state = state.copyWith(
+        createHighlightStatus: const BaseStatus.error(
+          errorText: 'An error occured while creating this highlight',
+        ),
+      );
     }
   }
 }

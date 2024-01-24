@@ -22,9 +22,10 @@ UrlMetadataModel _$UrlMetadataModelFromJson(Map<String, dynamic> json) {
 mixin _$UrlMetadataModel {
   String get title => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
-  List<String> get imageUrls => throw _privateConstructorUsedError;
+  List<String> get images => throw _privateConstructorUsedError;
   int get duration => throw _privateConstructorUsedError;
   String get domain => throw _privateConstructorUsedError;
+  String get favicon => throw _privateConstructorUsedError;
   String get url => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -42,9 +43,10 @@ abstract class $UrlMetadataModelCopyWith<$Res> {
   $Res call(
       {String title,
       String description,
-      List<String> imageUrls,
+      List<String> images,
       int duration,
       String domain,
+      String favicon,
       String url});
 }
 
@@ -63,9 +65,10 @@ class _$UrlMetadataModelCopyWithImpl<$Res, $Val extends UrlMetadataModel>
   $Res call({
     Object? title = null,
     Object? description = null,
-    Object? imageUrls = null,
+    Object? images = null,
     Object? duration = null,
     Object? domain = null,
+    Object? favicon = null,
     Object? url = null,
   }) {
     return _then(_value.copyWith(
@@ -77,9 +80,9 @@ class _$UrlMetadataModelCopyWithImpl<$Res, $Val extends UrlMetadataModel>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
-      imageUrls: null == imageUrls
-          ? _value.imageUrls
-          : imageUrls // ignore: cast_nullable_to_non_nullable
+      images: null == images
+          ? _value.images
+          : images // ignore: cast_nullable_to_non_nullable
               as List<String>,
       duration: null == duration
           ? _value.duration
@@ -88,6 +91,10 @@ class _$UrlMetadataModelCopyWithImpl<$Res, $Val extends UrlMetadataModel>
       domain: null == domain
           ? _value.domain
           : domain // ignore: cast_nullable_to_non_nullable
+              as String,
+      favicon: null == favicon
+          ? _value.favicon
+          : favicon // ignore: cast_nullable_to_non_nullable
               as String,
       url: null == url
           ? _value.url
@@ -108,9 +115,10 @@ abstract class _$$UrlMetadataModelImplCopyWith<$Res>
   $Res call(
       {String title,
       String description,
-      List<String> imageUrls,
+      List<String> images,
       int duration,
       String domain,
+      String favicon,
       String url});
 }
 
@@ -127,9 +135,10 @@ class __$$UrlMetadataModelImplCopyWithImpl<$Res>
   $Res call({
     Object? title = null,
     Object? description = null,
-    Object? imageUrls = null,
+    Object? images = null,
     Object? duration = null,
     Object? domain = null,
+    Object? favicon = null,
     Object? url = null,
   }) {
     return _then(_$UrlMetadataModelImpl(
@@ -141,9 +150,9 @@ class __$$UrlMetadataModelImplCopyWithImpl<$Res>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
-      imageUrls: null == imageUrls
-          ? _value._imageUrls
-          : imageUrls // ignore: cast_nullable_to_non_nullable
+      images: null == images
+          ? _value._images
+          : images // ignore: cast_nullable_to_non_nullable
               as List<String>,
       duration: null == duration
           ? _value.duration
@@ -152,6 +161,10 @@ class __$$UrlMetadataModelImplCopyWithImpl<$Res>
       domain: null == domain
           ? _value.domain
           : domain // ignore: cast_nullable_to_non_nullable
+              as String,
+      favicon: null == favicon
+          ? _value.favicon
+          : favicon // ignore: cast_nullable_to_non_nullable
               as String,
       url: null == url
           ? _value.url
@@ -167,11 +180,12 @@ class _$UrlMetadataModelImpl implements _UrlMetadataModel {
   const _$UrlMetadataModelImpl(
       {required this.title,
       required this.description,
-      required final List<String> imageUrls,
+      required final List<String> images,
       required this.duration,
       required this.domain,
+      required this.favicon,
       required this.url})
-      : _imageUrls = imageUrls;
+      : _images = images;
 
   factory _$UrlMetadataModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$UrlMetadataModelImplFromJson(json);
@@ -180,12 +194,12 @@ class _$UrlMetadataModelImpl implements _UrlMetadataModel {
   final String title;
   @override
   final String description;
-  final List<String> _imageUrls;
+  final List<String> _images;
   @override
-  List<String> get imageUrls {
-    if (_imageUrls is EqualUnmodifiableListView) return _imageUrls;
+  List<String> get images {
+    if (_images is EqualUnmodifiableListView) return _images;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_imageUrls);
+    return EqualUnmodifiableListView(_images);
   }
 
   @override
@@ -193,11 +207,13 @@ class _$UrlMetadataModelImpl implements _UrlMetadataModel {
   @override
   final String domain;
   @override
+  final String favicon;
+  @override
   final String url;
 
   @override
   String toString() {
-    return 'UrlMetadataModel(title: $title, description: $description, imageUrls: $imageUrls, duration: $duration, domain: $domain, url: $url)';
+    return 'UrlMetadataModel(title: $title, description: $description, images: $images, duration: $duration, domain: $domain, favicon: $favicon, url: $url)';
   }
 
   @override
@@ -208,18 +224,25 @@ class _$UrlMetadataModelImpl implements _UrlMetadataModel {
             (identical(other.title, title) || other.title == title) &&
             (identical(other.description, description) ||
                 other.description == description) &&
-            const DeepCollectionEquality()
-                .equals(other._imageUrls, _imageUrls) &&
+            const DeepCollectionEquality().equals(other._images, _images) &&
             (identical(other.duration, duration) ||
                 other.duration == duration) &&
             (identical(other.domain, domain) || other.domain == domain) &&
+            (identical(other.favicon, favicon) || other.favicon == favicon) &&
             (identical(other.url, url) || other.url == url));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, title, description,
-      const DeepCollectionEquality().hash(_imageUrls), duration, domain, url);
+  int get hashCode => Object.hash(
+      runtimeType,
+      title,
+      description,
+      const DeepCollectionEquality().hash(_images),
+      duration,
+      domain,
+      favicon,
+      url);
 
   @JsonKey(ignore: true)
   @override
@@ -240,9 +263,10 @@ abstract class _UrlMetadataModel implements UrlMetadataModel {
   const factory _UrlMetadataModel(
       {required final String title,
       required final String description,
-      required final List<String> imageUrls,
+      required final List<String> images,
       required final int duration,
       required final String domain,
+      required final String favicon,
       required final String url}) = _$UrlMetadataModelImpl;
 
   factory _UrlMetadataModel.fromJson(Map<String, dynamic> json) =
@@ -253,11 +277,13 @@ abstract class _UrlMetadataModel implements UrlMetadataModel {
   @override
   String get description;
   @override
-  List<String> get imageUrls;
+  List<String> get images;
   @override
   int get duration;
   @override
   String get domain;
+  @override
+  String get favicon;
   @override
   String get url;
   @override

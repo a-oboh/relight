@@ -6,7 +6,7 @@ part of 'profile_data.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Profile _$ProfileFromJson(Map<String, dynamic> json) => Profile(
+Profile _$ProfileFromJson(Map json) => Profile(
       setTime: Profile._fromJson(json['setTime'] as String?),
       setDate: Profile._fromJson(json['setDate'] as String?),
       dayOfWeek: json['dayOfWeek'] as int?,
