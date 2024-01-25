@@ -37,10 +37,10 @@ class NewHighlightCategorySource extends StatelessWidget {
             ),
             ListTile(
               leading: const Icon(
-                Icons.article_outlined,
+                Icons.add_link_rounded,
                 color: AppColors.purpleMain,
               ),
-              title: const Text('Article'),
+              title: const Text('Link'),
               trailing: const Icon(Icons.keyboard_arrow_right_rounded),
               onTap: () => context.push(NewArticleHighlight.routePath),
             ),

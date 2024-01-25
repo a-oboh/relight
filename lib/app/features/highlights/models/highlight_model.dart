@@ -12,7 +12,6 @@ class Highlight with _$Highlight {
   const factory Highlight({
     required String content,
     required String plainContent,
-    @JsonEncoder()
     UrlMetadataModel? urlMetadata,
     required String sourceId,
     required DateTime createdAt,

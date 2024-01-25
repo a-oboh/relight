@@ -22,7 +22,6 @@ Highlight _$HighlightFromJson(Map<String, dynamic> json) {
 mixin _$Highlight {
   String get content => throw _privateConstructorUsedError;
   String get plainContent => throw _privateConstructorUsedError;
-  @JsonEncoder()
   UrlMetadataModel? get urlMetadata => throw _privateConstructorUsedError;
   String get sourceId => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
@@ -43,7 +42,7 @@ abstract class $HighlightCopyWith<$Res> {
   $Res call(
       {String content,
       String plainContent,
-      @JsonEncoder() UrlMetadataModel? urlMetadata,
+      UrlMetadataModel? urlMetadata,
       String sourceId,
       DateTime createdAt,
       String owner,
@@ -129,7 +128,7 @@ abstract class _$$HighlightImplCopyWith<$Res>
   $Res call(
       {String content,
       String plainContent,
-      @JsonEncoder() UrlMetadataModel? urlMetadata,
+      UrlMetadataModel? urlMetadata,
       String sourceId,
       DateTime createdAt,
       String owner,
@@ -197,7 +196,7 @@ class _$HighlightImpl implements _Highlight {
   const _$HighlightImpl(
       {required this.content,
       required this.plainContent,
-      @JsonEncoder() this.urlMetadata,
+      this.urlMetadata,
       required this.sourceId,
       required this.createdAt,
       required this.owner,
@@ -211,7 +210,6 @@ class _$HighlightImpl implements _Highlight {
   @override
   final String plainContent;
   @override
-  @JsonEncoder()
   final UrlMetadataModel? urlMetadata;
   @override
   final String sourceId;
@@ -268,7 +266,7 @@ abstract class _Highlight implements Highlight {
   const factory _Highlight(
       {required final String content,
       required final String plainContent,
-      @JsonEncoder() final UrlMetadataModel? urlMetadata,
+      final UrlMetadataModel? urlMetadata,
       required final String sourceId,
       required final DateTime createdAt,
       required final String owner,
@@ -282,7 +280,6 @@ abstract class _Highlight implements Highlight {
   @override
   String get plainContent;
   @override
-  @JsonEncoder()
   UrlMetadataModel? get urlMetadata;
   @override
   String get sourceId;

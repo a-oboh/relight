@@ -44,8 +44,10 @@ class _SelectSourcePageState extends ConsumerState<SelectSourcePage> {
                       title: 'Done',
                       onTap: () {
                         ref.invalidate(highlightStateProvider);
+
+                        // navigate home
                         var i = 0;
-                        while (i < 3) {
+                        while (i < 4) {
                           GoRouter.of(context).pop();
                           i++;
                         }

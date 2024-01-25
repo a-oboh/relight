@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:relight/app/common/utils/utils.dart';
 import 'package:relight/app/features/highlights/models/highlight_model.dart';
 import 'package:relight/app/features/home/notifiers/home_state_notifier.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HighlightCardItem extends ConsumerWidget {
   const HighlightCardItem({
@@ -97,64 +98,71 @@ class HighlightUrlItem extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Card(
-      color: AppColors.secondaryGrey,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8),
-              child: Row(
-                children: [
-                  Text(
-                    data.urlMetadata?.url ?? '',
-                    style: const TextStyle(
-                      color: AppColors.lightGrey,
-                      fontSize: 12,
-                    ),
-                  ),
-                  const Spacer(),
-                  Align(
-                    alignment: Alignment.topRight,
-                    child: InkWell(
-                      onTap: () => showMenu(
-                        context: context,
-                        position: const RelativeRect.fromLTRB(150, 5, 50, 5),
-                        items: [
-                          PopupMenuItem(
-                            child: const Text('Edit'),
-                            onTap: () {},
-                          ),
-                          PopupMenuItem(
-                            child: const Text('Delete'),
-                            onTap: () {
-                              ref
-                                  .read(homeStateProvider.notifier)
-                                  .deleteHighlight(data.id!);
-                            },
-                          ),
-                        ],
-                      ),
-                      child: const Icon(
-                        Icons.arrow_forward_ios_rounded,
-                        color: Colors.white,
-                        size: 18,
+    return InkWell(
+      onTap: () async {
+        if (!await launchUrl(Uri.parse(data.urlMetadata?.url ?? ''))) {
+          throw Exception('Could not launch ${data.urlMetadata?.url}');
+        }
+      },
+      child: Card(
+        color: AppColors.secondaryGrey,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 10),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8),
+                child: Row(
+                  children: [
+                    Text(
+                      data.urlMetadata?.url ?? '',
+                      style: const TextStyle(
+                        color: AppColors.lightGrey,
+                        fontSize: 12,
                       ),
                     ),
-                  ),
-                ],
+                    const Spacer(),
+                    Align(
+                      alignment: Alignment.topRight,
+                      child: InkWell(
+                        onTap: () => showMenu(
+                          context: context,
+                          position: const RelativeRect.fromLTRB(150, 5, 50, 5),
+                          items: [
+                            PopupMenuItem(
+                              child: const Text('Edit'),
+                              onTap: () {},
+                            ),
+                            PopupMenuItem(
+                              child: const Text('Delete'),
+                              onTap: () {
+                                ref
+                                    .read(homeStateProvider.notifier)
+                                    .deleteHighlight(data.id!);
+                              },
+                            ),
+                          ],
+                        ),
+                        child: const Icon(
+                          Icons.arrow_forward_ios_rounded,
+                          color: Colors.white,
+                          size: 18,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ),
-            Text(
-              data.urlMetadata?.title ?? '',
-              style: const TextStyle(
-                fontSize: 24,
-                color: Colors.white,
+              Text(
+                data.urlMetadata?.title ?? '',
+                style: const TextStyle(
+                  fontSize: 24,
+                  color: Colors.white,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

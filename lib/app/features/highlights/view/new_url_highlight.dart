@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
@@ -21,10 +19,10 @@ class NewArticleHighlight extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Add Article'.hardCoded),
+        title: Text('Save link'.hardCoded),
       ),
       body: state.status.isLoading
-          ? Center(child: CircularProgressIndicator())
+          ? const Center(child: CircularProgressIndicator())
           : Padding(
               padding: const EdgeInsets.symmetric(
                 horizontal: 20,
@@ -73,7 +71,8 @@ class NewArticleHighlight extends ConsumerWidget {
                           if (data != null) {
                             await context.push(
                                 NewUrlHighlightPreviewPage.routePath,
-                                extra: data);
+                              extra: data,
+                            );
                           }
                         }
                       },
