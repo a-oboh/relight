@@ -33,7 +33,7 @@ class _HomePageState extends ConsumerState<HomePage> {
           }
         },
         loading: () {
-          // investigate dialog not appearing
+          //TODO(albert): investigate dialog not appearing
           showDialog(
             context: context,
             barrierDismissible: false,
@@ -72,7 +72,7 @@ class _HomePageState extends ConsumerState<HomePage> {
       body: homeState.status.map(initial: (_) {
         if (homeState.highlights.isEmpty) {
           return Center(
-            child: Text("You have no highlights, why not add some?"),
+            child: Text('You have no highlights, why not add one?'.hardCoded),
           );
         }
         return CustomScrollView(

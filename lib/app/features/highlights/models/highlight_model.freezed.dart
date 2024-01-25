@@ -22,6 +22,7 @@ Highlight _$HighlightFromJson(Map<String, dynamic> json) {
 mixin _$Highlight {
   String get content => throw _privateConstructorUsedError;
   String get plainContent => throw _privateConstructorUsedError;
+  UrlMetadataModel? get urlMetadata => throw _privateConstructorUsedError;
   String get sourceId => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
   String get owner => throw _privateConstructorUsedError;
@@ -41,10 +42,13 @@ abstract class $HighlightCopyWith<$Res> {
   $Res call(
       {String content,
       String plainContent,
+      UrlMetadataModel? urlMetadata,
       String sourceId,
       DateTime createdAt,
       String owner,
       String? id});
+
+  $UrlMetadataModelCopyWith<$Res>? get urlMetadata;
 }
 
 /// @nodoc
@@ -62,6 +66,7 @@ class _$HighlightCopyWithImpl<$Res, $Val extends Highlight>
   $Res call({
     Object? content = null,
     Object? plainContent = null,
+    Object? urlMetadata = freezed,
     Object? sourceId = null,
     Object? createdAt = null,
     Object? owner = null,
@@ -76,6 +81,10 @@ class _$HighlightCopyWithImpl<$Res, $Val extends Highlight>
           ? _value.plainContent
           : plainContent // ignore: cast_nullable_to_non_nullable
               as String,
+      urlMetadata: freezed == urlMetadata
+          ? _value.urlMetadata
+          : urlMetadata // ignore: cast_nullable_to_non_nullable
+              as UrlMetadataModel?,
       sourceId: null == sourceId
           ? _value.sourceId
           : sourceId // ignore: cast_nullable_to_non_nullable
@@ -94,6 +103,18 @@ class _$HighlightCopyWithImpl<$Res, $Val extends Highlight>
               as String?,
     ) as $Val);
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $UrlMetadataModelCopyWith<$Res>? get urlMetadata {
+    if (_value.urlMetadata == null) {
+      return null;
+    }
+
+    return $UrlMetadataModelCopyWith<$Res>(_value.urlMetadata!, (value) {
+      return _then(_value.copyWith(urlMetadata: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -107,10 +128,14 @@ abstract class _$$HighlightImplCopyWith<$Res>
   $Res call(
       {String content,
       String plainContent,
+      UrlMetadataModel? urlMetadata,
       String sourceId,
       DateTime createdAt,
       String owner,
       String? id});
+
+  @override
+  $UrlMetadataModelCopyWith<$Res>? get urlMetadata;
 }
 
 /// @nodoc
@@ -126,6 +151,7 @@ class __$$HighlightImplCopyWithImpl<$Res>
   $Res call({
     Object? content = null,
     Object? plainContent = null,
+    Object? urlMetadata = freezed,
     Object? sourceId = null,
     Object? createdAt = null,
     Object? owner = null,
@@ -140,6 +166,10 @@ class __$$HighlightImplCopyWithImpl<$Res>
           ? _value.plainContent
           : plainContent // ignore: cast_nullable_to_non_nullable
               as String,
+      urlMetadata: freezed == urlMetadata
+          ? _value.urlMetadata
+          : urlMetadata // ignore: cast_nullable_to_non_nullable
+              as UrlMetadataModel?,
       sourceId: null == sourceId
           ? _value.sourceId
           : sourceId // ignore: cast_nullable_to_non_nullable
@@ -166,6 +196,7 @@ class _$HighlightImpl implements _Highlight {
   const _$HighlightImpl(
       {required this.content,
       required this.plainContent,
+      this.urlMetadata,
       required this.sourceId,
       required this.createdAt,
       required this.owner,
@@ -179,6 +210,8 @@ class _$HighlightImpl implements _Highlight {
   @override
   final String plainContent;
   @override
+  final UrlMetadataModel? urlMetadata;
+  @override
   final String sourceId;
   @override
   final DateTime createdAt;
@@ -189,7 +222,7 @@ class _$HighlightImpl implements _Highlight {
 
   @override
   String toString() {
-    return 'Highlight(content: $content, plainContent: $plainContent, sourceId: $sourceId, createdAt: $createdAt, owner: $owner, id: $id)';
+    return 'Highlight(content: $content, plainContent: $plainContent, urlMetadata: $urlMetadata, sourceId: $sourceId, createdAt: $createdAt, owner: $owner, id: $id)';
   }
 
   @override
@@ -200,6 +233,8 @@ class _$HighlightImpl implements _Highlight {
             (identical(other.content, content) || other.content == content) &&
             (identical(other.plainContent, plainContent) ||
                 other.plainContent == plainContent) &&
+            (identical(other.urlMetadata, urlMetadata) ||
+                other.urlMetadata == urlMetadata) &&
             (identical(other.sourceId, sourceId) ||
                 other.sourceId == sourceId) &&
             (identical(other.createdAt, createdAt) ||
@@ -210,8 +245,8 @@ class _$HighlightImpl implements _Highlight {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, content, plainContent, sourceId, createdAt, owner, id);
+  int get hashCode => Object.hash(runtimeType, content, plainContent,
+      urlMetadata, sourceId, createdAt, owner, id);
 
   @JsonKey(ignore: true)
   @override
@@ -231,6 +266,7 @@ abstract class _Highlight implements Highlight {
   const factory _Highlight(
       {required final String content,
       required final String plainContent,
+      final UrlMetadataModel? urlMetadata,
       required final String sourceId,
       required final DateTime createdAt,
       required final String owner,
@@ -243,6 +279,8 @@ abstract class _Highlight implements Highlight {
   String get content;
   @override
   String get plainContent;
+  @override
+  UrlMetadataModel? get urlMetadata;
   @override
   String get sourceId;
   @override

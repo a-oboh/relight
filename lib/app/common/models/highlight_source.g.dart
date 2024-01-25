@@ -6,8 +6,7 @@ part of 'highlight_source.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$HighlightSourceImpl _$$HighlightSourceImplFromJson(
-        Map<String, dynamic> json) =>
+_$HighlightSourceImpl _$$HighlightSourceImplFromJson(Map json) =>
     _$HighlightSourceImpl(
       name: json['name'] as String,
       author: json['author'] as String,

@@ -6,8 +6,7 @@ part of 'schedule_reminder_res.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ScheduleReminderResImpl _$$ScheduleReminderResImplFromJson(
-        Map<String, dynamic> json) =>
+_$ScheduleReminderResImpl _$$ScheduleReminderResImplFromJson(Map json) =>
     _$ScheduleReminderResImpl(
       status: json['status'] as String,
       message: json['message'] as String,

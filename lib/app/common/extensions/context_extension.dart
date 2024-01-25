@@ -8,3 +8,7 @@ extension ContextExt on BuildContext {
     return ModalRoute.of(this)?.isActive ?? false;
   }
 }
+
+extension HardCoded on String {
+  String get hardCoded => this;
+}
