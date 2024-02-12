@@ -4,7 +4,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_timezone/flutter_timezone.dart';
 import 'package:logging/logging.dart';
 import 'package:relight/app/common/common.dart';
-import 'package:relight/app/features/Reminder/Reminder.dart';
 import 'package:relight/app/features/features.dart';
 
 final profileStateProvider =

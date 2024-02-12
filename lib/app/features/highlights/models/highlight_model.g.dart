@@ -12,7 +12,8 @@ _$HighlightImpl _$$HighlightImplFromJson(Map json) => _$HighlightImpl(
       urlMetadata: json['urlMetadata'] == null
           ? null
           : UrlMetadataModel.fromJson(
-              Map<String, dynamic>.from(json['urlMetadata'] as Map)),
+              Map<String, dynamic>.from(json['urlMetadata'] as Map),
+            ),
       sourceId: json['sourceId'] as String,
       createdAt: DateTime.parse(json['createdAt'] as String),
       owner: json['owner'] as String,

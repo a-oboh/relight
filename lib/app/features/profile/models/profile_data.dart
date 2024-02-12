@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import "package:relight/app/features/features.dart";
+import 'package:relight/app/features/features.dart';
 
 part 'profile_data.g.dart';
 
@@ -33,5 +33,6 @@ class Profile {
     if (value != null) {
       return DateTime.parse(value);
     }
+    return null;
   }
 }

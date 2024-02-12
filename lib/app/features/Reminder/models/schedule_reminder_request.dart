@@ -11,12 +11,12 @@ class ScheduleReminderRequest extends Equatable {
     required this.userId,
   });
 
+  factory ScheduleReminderRequest.fromJson(Map<String, dynamic> json) =>
+      _$ScheduleReminderRequestFromJson(json);
+
   final String timeZone;
   final String deviceToken;
   final String userId;
-
-  factory ScheduleReminderRequest.fromJson(Map<String, dynamic> json) =>
-      _$ScheduleReminderRequestFromJson(json);
 
   Map<String, dynamic> toJson() => _$ScheduleReminderRequestToJson(this);
 
