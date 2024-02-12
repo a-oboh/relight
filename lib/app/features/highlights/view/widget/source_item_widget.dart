@@ -5,11 +5,12 @@ import 'package:relight/app/common/common.dart';
 import 'package:relight/app/features/features.dart';
 
 class SourceItemWidget extends ConsumerWidget {
-  const SourceItemWidget(
-      {required this.source,
-      required this.highlightContent,
-      required this.highlightPlainContent,
-      super.key});
+  const SourceItemWidget({
+    required this.source,
+    required this.highlightContent,
+    required this.highlightPlainContent,
+    super.key,
+  });
 
   final HighlightSource source;
   final String highlightContent;

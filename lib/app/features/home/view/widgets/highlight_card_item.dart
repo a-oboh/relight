@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:relight/app/common/utils/utils.dart';
 import 'package:relight/app/features/highlights/models/highlight_model.dart';
@@ -43,30 +44,12 @@ class HighlightCardItem extends ConsumerWidget {
                         Align(
                           alignment: Alignment.topRight,
                           child: InkWell(
-                            onTap: () => showMenu(
-                              context: context,
-                              position:
-                                  const RelativeRect.fromLTRB(150, 5, 50, 5),
-                              items: [
-                                PopupMenuItem(
-                                  child: const Text('Edit'),
-                                  onTap: () {
-                                    context.push(
-                                      RelightRouter.editHighlight,
-                                      extra: highlight,
-                                    );
-                                  },
-                                ),
-                                PopupMenuItem(
-                                  child: const Text('Delete'),
-                                  onTap: () {
-                                    ref
-                                        .read(homeStateProvider.notifier)
-                                        .deleteHighlight(highlight.id!);
-                                  },
-                                ),
-                              ],
-                            ),
+                            onTap: () {
+                              showHighlightMenu(
+                                context,
+                                ref,
+                              );
+                            },
                             child: const Icon(
                               Icons.arrow_forward_ios_rounded,
                               color: Colors.white,
@@ -88,6 +71,45 @@ class HighlightCardItem extends ConsumerWidget {
               ),
             ),
           );
+  }
+
+  void showHighlightMenu(BuildContext context, WidgetRef ref) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return SimpleDialog(
+          backgroundColor: AppColors.dark,
+          children: [
+            ListTile(
+              leading: const Icon(
+                Icons.edit,
+                color: AppColors.purpleMain,
+              ),
+              title: const Text('Edit Highlight'),
+              onTap: () {
+                context.push(
+                  RelightRouter.editHighlight,
+                  extra: highlight,
+                );
+              },
+            ),
+            const Gap(10),
+            ListTile(
+              leading: const Icon(
+                Icons.delete,
+                color: AppColors.purpleMain,
+              ),
+              title: const Text('Delete Highlight'),
+              onTap: () {
+                ref
+                    .read(homeStateProvider.notifier)
+                    .deleteHighlight(highlight.id!);
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 }
 

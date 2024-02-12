@@ -1,11 +1,10 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:relight/app/common/common.dart';
 import 'package:relight/app/features/features.dart';
 import 'package:relight/app/features/highlights/models/url_metadata_model.dart';
-import 'package:relight/app/features/highlights/view/new_url_highlight.dart';
 import 'package:relight/app/features/highlights/view/new_highlight_category_source_page.dart';
+import 'package:relight/app/features/highlights/view/new_url_highlight.dart';
 import 'package:relight/app/features/highlights/view/new_url_highlight_preview.dart';
 
 class RelightRouter {
@@ -67,7 +66,7 @@ class RelightRouter {
       GoRoute(
         path: NewUrlHighlightPreviewPage.routePath,
         builder: (_, state) {
-          final arg = state.extra as UrlMetadataModel;
+          final arg = state.extra! as UrlMetadataModel;
           return NewUrlHighlightPreviewPage(urlMetadata: arg);
         },
       ),

@@ -17,9 +17,9 @@ class UrlMetadataRepository {
   //extract json with jsonLink.io api
   Future<UrlMetadataModel?> extractMetaData(String url) async {
     try {
-      final apiKey = dotenv.env["JSON_LINK_API_KEY"];
+      final apiKey = dotenv.env['JSON_LINK_API_KEY'];
       final response = await dio
-          .get('https://jsonlink.io/api/extract?url=${url}&api_key=${apiKey}');
+          .get('https://jsonlink.io/api/extract?url=$url&api_key=$apiKey');
 
       if (response.statusCode == 200) {
         return UrlMetadataModel.fromJson(response.data as Map<String, dynamic>);

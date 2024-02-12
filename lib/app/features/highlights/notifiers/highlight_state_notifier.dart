@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logging/logging.dart';
@@ -164,14 +163,15 @@ class HighlightStateNotifier extends StateNotifier<HighlightState> {
 
   Future<UrlMetadataModel?> getUrlMetadata(String url) async {
     try {
-      state = state.copyWith(status: LoadingBaseStatus());
+      state = state.copyWith(status: const LoadingBaseStatus());
       final metaData = await _urlMetadataRepository.extractMetaData(url);
-      state = state.copyWith(status: InitialBaseStatus());
+      state = state.copyWith(status: const InitialBaseStatus());
 
       return metaData;
     } catch (e) {
       _setError(
-          'An error occured, please check the url and try again'.hardCoded);
+        'An error occured, please check the url and try again'.hardCoded,
+      );
       return null;
     }
   }

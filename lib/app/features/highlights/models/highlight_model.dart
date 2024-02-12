@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:relight/app/features/highlights/models/url_metadata_model.dart';
 
@@ -12,10 +10,10 @@ class Highlight with _$Highlight {
   const factory Highlight({
     required String content,
     required String plainContent,
-    UrlMetadataModel? urlMetadata,
     required String sourceId,
     required DateTime createdAt,
     required String owner,
+    UrlMetadataModel? urlMetadata,
     String? id,
   }) = _Highlight;
 

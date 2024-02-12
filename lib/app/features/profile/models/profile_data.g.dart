@@ -11,7 +11,9 @@ Profile _$ProfileFromJson(Map json) => Profile(
       setDate: Profile._fromJson(json['setDate'] as String?),
       dayOfWeek: json['dayOfWeek'] as int?,
       frequencyValue: $enumDecodeNullable(
-          _$FrequencyValueEnumEnumMap, json['frequencyValue']),
+        _$FrequencyValueEnumEnumMap,
+        json['frequencyValue'],
+      ),
       fcmToken: json['fcmToken'] as String?,
       timeZone: json['timeZone'] as String?,
     );

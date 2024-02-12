@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_quill/flutter_quill.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:quill_html_converter/quill_html_converter.dart';
 import 'package:relight/app/common/common.dart';
 import 'package:relight/app/features/features.dart';
+import 'package:relight/app/features/highlights/view/widget/rich_editor.dart';
 
 class EditHighlight extends ConsumerStatefulWidget {
   const EditHighlight({required this.highlight, super.key});
@@ -14,14 +17,15 @@ class EditHighlight extends ConsumerStatefulWidget {
 }
 
 class _EditHighlightState extends ConsumerState<EditHighlight> {
-  final TextEditingController highlightController = TextEditingController();
+  late QuillController quillController;
 
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      highlightController.text = widget.highlight.content;
-    });
+    quillController = QuillController(
+      document: Document.fromDelta(Document.fromHtml(widget.highlight.content)),
+      selection: const TextSelection(baseOffset: 0, extentOffset: 0),
+    );
   }
 
   @override
@@ -71,21 +75,10 @@ class _EditHighlightState extends ConsumerState<EditHighlight> {
       ),
       body: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.fromLTRB(8, 16, 8, 0),
-            child: TextFormField(
-              controller: highlightController,
-              maxLines: 4,
-              style: const TextStyle(color: Colors.white),
-              decoration: const InputDecoration(
-                hintText: 'Enter highlight',
-              ),
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please input content';
-                }
-                return null;
-              },
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(8, 16, 8, 0),
+              child: RichEditor(quillController: quillController),
             ),
           ),
           const Spacer(),
@@ -96,8 +89,10 @@ class _EditHighlightState extends ConsumerState<EditHighlight> {
                   .read(homeStateProvider.notifier)
                   .editHighlight(
                     id: widget.highlight.id!,
-                    highlight: widget.highlight
-                        .copyWith(content: highlightController.text.trim()),
+                    highlight: widget.highlight.copyWith(
+                      content: quillController.document.toDelta().toHtml(),
+                      plainContent: quillController.document.toPlainText(),
+                    ),
                   )
                   .then(
                 (state) {

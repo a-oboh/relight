@@ -70,7 +70,7 @@ class NewArticleHighlight extends ConsumerWidget {
 
                           if (data != null) {
                             await context.push(
-                                NewUrlHighlightPreviewPage.routePath,
+                              NewUrlHighlightPreviewPage.routePath,
                               extra: data,
                             );
                           }

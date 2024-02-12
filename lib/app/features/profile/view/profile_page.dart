@@ -54,7 +54,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                       style: AppTextStyles.mediumBold(),
                     ),
                   ),
-                  Gap(36),
+                  const Gap(36),
                   SettinngItem(
                     onTap: () {
                       context.push(

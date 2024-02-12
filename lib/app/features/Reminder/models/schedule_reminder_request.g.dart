@@ -14,7 +14,8 @@ ScheduleReminderRequest _$ScheduleReminderRequestFromJson(Map json) =>
     );
 
 Map<String, dynamic> _$ScheduleReminderRequestToJson(
-        ScheduleReminderRequest instance) =>
+  ScheduleReminderRequest instance,
+) =>
     <String, dynamic>{
       'timeZone': instance.timeZone,
       'deviceToken': instance.deviceToken,
