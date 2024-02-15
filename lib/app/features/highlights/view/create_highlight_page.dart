@@ -6,8 +6,6 @@ import 'package:quill_html_converter/quill_html_converter.dart';
 import 'package:relight/app/common/common.dart';
 import 'package:relight/app/features/features.dart';
 
-import 'package:relight/app/features/highlights/view/widget/rich_editor.dart';
-
 class CreateHighlight extends ConsumerStatefulWidget {
   const CreateHighlight({super.key});
 

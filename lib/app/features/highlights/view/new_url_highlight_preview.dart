@@ -4,7 +4,6 @@ import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:relight/app/common/common.dart';
 import 'package:relight/app/features/features.dart';
-import 'package:relight/app/features/highlights/models/url_metadata_model.dart';
 
 class NewUrlHighlightPreviewPage extends ConsumerWidget {
   const NewUrlHighlightPreviewPage({required this.urlMetadata, super.key});

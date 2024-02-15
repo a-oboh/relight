@@ -108,7 +108,8 @@ class _HomePageState extends ConsumerState<HomePage> {
           error: (state) {
             return Center(
               child: Text(
-                  state.errorText ?? "We couldn't load your highlights 😔"),
+                state.errorText ?? "We couldn't load your highlights 😔",
+              ),
             );
           },
         ),
