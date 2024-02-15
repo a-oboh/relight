@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:relight/app/common/common.dart';
 import 'package:relight/app/features/features.dart';
-import 'package:relight/app/features/highlights/view/new_highlight_category_source_page.dart';
 
 class DashboardPage extends ConsumerStatefulWidget {
   const DashboardPage({super.key});
