@@ -3,21 +3,15 @@ import 'dart:developer';
 
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:logging/logging.dart';
+import 'package:flutter_timezone/flutter_timezone.dart';
+import 'package:timezone/timezone.dart' as tz;
+import 'package:timezone/data/latest_all.dart' as tz;
 
 Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
   await dotenv.load();
-  // configure logger
-  Logger.root.level = kDebugMode ? Level.INFO : Level.OFF;
-  Logger.root.onRecord.listen((record) {
-    if (kDebugMode) {
-      print('${record.level.name}: ${record.time}: ${record.message}');
-    }
-  });
 
   FlutterError.onError = (details) {
     log(details.exceptionAsString(), stackTrace: details.stack);
@@ -42,6 +36,11 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
       },
     );
   };
+
+  tz.initializeTimeZones();
+  final currentTimeZone = await FlutterTimezone.getLocalTimezone();
+
+  tz.setLocalLocation(tz.getLocation(currentTimeZone));
 
   runApp(ProviderScope(child: await builder()));
 }
